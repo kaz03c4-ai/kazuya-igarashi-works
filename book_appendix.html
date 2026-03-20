@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,7 +13,10 @@
   --muted: #6b7280;
   --line: #d6dbe3;
   --accent: #1f4b99;
+  --accent-light: #e8f0ff;
   --soft: #f8fafc;
+  --warm: #faf8f0;
+  --warm-border: #e0d8b8;
 }
 html, body {
   margin: 0; padding: 0;
@@ -20,6 +24,7 @@ html, body {
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
   line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
 }
 .container {
   max-width: 1080px;
@@ -40,88 +45,174 @@ header {
 }
 h1 { font-size: 2rem; line-height: 1.35; margin: 0 0 8px; color: #0f172a; }
 .subtitle { color: var(--muted); font-size: 1rem; }
-.meta-line { color: var(--muted); font-size: .95rem; margin-top: 6px; }
+.meta-line { color: var(--muted); font-size: .92rem; margin-top: 6px; }
 .back-link { margin: 0 0 16px; }
-.back-link a { color: var(--accent); text-decoration: none; }
+.back-link a {
+  color: var(--accent); text-decoration: none;
+  font-size: 0.92rem; font-weight: 500;
+}
 .back-link a:hover { text-decoration: underline; }
+
+/* ── TOC ── */
 nav.toc {
   background: var(--soft);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 18px 22px;
-  margin: 0 0 34px;
+  padding: 20px 24px;
+  margin: 0 0 36px;
 }
-nav.toc h2 { border: none; margin: 0 0 10px; padding: 0; font-size: 1.1rem; }
-nav.toc ul { margin: 0; padding-left: 1.25rem; }
-nav.toc li { margin: .2rem 0; }
+nav.toc h2 { border: none; margin: 0 0 12px; padding: 0; font-size: 1.05rem; color: var(--accent); }
+nav.toc ul { margin: 0; padding-left: 1.2rem; }
+nav.toc > ul { padding-left: 0; list-style: none; }
+nav.toc > ul > li { margin: 6px 0; font-weight: 600; }
+nav.toc > ul > li > ul { margin-top: 4px; font-weight: 400; padding-left: 1.4rem; }
+nav.toc li { margin: 3px 0; font-size: 0.92rem; }
 nav.toc a { color: var(--accent); text-decoration: none; }
 nav.toc a:hover { text-decoration: underline; }
-section { margin-top: 38px; }
+
+/* ── Sections ── */
+section { margin-top: 42px; }
 h2 {
-  font-size: 1.45rem; line-height: 1.45; margin: 0 0 14px;
-  padding: 0 0 .45rem;
+  font-size: 1.4rem; line-height: 1.45; margin: 0 0 16px;
+  padding: 0 0 .5rem;
   border-bottom: 2px solid #dbe7fb;
   color: #0f172a;
 }
-h3 { font-size: 1.1rem; margin: 1.6rem 0 .6rem; color: #24364f; }
-h4 { font-size: 1rem; margin: 1.2rem 0 .45rem; color: #24364f; }
+h3 { font-size: 1.08rem; margin: 1.6rem 0 .6rem; color: #1a3260; font-weight: 700; }
+h4 { font-size: 0.98rem; margin: 1.3rem 0 .5rem; color: #334155; font-weight: 700; }
 p { margin: 0 0 1rem; text-align: justify; }
-footer {
-  margin-top: 42px; padding-top: 16px;
-  border-top: 1px solid var(--line);
-  color: var(--muted); font-size: .92rem;
-  text-align: center;
+
+/* ── Tables ── */
+table {
+  width: 100%; border-collapse: collapse;
+  margin: 14px 0 10px; font-size: .93rem;
 }
-/* Template boxes */
-.template-box {
-  background: var(--soft);
+th, td {
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 22px 24px;
-  margin: 24px 0 32px;
+  padding: 10px 12px; vertical-align: top;
+}
+th {
+  background: #f0f4fa; text-align: left;
+  font-weight: 600; font-size: 0.88rem;
+  color: #334155; letter-spacing: 0.02em;
+}
+
+/* ── Fill areas (form fields) ── */
+.fill-area {
+  background: #fafbfc;
+  border: 1px dashed #c5cdd8;
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-height: 2.2rem;
+  color: #9ca3af;
+  font-size: .86rem;
+  line-height: 1.6;
+}
+
+/* ── Template boxes ── */
+.template-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  padding: 28px 28px 24px;
+  margin: 28px 0 36px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, .03);
 }
 .template-box h3 {
   margin-top: 0;
   color: var(--accent);
+  font-size: 1.12rem;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--line);
-  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
-table {
-  width: 100%; border-collapse: collapse;
-  margin: 12px 0 8px; font-size: .95rem;
+.template-box > p:first-of-type {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
-th, td {
-  border: 1px solid #d7dde6;
-  padding: 8px 10px; vertical-align: top;
+.template-box h4 {
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+  text-transform: none;
 }
-th { background: #f3f6fb; text-align: left; }
-td:first-child { white-space: nowrap; }
-.fill-area {
-  background: #f8f8f8; border: 1px dashed #bbb;
-  padding: 4px 8px; min-height: 2rem;
-  color: #999; font-size: .88rem;
-}
+
+/* ── Hint notes ── */
 .note {
-  background: #f4f8ff; border: 1px solid #d7e5ff; border-radius: 10px;
-  padding: 12px 14px; margin: 12px 0; font-size: .93rem; color: #334155;
+  background: var(--accent-light);
+  border: 1px solid #c8d8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 16px 0 4px;
+  font-size: .9rem;
+  color: #1e3a5f;
+  line-height: 1.7;
 }
-/* Diff sections */
+.note strong { color: var(--accent); }
+
+/* ── Diff sections ── */
 .diff-section {
-  background: #fffef5; border: 1px solid #e8e0a8; border-radius: 12px;
-  padding: 16px 20px; margin: 20px 0 28px;
+  background: var(--warm);
+  border: 1px solid var(--warm-border);
+  border-radius: 14px;
+  padding: 24px 24px 20px;
+  margin: 24px 0 32px;
 }
 .diff-section h4 {
-  margin-top: 0; color: #6a5d1a; font-size: .98rem;
+  margin: 0 0 12px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--warm-border);
+  color: #5a4e1a;
+  font-size: 0.98rem;
+  font-weight: 700;
 }
-.diff-section p { font-size: .93rem; }
+.diff-section p {
+  font-size: .92rem;
+  color: #3d3520;
+  line-height: 1.85;
+}
+.diff-section p:last-child { margin-bottom: 0; }
+
+/* ── Diff labels ── */
+.diff-label {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.diff-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.diff-tag.overlap { background: #e8e0c0; color: #5a4e1a; }
+.diff-tag.addition { background: #d0e8d0; color: #1a4a2a; }
+
+/* ── Footer ── */
+footer {
+  margin-top: 48px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted); font-size: .88rem;
+  text-align: center;
+  line-height: 1.7;
+}
+
 @media (max-width: 900px) {
   .paper { padding: 28px 20px 34px; }
+  .template-box { padding: 20px 18px 18px; }
   h1 { font-size: 1.65rem; }
 }
 @media print {
   body { background: #fff; }
   .container { max-width: none; margin: 0; padding: 0; }
   .paper { box-shadow: none; border: none; border-radius: 0; padding: 0; }
+  .template-box { border-left-width: 2px; box-shadow: none; }
 }
 </style>
 </head>
@@ -166,14 +257,14 @@ td:first-child { white-space: nowrap; }
 
 <!-- ============================================================ -->
 <section id="appendixA"><h2>付録A　実務テンプレート集</h2>
-<p>以下の5種は、本書の考え方を現場で使うための最小テンプレートである。すべての欄を埋める必要はない。重要なのは、「観測」「主因候補」「確認論点」「次の打ち手」「次回観測項目」が分けられていることである。テンプレートの形式は現場に合わせて変えてよいが、この五つの区分は維持した方がよい。</p>
+<p>以下の5種は、本書の考え方を現場で使うための最小テンプレートである。すべての欄を埋める必要はない。重要なのは、「観測」「主因候補」「確認論点」「次の打ち手」「次回観測項目」が分けられていることである。形式は現場に合わせて変えてよいが、この五つの区分は維持した方がよい。</p>
 
 <!-- T-1 -->
 <div class="template-box" id="t1">
 <h3>T-1　案件整理シート</h3>
 <p>案件の現在地と次の一手を一覧するためのシート。レビュー会や伴走面談の事前準備・事後記録に使う。1案件1枚で運用する。</p>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>案件名</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>担当者</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>記入日</td><td><div class="fill-area">　</div></td></tr>
@@ -182,7 +273,7 @@ td:first-child { white-space: nowrap; }
 </table>
 <h4>観測の整理（五区分）</h4>
 <table>
-<tr><th style="width:18%;">区分</th><th>観測された事実・発話</th><th style="width:22%;">強さの印象</th></tr>
+<tr><th style="width:16%;">区分</th><th>観測された事実・発話</th><th style="width:20%;">強さの印象</th></tr>
 <tr><td>価値</td><td><div class="fill-area">　</div></td><td><div class="fill-area">強い／一定／弱い／不明</div></td></tr>
 <tr><td>懸念</td><td><div class="fill-area">　</div></td><td><div class="fill-area">強い／一定／弱い／不明</div></td></tr>
 <tr><td>実行条件</td><td><div class="fill-area">　</div></td><td><div class="fill-area">整理済／一部／未整理</div></td></tr>
@@ -191,22 +282,22 @@ td:first-child { white-space: nowrap; }
 </table>
 <h4>見立てと打ち手</h4>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
-<tr><td>主因候補（仮置き）</td><td><div class="fill-area">いま最も前進を止めていると考えられる論点を1〜2つ書く</div></td></tr>
-<tr><td>主因候補の根拠</td><td><div class="fill-area">なぜそう考えるのか、どの観測に基づくのかを書く</div></td></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
+<tr><td>主因候補（仮置き）</td><td><div class="fill-area">いま最も前進を止めていると考えられる論点を1〜2つ</div></td></tr>
+<tr><td>主因候補の根拠</td><td><div class="fill-area">なぜそう考えるのか、どの観測に基づくのか</div></td></tr>
 <tr><td>確認論点</td><td><div class="fill-area">主因候補が本当に主因かを見分けるために、次に確かめるべきこと</div></td></tr>
-<tr><td>次の打ち手</td><td><div class="fill-area">誰に対して、何を、どう変えて打つかを書く</div></td></tr>
+<tr><td>次の打ち手</td><td><div class="fill-area">誰に対して、何を、どう変えて打つか</div></td></tr>
 <tr><td>次回観測項目</td><td><div class="fill-area">打ち手の結果、何が分かれば前進とみなせるか</div></td></tr>
 </table>
-<div class="note"><strong>使い方のヒント：</strong>最初から全欄を完璧に埋めようとしない。「主因候補」と「次の打ち手」が書けていれば、レビュー会の議論は成立する。残りの欄は、レビューを重ねる中で埋めていけばよい。</div>
+<div class="note"><strong>使い方のヒント</strong>　最初から全欄を完璧に埋めようとしない。「主因候補」と「次の打ち手」が書けていれば、レビュー会の議論は成立する。残りの欄は、レビューを重ねる中で埋めていけばよい。</div>
 </div>
 
 <!-- T-2 -->
 <div class="template-box" id="t2">
 <h3>T-2　ヒアリング整理シート</h3>
-<p>顧客インタビューやヒアリングの結果を、単なる発話記録で終わらせず、前進条件の整理につなげるためのシート。ヒアリング1回ごとに記入する。</p>
+<p>顧客インタビューの結果を、単なる発話記録で終わらせず、前進条件の整理につなげるためのシート。ヒアリング1回ごとに記入する。</p>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>案件名</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>ヒアリング日</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>相手の役割</td><td><div class="fill-area">利用者 ／ 現場責任者 ／ 決裁者 ／ 導入支援者 ／ 管理・制度側 ／ その他</div></td></tr>
@@ -214,7 +305,7 @@ td:first-child { white-space: nowrap; }
 </table>
 <h4>発話の切り分け</h4>
 <table>
-<tr><th style="width:18%;">区分</th><th>発話・反応の要旨</th><th style="width:25%;">読みの候補</th></tr>
+<tr><th style="width:16%;">区分</th><th>発話・反応の要旨</th><th style="width:24%;">読みの候補</th></tr>
 <tr><td>価値</td><td><div class="fill-area">　</div></td><td><div class="fill-area">そのまま受け取れるか、別の読みがあるか</div></td></tr>
 <tr><td>懸念</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>実行条件</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
@@ -224,13 +315,13 @@ td:first-child { white-space: nowrap; }
 </table>
 <h4>このヒアリングからの設計</h4>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>主因候補の更新</td><td><div class="fill-area">このヒアリングを踏まえて、主因候補は変わったか、維持か</div></td></tr>
 <tr><td>次に確認すべきこと</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>次に聞くべき相手</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>提案や打ち手の変更点</td><td><div class="fill-area">　</div></td></tr>
 </table>
-<div class="note"><strong>使い方のヒント：</strong>「読みの候補」欄は、発話をそのまま結論にしないためにある。「面白い」と言われたときに、それが価値の確認なのか、社交辞令なのか、判断保留の婉曲表現なのか、複数の読みを並べてみるだけでも、打ち手の質は変わる。</div>
+<div class="note"><strong>使い方のヒント</strong>　「読みの候補」欄は、発話をそのまま結論にしないためにある。「面白い」と言われたときに、それが価値の確認なのか、社交辞令なのか、判断保留の婉曲表現なのか、複数の読みを並べてみるだけでも、打ち手の質は変わる。</div>
 </div>
 
 <!-- T-3 -->
@@ -238,33 +329,33 @@ td:first-child { white-space: nowrap; }
 <h3>T-3　PoC設計シート</h3>
 <p>PoCを「とりあえずやる」のではなく、何を確認し、誰の判断を動かし、終了後に何を決めるかを事前に設計するためのシート。</p>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>案件名</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>PoCの主目的</td><td><div class="fill-area">技術成立確認 ／ 顧客評価取得 ／ 導入判断材料 ／ 社内説明材料 ／ 次段階判断</div></td></tr>
 <tr><td>何を確認したいか</td><td><div class="fill-area">このPoCで答えを出したい問いを具体的に書く</div></td></tr>
 <tr><td>誰の判断を動かしたいか</td><td><div class="fill-area">　</div></td></tr>
-<tr><td>その人はPoCに何を期待しているか</td><td><div class="fill-area">事前に確認した判断条件を書く（未確認なら「未確認」と明記）</div></td></tr>
+<tr><td>その人の判断条件</td><td><div class="fill-area">事前に確認した判断条件（未確認なら「未確認」と明記）</div></td></tr>
 </table>
 <h4>成功条件と評価</h4>
 <table>
-<tr><th style="width:18%;">評価層</th><th>評価項目</th><th style="width:28%;">成功の条件</th></tr>
+<tr><th style="width:16%;">評価層</th><th>評価項目</th><th style="width:26%;">成功の条件</th></tr>
 <tr><td>技術評価</td><td><div class="fill-area">性能、精度、安定性など</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>相手側評価</td><td><div class="fill-area">価値の実感、懸念、運用感</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>次段階判断</td><td><div class="fill-area">この結果で何が決まるか</div></td><td><div class="fill-area">　</div></td></tr>
 </table>
 <h4>PoC後の分岐設計</h4>
 <table>
-<tr><th style="width:28%;">結果パターン</th><th>そのときの判断</th></tr>
+<tr><th style="width:30%;">結果パターン</th><th>そのときの判断</th></tr>
 <tr><td>成功条件を満たした場合</td><td><div class="fill-area">次に何に進むか（例：提案具体化、社内稟議、本格検証）</div></td></tr>
-<tr><td>一部は満たしたが不十分な場合</td><td><div class="fill-area">何を追加確認するか、条件を変えるか</div></td></tr>
+<tr><td>一部は満たしたが不十分</td><td><div class="fill-area">何を追加確認するか、条件を変えるか</div></td></tr>
 <tr><td>成功条件を満たさなかった場合</td><td><div class="fill-area">対象変更、条件変更、保留、撤退のどれか</div></td></tr>
 </table>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>役割分担</td><td><div class="fill-area">実施主体、評価者、判断接続者を明記</div></td></tr>
 <tr><td>実施期間</td><td><div class="fill-area">　</div></td></tr>
 </table>
-<div class="note"><strong>使い方のヒント：</strong>「PoC後の分岐設計」がこのシートの核心である。ここを事前に埋められないなら、PoCの目的がまだ曖昧な可能性がある。埋められない項目は、PoCの前に確認すべき論点として扱う。</div>
+<div class="note"><strong>使い方のヒント</strong>　「PoC後の分岐設計」がこのシートの核心である。ここを事前に埋められないなら、PoCの目的がまだ曖昧な可能性がある。埋められない項目は、PoCの前に確認すべき論点として扱う。</div>
 </div>
 
 <!-- T-4 -->
@@ -272,33 +363,33 @@ td:first-child { white-space: nowrap; }
 <h3>T-4　社内説明整理シート</h3>
 <p>社内で案件を説明するとき、「誰に、何を判断してもらいたいのか」を相手別に整理するためのシート。同じ案件でも、相手によって記入内容は変わる。</p>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>案件名</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>説明の相手</td><td><div class="fill-area">事業部 ／ 研究開発 ／ 品質・生産 ／ 法務・知財 ／ 管理部門 ／ 経営層</div></td></tr>
 <tr><td>この場で何を決めてほしいか</td><td><div class="fill-area">正式承認 ／ 次段階支援 ／ 関連部門との確認 ／ 優先順位の判断</div></td></tr>
 </table>
 <h4>相手別の判断条件整理</h4>
 <table>
-<tr><th style="width:30%;">この相手が重視する条件</th><th>現在の整理状況</th></tr>
+<tr><th style="width:34%;">この相手が重視する条件</th><th>現在の整理状況</th></tr>
 <tr><td><div class="fill-area">例：投資妥当性、既存戦略との整合</div></td><td><div class="fill-area">整理済み ／ 一部 ／ 未整理</div></td></tr>
 <tr><td><div class="fill-area">例：追加開発負荷、技術リスク</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td><div class="fill-area">例：品質保証、契約条件</div></td><td><div class="fill-area">　</div></td></tr>
 </table>
 <h4>説明の構成</h4>
 <table>
-<tr><th style="width:28%;">要素</th><th>この相手向けの内容</th></tr>
-<tr><td>案件の魅力（期待を高める）</td><td><div class="fill-area">なぜこの案件に意味があるか、この相手の関心に合わせて書く</div></td></tr>
-<tr><td>前進の根拠</td><td><div class="fill-area">顧客反応、検証結果、PoC結果など、どこまで見えているか</div></td></tr>
-<tr><td>残論点（不安を下げる）</td><td><div class="fill-area">何がまだ不確かで、どう確認する予定か</div></td></tr>
-<tr><td>求める判断</td><td><div class="fill-area">この場で何を決めてほしいか（再掲・具体化）</div></td></tr>
+<tr><th style="width:26%;">要素</th><th>この相手向けの内容</th></tr>
+<tr><td>案件の魅力<br><span style="font-size:.82rem;color:var(--muted);">期待を高める</span></td><td><div class="fill-area">なぜこの案件に意味があるか、この相手の関心に合わせて</div></td></tr>
+<tr><td>前進の根拠</td><td><div class="fill-area">顧客反応、検証結果、PoC結果など</div></td></tr>
+<tr><td>残論点<br><span style="font-size:.82rem;color:var(--muted);">不安を下げる</span></td><td><div class="fill-area">何がまだ不確かで、どう確認する予定か</div></td></tr>
+<tr><td>求める判断</td><td><div class="fill-area">この場で何を決めてほしいか</div></td></tr>
 </table>
 <h4>想定される反対論点と対応</h4>
 <table>
-<tr><th style="width:35%;">想定される反対・慎重論点</th><th>対応の方向</th></tr>
+<tr><th style="width:38%;">想定される反対・慎重論点</th><th>対応の方向</th></tr>
 <tr><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 </table>
-<div class="note"><strong>使い方のヒント：</strong>このシートは相手ごとに1枚ずつ作る。同じ案件でも、事業部向けと経営層向けでは「案件の魅力」の書き方が変わるし、「残論点」の重心も違う。1枚の万能資料を目指すより、相手別に整理した方が前に進みやすい。</div>
+<div class="note"><strong>使い方のヒント</strong>　このシートは相手ごとに1枚ずつ作る。同じ案件でも、事業部向けと経営層向けでは「案件の魅力」の書き方が変わるし、「残論点」の重心も違う。1枚の万能資料を目指すより、相手別に整理した方が前に進みやすい。</div>
 </div>
 
 <!-- T-5 -->
@@ -309,24 +400,24 @@ td:first-child { white-space: nowrap; }
 <tr><th style="width:14%;">項目</th><th style="width:28%;">案件A</th><th style="width:28%;">案件B</th><th style="width:28%;">案件C</th></tr>
 <tr><td>案件名</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>現在の工程</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
-<tr><td>主な停滞症状</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
+<tr><td>停滞症状</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>主因候補</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 <tr><td>主因の見え方</td><td><div class="fill-area">明確／一部／拡散</div></td><td><div class="fill-area">明確／一部／拡散</div></td><td><div class="fill-area">明確／一部／拡散</div></td></tr>
 <tr><td>打ち手の見え方</td><td><div class="fill-area">具体的／方向のみ／不明</div></td><td><div class="fill-area">具体的／方向のみ／不明</div></td><td><div class="fill-area">具体的／方向のみ／不明</div></td></tr>
-<tr><td>必要な支援の種類</td><td><div class="fill-area">例：判断条件整理</div></td><td><div class="fill-area">例：導入構造の見極め</div></td><td><div class="fill-area">例：探索仮説の絞り込み</div></td></tr>
+<tr><td>必要な支援</td><td><div class="fill-area">例：判断条件整理</div></td><td><div class="fill-area">例：導入構造見極め</div></td><td><div class="fill-area">例：探索仮説絞り込み</div></td></tr>
 <tr><td>支援投入余地</td><td><div class="fill-area">高い／中／低い</div></td><td><div class="fill-area">高い／中／低い</div></td><td><div class="fill-area">高い／中／低い</div></td></tr>
-<tr><td>支援の時間軸</td><td><div class="fill-area">短期前進／中期探索／長期</div></td><td><div class="fill-area">短期前進／中期探索／長期</div></td><td><div class="fill-area">短期前進／中期探索／長期</div></td></tr>
-<tr><td>支援の優先順位</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
+<tr><td>支援の時間軸</td><td><div class="fill-area">短期／中期／長期</div></td><td><div class="fill-area">短期／中期／長期</div></td><td><div class="fill-area">短期／中期／長期</div></td></tr>
+<tr><td>優先順位</td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td><td><div class="fill-area">　</div></td></tr>
 </table>
 <h4>比較から見えた支援方針</h4>
 <table>
-<tr><th style="width:28%;">項目</th><th>記入内容</th></tr>
+<tr><th style="width:26%;">項目</th><th>記入内容</th></tr>
 <tr><td>今期まず動かす案件</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>その理由</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>探索設計を先に行う案件</td><td><div class="fill-area">　</div></td></tr>
 <tr><td>保留とする案件と条件</td><td><div class="fill-area">何が変われば再開するか</div></td></tr>
 </table>
-<div class="note"><strong>使い方のヒント：</strong>「支援投入余地」は、その案件が良いかどうかではなく、支援を入れたときに動きやすいかどうかを見る欄である。魅力が高くても制約が強く支援が効きにくい案件と、魅力は中程度だが少ない支援で大きく動く案件を、ここで見分ける。</div>
+<div class="note"><strong>使い方のヒント</strong>　「支援投入余地」は、その案件が良いかどうかではなく、支援を入れたときに動きやすいかどうかを見る欄である。魅力が高くても制約が強く支援が効きにくい案件と、魅力は中程度だが少ない支援で大きく動く案件を、ここで見分ける。</div>
 </div>
 
 </section>
@@ -336,49 +427,49 @@ td:first-child { white-space: nowrap; }
 <p>本書は既存の事業開発手法を否定するものではなく、それらを補完する補助レイヤーを提供するものである。しかし、読者が「すでに知っていることを別の言葉で言い直しているだけではないか」と感じるリスクがある。そこで本付録では、各論章の内容が既存手法とどこで重なり、どこが追加的な貢献なのかを明示する。</p>
 
 <div class="diff-section" id="d1">
-<h4>B-1　観測整理の五区分とVOC・ペルソナ・カスタマージャーニー（第5章関連）</h4>
+<h4>B-1　観測整理の五区分とVOC・ペルソナ・カスタマージャーニー<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第5章関連</span></h4>
 <p>VOC（Voice of Customer）やペルソナ、カスタマージャーニーマップは、顧客の声や行動を整理し、共感的に理解するための手法である。これらは顧客像を豊かに描くことには有効だが、その出力は主に「顧客の全体像」や「体験の流れ」であり、「いまこの案件の前進を止めているのはどの論点か」を直接示すわけではない。</p>
 <p>本書の五区分（価値・懸念・実行条件・判断条件・制約）は、顧客理解一般を目的としていない。目的は、観測された情報を「打ち手の方向を誤らないための切り口」に変換することである。VOCで集めた発話をそのまま要望一覧にするのではなく、どの発話が価値の認識を示し、どの発話が判断条件の曖昧さを示し、どの発話が制約を示唆しているかを分ける。この変換こそが、本書が既存の顧客理解手法に追加する層である。VOCやペルソナを使っている現場では、本書の五区分はその下流で使うフィルターとして位置づけるとよい。</p>
 </div>
 
 <div class="diff-section" id="d2">
-<h4>B-2　見立てとロジカルシンキング・イシューツリー（第6章関連）</h4>
+<h4>B-2　見立てとロジカルシンキング・イシューツリー<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第6章関連</span></h4>
 <p>ロジカルシンキングやイシューツリーは、問題をMECE（漏れなく・重複なく）に分解し、論点を構造的に整理する手法である。これらは論点の見落とし防止と議論の整理には極めて有効であり、本書もその価値を否定しない。</p>
 <p>ただし、事業開発の実務では、論点を網羅的に分解できたとしても、その中で「どれが主因か」「どれを動かせば前進するか」を判定する工程が別途必要になる。イシューツリーは論点の地図をつくるが、地図の上でどこに介入すべきかを示す機能は弱い。本書の「見立て」は、論点構造の整理の次に来る工程として位置づけている。具体的には、主因と従因を分ける、可動点と不可動点を区別する、改善勾配を見つける、という判断を仮置きで行い、それを次の観測で検証する。この「仮置き→検証」の反復設計が、論点整理ツールに対する本書の追加的貢献である。</p>
 </div>
 
 <div class="diff-section" id="d3">
-<h4>B-3　質問設計と定性調査の半構造化インタビュー（第9章関連）</h4>
+<h4>B-3　質問設計と定性調査の半構造化インタビュー<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第9章関連</span></h4>
 <p>定性調査の方法論では、半構造化インタビューの設計が詳細に体系化されている。オープンクエスチョンとクローズドクエスチョンの使い分け、ラポール形成、プロービング技法、データの飽和判定などである。本書の質問設計は、こうした方法論の基本原則と矛盾しない。</p>
 <p>本書が追加しているのは、質問設計の目的を「情報収集一般」から「前進条件の判別」に絞っている点である。半構造化インタビューは対象理解を幅広く深めるための手法だが、本書の文脈では、いまこの案件で前進を止めている論点を見分けることに焦点を置く。その結果、状況確認・比較・条件反転・仮想変更・時系列確認という五つの質問型は、定性調査の技法と重なりつつも、「この発話から何が判別できるか」という出力側から設計されている。既存のインタビュー技法を使いこなしている現場では、本書の質問型は「何のために聞くかを決めるフレーム」として補助的に使うのがよい。</p>
 </div>
 
 <div class="diff-section" id="d4">
-<h4>B-4　仮説四分類とリーンスタートアップ・VPC・BMC（第12章関連）</h4>
+<h4>B-4　仮説四分類とリーンスタートアップ・VPC・BMC<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第12章関連</span></h4>
 <p>リーンスタートアップでは「価値仮説」と「成長仮説」の二つが中心に据えられる。バリュー・プロポジション・キャンバス（VPC）は顧客の仕事・悩み・利得と、自社の提供価値を対応づける。ビジネスモデル・キャンバス（BMC）は事業構造全体を9要素で整理する。これらはいずれも有力なフレームワークであり、本書の考え方と相反しない。</p>
-<p>本書が追加しているのは、「導入仮説」の独立である。リーンスタートアップの価値仮説は「顧客がその価値を認めるか」を問うが、技術起点のBtoB案件では、価値を認めていても導入に進まないことが多い。運用負荷、責任分担、導入手順、現場体制といった「組織の中で実際に回るか」という問いは、価値仮説とも成長仮説とも異なる層に位置する。本書がこれを「導入仮説」として独立させているのは、多くの技術起点案件がこの層で停滞するからである。また、本書は四つの仮説（技術・顧客・導入・事業）を「どれをいま確かめているのか」を常に明示することを求める。これはリーンスタートアップの「Build-Measure-Learn」サイクルの内部で、何のMeasureなのかを精密化する試みとして位置づけられる。VPCやBMCを使っている現場では、本書の四分類は「いまどの仮説を主に検証しているか」を確認するチェックとして機能する。</p>
+<p>本書が追加しているのは、「導入仮説」の独立である。リーンスタートアップの価値仮説は「顧客がその価値を認めるか」を問うが、技術起点のBtoB案件では、価値を認めていても導入に進まないことが多い。運用負荷、責任分担、導入手順、現場体制といった「組織の中で実際に回るか」という問いは、価値仮説とも成長仮説とも異なる層に位置する。本書がこれを「導入仮説」として独立させているのは、多くの技術起点案件がこの層で停滞するからである。また、本書は四つの仮説（技術・顧客・導入・事業）を「どれをいま確かめているのか」を常に明示することを求める。これはリーンスタートアップの「Build-Measure-Learn」サイクルの内部で、何のMeasureなのかを精密化する試みとして位置づけられる。</p>
 </div>
 
 <div class="diff-section" id="d5">
-<h4>B-5　提案設計とソリューション営業・SPIN（第13章関連）</h4>
+<h4>B-5　提案設計とソリューション営業・SPIN<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第13章関連</span></h4>
 <p>ソリューション営業では、顧客の課題を理解し、それに合わせた提案を行うことが基本である。SPIN話法（Situation, Problem, Implication, Need-payoff）は、顧客の潜在ニーズを引き出し、価値を自覚させるための質問技法である。本書の提案設計は、これらの考え方と方向を共にしている。</p>
 <p>本書が追加しているのは、提案の役割を「価値を伝えること」だけでなく、「前進条件への応答」として四つに分けている点である。価値に応答する、懸念を下げる、実行の姿を描く、判断しやすくする、の四役割である。ソリューション営業やSPINは、主に価値認識と課題深掘りに強い。一方で、判断条件の整理や制約回避の設計は、営業話法だけではカバーしにくいことがある。本書は、提案を「相手が判断可能な状態をつくる場」として捉え直すことで、営業活動と案件設計をつなぐ接点を提供している。</p>
 </div>
 
 <div class="diff-section" id="d6">
-<h4>B-6　PoC設計とステージゲート・TRL（第16〜17章関連）</h4>
+<h4>B-6　PoC設計とステージゲート・TRL<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第16〜17章関連</span></h4>
 <p>ステージゲート・プロセスは、案件を段階的に審査し、各ゲートで継続・中止を判断する仕組みである。TRL（Technology Readiness Level）は、技術の成熟度を段階的に評価する尺度である。いずれも案件管理の標準的なフレームワークであり、PoCはこれらの中で特定ステージの検証活動として位置づけられることが多い。</p>
-<p>本書が追加しているのは、PoCを「技術確認のイベント」ではなく、「前進条件を一段整える設計された場」として扱う視点である。ステージゲートは通過条件を定義するが、PoC自体の内部設計（何を確認するか、誰の判断に効かせるか、終了後に何を決めるか）は各案件に委ねられることが多い。TRLは技術成熟度を測るが、案件前進の条件は技術成熟度だけでは決まらない。本書のPoC設計シートは、技術評価・相手側評価・次段階判断の三層で評価を設計し、PoC後の分岐（継続・条件変更・保留・撤退）を事前に置く。これにより、ステージゲートの審査を通過するための材料設計にもつながる。既存のステージゲートやTRLを運用している組織では、本書のPoC設計はゲート通過のための準備設計として組み込むことができる。</p>
+<p>本書が追加しているのは、PoCを「技術確認のイベント」ではなく、「前進条件を一段整える設計された場」として扱う視点である。ステージゲートは通過条件を定義するが、PoC自体の内部設計（何を確認するか、誰の判断に効かせるか、終了後に何を決めるか）は各案件に委ねられることが多い。TRLは技術成熟度を測るが、案件前進の条件は技術成熟度だけでは決まらない。本書のPoC設計シートは、技術評価・相手側評価・次段階判断の三層で評価を設計し、PoC後の分岐（継続・条件変更・保留・撤退）を事前に置く。既存のステージゲートやTRLを運用している組織では、本書のPoC設計はゲート通過のための準備設計として組み込むことができる。</p>
 </div>
 
 <div class="diff-section" id="d7">
-<h4>B-7　案件比較とポートフォリオ評価・スコアリング（第22章関連）</h4>
+<h4>B-7　案件比較とポートフォリオ評価・スコアリング<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第22章関連</span></h4>
 <p>ポートフォリオ評価やスコアリング表は、複数案件を市場性、技術力、戦略適合度、収益性などの軸で比較し、投資配分や優先順位を決めるための手法である。こうした手法は、経営判断の材料としては有効であり、本書もその役割を否定しない。</p>
 <p>本書が追加しているのは、「魅力の比較」だけでなく「停滞の質と支援の効きやすさの比較」を行う視点である。ポートフォリオ評価は、案件の将来性や市場規模で優先順位を決めることが多い。しかし、事業開発の実務では、魅力が高くても主因が見えず支援が効きにくい案件と、魅力は中程度だが少ない支援で大きく動く案件がある。本書の案件比較シートは、「主因候補の明確さ」「打ち手の見え方」「支援投入余地」を比較軸に加えることで、支援資源の配分を魅力だけでなく前進可能性から設計できるようにしている。既存のポートフォリオ評価と併用し、戦略的な優先順位と実務的な支援配分を二層で管理することを勧める。</p>
 </div>
 
 <div class="diff-section" id="d8">
-<h4>B-8　人の停滞と組織行動論・動機づけ理論（第28〜29章関連）</h4>
+<h4>B-8　人の停滞と組織行動論・動機づけ理論<span style="font-weight:400; color:#8a7a50; font-size:.88rem;">　第28〜29章関連</span></h4>
 <p>組織行動論や動機づけ理論（自己決定理論、期待理論、心理的安全性など）は、人やチームがなぜ動けないかを説明するための豊かな理論体系を持っている。本書はこれらの理論を置き換えるものではない。</p>
 <p>本書が追加しているのは、事業開発実務の文脈に限定した「止まり方の型」の分類である。組織行動論は人の行動全般を扱うが、本書は「事業開発案件が見えているのに、担当者やチームが動けない」という限定的な場面だけを対象としている。その場面で観測される止まり方を、方向の曖昧さ、負担の大きさ、実行イメージの欠如、判断責任の重さ、役割の曖昧さという五つに分け、それぞれに対応する支援の方向を示している。これは理論的な厳密さよりも、現場の支援者が「この人はいまどの型で止まっているか」を見分け、打ち手を選ぶための実務的な補助線である。組織行動論の知見を持つ読者は、本書の五つの型を、自己決定理論の自律性・有能感・関係性や、期待理論の期待値・手段性・誘意性と接続して理解するとよい。</p>
 </div>
@@ -386,8 +477,8 @@ td:first-child { white-space: nowrap; }
 </section>
 
 <footer>
-<p>観測を打ち手に変える事業開発　原典版　付録</p>
-<p>著者：五十嵐和也　｜　2026年3月　第1版</p>
+<p>観測を打ち手に変える事業開発　原典版　付録<br>
+著者：五十嵐和也　｜　2026年3月　第1版</p>
 <p>© 2026 Kazuya Igarashi</p>
 </footer>
 </article>
