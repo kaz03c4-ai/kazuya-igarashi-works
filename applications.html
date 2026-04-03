@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div class="container">
 
   <nav class="site-nav">
-    <a class="site-nav__name" href="index.html">TETA + GATE Research Hub</a>
-    <div class="site-nav__links">
+    <a href="index.html" class="site-name">TETA + GATE Research Hub</a>
+    <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="overview.html">Overview</a>
       <a href="teta.html">TETA</a>
@@ -23,89 +24,80 @@
   <main>
 
     <!-- Section 1: 冒頭 -->
-    <section class="section" style="border-top: none; padding-top: 40px;">
-      <h1>Applications</h1>
-      <p style="font-size: 14px;">
+    <div style="margin-bottom:52px;">
+      <h1 style="font-size:28px; font-weight:500; margin:0 0 12px;">Applications</h1>
+      <p style="font-size:16px; color:var(--text-secondary); margin:0; line-height:1.7;">
         TETA と GATE の理論群を、事業開発、人材開発、支援設計へ<br>
         接続した成果物をまとめています。
       </p>
-    </section>
+    </div>
 
     <!-- Section 2: Featured -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Featured</p>
 
-      <div class="accent-block" style="padding-top: 8px; padding-bottom: 8px;">
-        <p style="font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 10px;">
-          観測を打ち手に変える事業開発
-        </p>
-        <p style="font-size: 13px; line-height: 1.7; margin-bottom: 12px;">
-          事業開発の主要工程を一つの流れとして扱い、現場で得られる観測を打ち手へ変換するための実務向けテキスト。顧客探索、仮説検証、PoC、社内合意、案件比較まで全34章。
-        </p>
-        <p style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 12px;">
-          <span>Type: </span><span style="color: var(--text-secondary);">Guide</span>
-          <span style="margin: 0 8px;">　</span>
-          <span>Domain: </span><span style="color: var(--text-secondary);">Business Development</span>
-          <span style="margin: 0 8px;">　</span>
-          <span>Status: </span><span style="color: var(--text-secondary);">Published</span>
-        </p>
-        <p style="font-size: 13px; margin-bottom: 0;">
+      <div class="card card-featured">
+        <div class="paper-header">
+          <span style="font-size:18px; font-weight:500;">観測を打ち手に変える事業開発</span>
+          <span class="badge badge-guide">Guide</span>
+        </div>
+        <p class="paper-desc" style="line-height:1.6;">
+          事業開発の主要工程を一つの流れとして扱い、現場で得られる観測を打ち手へ変換するための実務向けテキスト。顧客探索、仮説検証、PoC、社内合意、案件比較まで全34章。</p>
+        <div class="paper-links">
           <a href="bizdev-book.html">書籍ページへ →</a>
-          <span style="color: var(--text-tertiary); margin: 0 6px;">·</span>
+          <span class="link-sep">·</span>
           <a href="book.html">本文を読む</a>
-          <span style="color: var(--text-tertiary); margin: 0 6px;">·</span>
+          <span class="link-sep">·</span>
           <a href="book_appendix.html">付録を読む</a>
-        </p>
+        </div>
       </div>
-    </section>
+    </div>
 
     <!-- Section 3: Other applied works -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Other applied works</p>
 
-      <div style="margin-bottom: 20px;">
-        <div class="pub-row">
-          <span class="pub-row__title">BizDev Studio</span>
-          <span class="status">準備中</span>
+      <div class="paper-item">
+        <div class="paper-header">
+          <span class="paper-title">BizDev Studio</span>
+          <span class="badge badge-status">準備中</span>
         </div>
-        <p class="pub-row__desc">「観測を打ち手に変える事業開発」の現場実装としてのWebサービス。アイデア投稿から詰まり診断・打ち手推薦まで。</p>
+        <p class="paper-desc">「観測を打ち手に変える事業開発」の現場実装としてのWebサービス。アイデア投稿から詰まり診断・打ち手推薦まで。</p>
       </div>
 
-      <div style="margin-bottom: 20px;">
-        <div class="pub-row">
-          <span class="pub-row__title">人材開発向け資料</span>
-          <span class="status">準備中</span>
+      <div class="paper-item">
+        <div class="paper-header">
+          <span class="paper-title">人材開発向け資料</span>
+          <span class="badge badge-status">準備中</span>
         </div>
-        <p class="pub-row__desc">GATE の考え方を人材育成・1on1・エンゲージメント支援に接続する資料群。</p>
+        <p class="paper-desc">GATE の考え方を人材育成・1on1・エンゲージメント支援に接続する資料群。</p>
       </div>
 
-      <div>
-        <div class="pub-row">
-          <span class="pub-row__title">支援ツール</span>
-          <span class="status">構想中</span>
+      <div class="paper-item">
+        <div class="paper-header">
+          <span class="paper-title">支援ツール</span>
+          <span class="badge badge-status">構想中</span>
         </div>
-        <p class="pub-row__desc">質問票デモ、概念図、事業開発マップなどの補助ツール。</p>
+        <p class="paper-desc">質問票デモ、概念図、事業開発マップなどの補助ツール。</p>
       </div>
-    </section>
+    </div>
 
     <!-- Section 4: 理論との対応 -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">理論との対応</p>
 
-      <div style="font-size: 13px; line-height: 2.0;">
-        <div>
-          <span style="color: var(--text-secondary);">事業開発 ← </span>
-          <a href="teta.html">TETA</a>
-          <span style="color: var(--text-secondary);">（行動発現の構造分解）</span>
-        </div>
-        <div>
-          <span style="color: var(--text-secondary);">人材開発 ← </span>
-          <a href="gate.html">GATE</a>
-          <span style="color: var(--text-secondary);">（実行可能性の構造分解）</span>
-        </div>
+      <div class="theme-item">
+        <span class="theme-desc">事業開発 ← </span>
+        <a href="teta.html" style="border-bottom:1px solid rgba(22,58,112,0.2);">TETA</a>
+        <span class="theme-desc">（行動発現の構造分解）</span>
       </div>
-      <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px; margin-bottom: 0;">両者は補完的な理論基盤として接続している。</p>
-    </section>
+      <div class="theme-item">
+        <span class="theme-desc">人材開発 ← </span>
+        <a href="gate.html" style="border-bottom:1px solid rgba(22,58,112,0.2);">GATE</a>
+        <span class="theme-desc">（実行可能性の構造分解）</span>
+      </div>
+      <p style="font-size:13px; color:var(--text-tertiary); margin-top:8px;">両者は補完的な理論基盤として接続している。</p>
+    </div>
 
   </main>
 
@@ -114,20 +106,11 @@
     <a href="index.html">Home →</a>
   </div>
 
-  <footer>
-    <div class="site-footer">
-      <div style="margin-bottom: 4px;">
-        <a href="overview.html">Overview</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="teta.html">Papers</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="applications.html">Applications</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="mailto:kaz.03c4@gmail.com">Contact</a>
-      </div>
-      <div>kaz.03c4@gmail.com</div>
-    </div>
+  <footer class="site-footer">
+    <a href="overview.html">Overview</a> · <a href="teta.html">Papers</a> · <a href="applications.html">Applications</a> · <a href="mailto:kaz.03c4@gmail.com">Contact</a>
+    <br>kaz.03c4@gmail.com
   </footer>
 
+</div>
 </body>
 </html>

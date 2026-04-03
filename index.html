@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div class="container">
 
   <nav class="site-nav">
-    <a class="site-nav__name" href="index.html">TETA + GATE Research Hub</a>
-    <div class="site-nav__links">
+    <a href="index.html" class="site-name">TETA + GATE Research Hub</a>
+    <div class="nav-links">
       <a href="index.html" class="current">Home</a>
       <a href="overview.html">Overview</a>
       <a href="teta.html">TETA</a>
@@ -22,10 +23,10 @@
 
   <main>
 
-    <!-- Section 1: ファーストビュー -->
-    <section class="section" style="border-top: none; padding-top: 40px; margin-bottom: 48px;">
-      <h1>TETA + GATE Research Hub</h1>
-      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+    <!-- ファーストビュー -->
+    <div style="margin-bottom:52px;">
+      <h1 style="font-size:28px; font-weight:500; margin:0 0 12px; line-height:1.3;">TETA + GATE Research Hub</h1>
+      <p style="font-size:16px; color:var(--text-secondary); margin:0; line-height:1.7;">
         行動発現と実行可能性に関する理論研究、論文、読み物、<br>
         実務応用を整理・公開するサイトです。
       </p>
@@ -34,35 +35,41 @@
         <a href="teta.html">公開論文を見る</a>
         <a href="applications.html">実務応用を見る</a>
       </div>
-    </section>
+    </div>
 
-    <!-- Section 2: 中核研究 -->
-    <section class="section">
+    <!-- 中核研究 -->
+    <div class="section">
       <p class="section-label">中核研究</p>
-
-      <div style="margin-bottom: 8px;">
-        <a href="teta.html" class="block-link">
-          <h2>TETA — 行動発現の閾値理論</h2>
-          <p>行動発現を閾値・相転移・改善勾配の観点から捉える研究群。<span class="arrow">→</span></p>
+      <div class="grid-2">
+        <a href="teta.html" class="card-link">
+          <div class="card card-muted">
+            <p style="font-size:18px; font-weight:500; margin:0 0 6px;">TETA</p>
+            <p style="font-size:13px; color:var(--text-tertiary); margin:0 0 8px;">Threshold Emergence Theory of Action</p>
+            <p style="font-size:14px; color:var(--text-secondary); margin:0 0 12px; line-height:1.6;">
+              行動発現を閾値・相転移・改善勾配の観点から捉える研究群。</p>
+            <span class="card-arrow">詳しく見る →</span>
+          </div>
+        </a>
+        <a href="gate.html" class="card-link">
+          <div class="card card-muted">
+            <p style="font-size:18px; font-weight:500; margin:0 0 6px;">GATE</p>
+            <p style="font-size:13px; color:var(--text-tertiary); margin:0 0 8px;">Goal-Aligned Theory of Executability</p>
+            <p style="font-size:14px; color:var(--text-secondary); margin:0 0 12px; line-height:1.6;">
+              主体側の実行可能性、支援設計、前進条件を扱う研究群。</p>
+            <span class="card-arrow">詳しく見る →</span>
+          </div>
         </a>
       </div>
+    </div>
 
-      <div>
-        <a href="gate.html" class="block-link">
-          <h2>GATE — 実行可能性の基礎理論</h2>
-          <p>主体側の実行可能性、支援設計、前進条件を扱う研究群。<span class="arrow">→</span></p>
-        </a>
-      </div>
-    </section>
-
-    <!-- Section 3: 公開物 -->
-    <section class="section">
+    <!-- 公開物 -->
+    <div class="section">
       <p class="section-label">公開物</p>
 
       <div class="paper-item">
         <div class="paper-header">
           <span class="paper-title">TETA Paper 1</span>
-          <span class="paper-status">Preprint</span>
+          <span class="badge badge-preprint">Preprint</span>
         </div>
         <p class="paper-desc">基礎理論編 — Core Theory and Structural Foundational Hypotheses</p>
         <div class="paper-links">
@@ -75,9 +82,9 @@
       <div class="paper-item">
         <div class="paper-header">
           <span class="paper-title">GATE 論文</span>
-          <span class="paper-status">Preprint</span>
+          <span class="badge badge-preprint">Preprint</span>
         </div>
-        <p class="paper-desc">実行可能性の基礎構造 — Multivariable Theory of Executability</p>
+        <p class="paper-desc">実行可能性の基礎構造 — Multivariable Theory of Goal-Aligned Executability</p>
         <div class="paper-links">
           <a href="gate-paper.html">日本語版 →</a>
           <span class="link-sep">·</span>
@@ -85,76 +92,70 @@
         </div>
       </div>
 
-      <div class="featured-item">
-        <p class="paper-title" style="margin-bottom: 4px;">観測を打ち手に変える事業開発</p>
-        <p class="paper-desc">事業開発の主要工程と打ち手設計を整理した実務向けテキスト。全34章。</p>
+      <div class="card card-featured" style="margin-top:12px;">
+        <div class="paper-header">
+          <span style="font-size:18px; font-weight:500;">観測を打ち手に変える事業開発</span>
+          <span class="badge badge-guide">Guide</span>
+        </div>
+        <p class="paper-desc" style="line-height:1.6;">
+          事業開発の主要工程と打ち手設計を整理した実務向けテキスト。<br>
+          顧客探索、仮説検証、PoC、社内合意、案件比較まで全34章。</p>
         <div class="paper-links">
           <a href="bizdev-book.html">書籍ページへ →</a>
           <span class="link-sep">·</span>
-          <a href="book.html">読む</a>
+          <a href="book.html">本文を読む</a>
+          <span class="link-sep">·</span>
+          <a href="book_appendix.html">付録</a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Section 4: 読み手別の入口 -->
-    <section class="section">
+    <!-- 読み手別の入口 -->
+    <div class="section">
       <p class="section-label">読み手別の入口</p>
-
-      <div class="section-content" style="font-size: 13px; line-height: 2.2;">
-        <div>
-          <span style="font-weight: 500; color: var(--text);">初めての方</span>
-          <span style="color: var(--text-secondary);"> — 全体像と問題設定を知りたい方 </span>
-          <a href="overview.html">→ Overview</a>
-        </div>
-        <div>
-          <span style="font-weight: 500; color: var(--text);">研究に興味がある方</span>
-          <span style="color: var(--text-secondary);"> — 理論構造や論文を直接読みたい方 </span>
-          <a href="teta.html">→ TETA</a>
-          <span style="color: var(--text-tertiary);"> / </span>
-          <a href="gate.html">GATE</a>
-        </div>
-        <div>
-          <span style="font-weight: 500; color: var(--text);">実務応用を見たい方</span>
-          <span style="color: var(--text-secondary);"> — 事業開発や支援設計への接続を見たい方 </span>
-          <a href="applications.html">→ Applications</a>
-        </div>
+      <div class="grid-3">
+        <a href="overview.html" class="card-link">
+          <div class="card card-muted">
+            <p style="font-size:15px; font-weight:500; margin:0 0 6px;">初めての方へ</p>
+            <p style="font-size:13px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">
+              全体像と問題設定を知りたい方。</p>
+            <span class="card-arrow">→ Overview</span>
+          </div>
+        </a>
+        <a href="teta.html" class="card-link">
+          <div class="card card-muted">
+            <p style="font-size:15px; font-weight:500; margin:0 0 6px;">研究に興味がある方へ</p>
+            <p style="font-size:13px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">
+              理論構造や論文を直接読みたい方。</p>
+            <span class="card-arrow">→ TETA / GATE</span>
+          </div>
+        </a>
+        <a href="applications.html" class="card-link">
+          <div class="card card-muted">
+            <p style="font-size:15px; font-weight:500; margin:0 0 6px;">実務応用を見たい方へ</p>
+            <p style="font-size:13px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">
+              事業開発や支援設計への接続を見たい方。</p>
+            <span class="card-arrow">→ Applications</span>
+          </div>
+        </a>
       </div>
-    </section>
+    </div>
 
-    <!-- Section 5: 更新情報 -->
-    <section class="section">
+    <!-- 更新 -->
+    <div class="section">
       <p class="section-label">更新</p>
-
-      <div class="update-item">
-        <span class="update-date">2026-04</span>
-        <span class="update-text">GATE 論文プレプリント公開（Zenodo）</span>
-      </div>
-      <div class="update-item">
-        <span class="update-date">2026-03</span>
-        <span class="update-text">TETA Paper 1 プレプリント公開（Zenodo）</span>
-      </div>
-      <div class="update-item">
-        <span class="update-date">2026-03</span>
-        <span class="update-text">「観測を打ち手に変える事業開発」原典版 v1.1 公開</span>
-      </div>
-    </section>
+      <div class="update-item"><span class="update-date">2026-04</span><span>GATE 論文プレプリント公開（Zenodo）</span></div>
+      <div class="update-item"><span class="update-date">2026-03</span><span>TETA Paper 1 プレプリント公開（Zenodo）</span></div>
+      <div class="update-item"><span class="update-date">2026-03</span><span>「観測を打ち手に変える事業開発」原典版 v1.1 公開</span></div>
+    </div>
 
   </main>
 
-  <footer>
-    <div class="site-footer">
-      <div style="margin-bottom: 4px;">
-        <a href="overview.html">Overview</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="teta.html">Papers</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="applications.html">Applications</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="mailto:kaz.03c4@gmail.com">Contact</a>
-      </div>
-      <div>kaz.03c4@gmail.com</div>
-    </div>
+  <footer class="site-footer">
+    <a href="overview.html">Overview</a> · <a href="teta.html">Papers</a> · <a href="applications.html">Applications</a> · <a href="mailto:kaz.03c4@gmail.com">Contact</a>
+    <br>kaz.03c4@gmail.com
   </footer>
 
+</div>
 </body>
 </html>

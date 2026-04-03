@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div class="container">
 
   <nav class="site-nav">
-    <a class="site-nav__name" href="index.html">TETA + GATE Research Hub</a>
-    <div class="site-nav__links">
+    <a href="index.html" class="site-name">TETA + GATE Research Hub</a>
+    <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="overview.html">Overview</a>
       <a href="teta.html" class="current">TETA</a>
@@ -23,24 +24,22 @@
   <main>
 
     <!-- Section 1: 冒頭 -->
-    <section class="section" style="border-top: none; padding-top: 40px;">
-      <h1>TETA</h1>
-      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 4px;">
-        Threshold Emergence Theory of Action — 行動発現の閾値理論。
-      </p>
-      <p style="font-size: 14px;">
+    <div style="margin-bottom:52px;">
+      <h1 style="font-size:28px; font-weight:500; margin:0 0 12px;">TETA</h1>
+      <p style="font-size:16px; color:var(--text-secondary); margin:0; line-height:1.7;">
+        Threshold Emergence Theory of Action — 行動発現の閾値理論。<br>
         個別行動の発現条件を、閾値構造と相転移の観点から扱う理論研究群。
       </p>
-    </section>
+    </div>
 
     <!-- Section 2: Core papers -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Core papers</p>
 
       <div class="paper-item" id="paper1">
         <div class="paper-header">
           <span class="paper-title">Paper 1 — 基礎理論編</span>
-          <span class="paper-status">Preprint</span>
+          <span class="badge badge-preprint">Preprint</span>
         </div>
         <p class="paper-desc">基礎仮説 FH1–FH4、6変数の定義、識別原理、反証可能命題。</p>
         <div class="paper-links">
@@ -50,63 +49,68 @@
         </div>
       </div>
 
-      <div style="margin-bottom: 20px;">
-        <div class="pub-row">
-          <span class="pub-row__title">Paper 2 — 多重目的理論</span>
-          <span class="status">Working paper</span>
+      <div class="paper-item">
+        <div class="paper-header">
+          <span class="paper-title">Paper 2 — 多重目的理論</span>
+          <span class="badge badge-status">Working paper</span>
         </div>
-        <p class="pub-row__desc">一行動・多目的の並列評価構造、Purpose Switching、非合理性の再解釈。</p>
+        <p class="paper-desc">一行動・多目的の並列評価構造、Purpose Switching、非合理性の再解釈。</p>
       </div>
 
-      <div>
-        <div class="pub-row">
-          <span class="pub-row__title">Paper 3 — 実装・実証編</span>
-          <span class="status">In preparation</span>
+      <div class="paper-item">
+        <div class="paper-header">
+          <span class="paper-title">Paper 3 — 実装・実証編</span>
+          <span class="badge badge-status">In preparation</span>
         </div>
-        <p class="pub-row__desc">CIQによるインタビュー定量化、マルチドメイン検証。</p>
+        <p class="paper-desc">CIQによるインタビュー定量化、マルチドメイン検証。</p>
       </div>
-    </section>
+    </div>
 
     <!-- Section 3: Why TETA matters -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Why TETA matters</p>
 
-      <div style="font-size: 13px; line-height: 2.0;">
-        <div>
-          <span style="font-weight: 500; color: var(--text);">解釈可能性</span>
-          <span style="color: var(--text-secondary);"> — 行動の構造を6変数に分解し、因果的な説明を生成できる。</span>
-        </div>
-        <div>
-          <span style="font-weight: 500; color: var(--text);">改善勾配</span>
-          <span style="color: var(--text-secondary);"> — どこを動かせば行動が発現しやすくなるかを示せる。</span>
-        </div>
-        <div>
-          <span style="font-weight: 500; color: var(--text);">介入設計への接続</span>
-          <span style="color: var(--text-secondary);"> — 理論を実務上の打ち手設計に接続できる。</span>
-        </div>
+      <div class="theme-item">
+        <span class="theme-label">解釈可能性</span>
+        <span class="theme-desc"> — 行動の構造を6変数に分解し、因果的な説明を生成できる。</span>
       </div>
-    </section>
+      <div class="theme-item">
+        <span class="theme-label">改善勾配</span>
+        <span class="theme-desc"> — どこを動かせば行動が発現しやすくなるかを示せる。</span>
+      </div>
+      <div class="theme-item">
+        <span class="theme-label">介入設計への接続</span>
+        <span class="theme-desc"> — 理論を実務上の打ち手設計に接続できる。</span>
+      </div>
+    </div>
 
     <!-- Section 4: Research notes -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Research notes</p>
-      <p style="font-size: 13px; color: var(--text-tertiary);">（今後、関連ノートや補助資料をここに追加）</p>
-    </section>
+      <p style="font-size:14px; color:var(--text-tertiary);">（今後、関連ノートや補助資料をここに追加）</p>
+    </div>
 
     <!-- Section 5: Related applications -->
-    <section class="section">
+    <div class="section">
       <p class="section-label">Related applications</p>
 
-      <div class="section-content" style="font-size: 13px; line-height: 2.0;">
-        <div>
-          <a href="bizdev-book.html">観測を打ち手に変える事業開発</a>
-          <span style="color: var(--text-secondary);"> — 事業開発への応用</span>
+      <div class="card card-featured">
+        <div class="paper-header">
+          <span style="font-size:18px; font-weight:500;">観測を打ち手に変える事業開発</span>
+          <span class="badge badge-guide">Guide</span>
         </div>
-        <div>
-          <span style="color: var(--text-secondary);">BizDev Studio — デモ実装（準備中）</span>
+        <p class="paper-desc" style="line-height:1.6;">事業開発への応用 — TETA の考え方を観測整理と打ち手設計へ接続した実務テキスト。</p>
+        <div class="paper-links">
+          <a href="bizdev-book.html">書籍ページへ →</a>
+          <span class="link-sep">·</span>
+          <a href="book.html">本文を読む</a>
         </div>
       </div>
-    </section>
+
+      <div class="paper-item" style="margin-top:12px;">
+        <span style="font-size:14px; color:var(--text-secondary);">BizDev Studio — デモ実装（準備中）</span>
+      </div>
+    </div>
 
   </main>
 
@@ -115,20 +119,11 @@
     <a href="gate.html">GATE →</a>
   </div>
 
-  <footer>
-    <div class="site-footer">
-      <div style="margin-bottom: 4px;">
-        <a href="overview.html">Overview</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="teta.html">Papers</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="applications.html">Applications</a>
-        <span style="margin: 0 6px;">·</span>
-        <a href="mailto:kaz.03c4@gmail.com">Contact</a>
-      </div>
-      <div>kaz.03c4@gmail.com</div>
-    </div>
+  <footer class="site-footer">
+    <a href="overview.html">Overview</a> · <a href="teta.html">Papers</a> · <a href="applications.html">Applications</a> · <a href="mailto:kaz.03c4@gmail.com">Contact</a>
+    <br>kaz.03c4@gmail.com
   </footer>
 
+</div>
 </body>
 </html>
