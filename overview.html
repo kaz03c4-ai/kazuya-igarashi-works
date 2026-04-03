@@ -67,9 +67,74 @@
     <section class="section">
       <p class="section-label">研究プログラム全体像</p>
 
-      <div style="border: 0.5px solid var(--line); border-radius: 4px; padding: 16px; margin-bottom: 16px; font-size: 12px; color: var(--text-tertiary); text-align: center;">
-        （ここに関係図を配置）
-      </div>
+      <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg"
+        style="width:100%; max-width:520px; display:block; margin:0 auto 16px;">
+
+        <!-- 上段: 理論 -->
+        <text x="260" y="20" text-anchor="middle"
+          font-size="11" fill="#8a94a3" letter-spacing="0.05em">理論</text>
+
+        <rect x="40" y="32" width="200" height="64" rx="6"
+          fill="none" stroke="#dde4ee" stroke-width="1"/>
+        <text x="140" y="58" text-anchor="middle"
+          font-size="14" font-weight="500" fill="#1c2430">TETA</text>
+        <text x="140" y="78" text-anchor="middle"
+          font-size="12" fill="#5d6a7a">行動発現の閾値構造</text>
+
+        <rect x="280" y="32" width="200" height="64" rx="6"
+          fill="none" stroke="#dde4ee" stroke-width="1"/>
+        <text x="380" y="58" text-anchor="middle"
+          font-size="14" font-weight="500" fill="#1c2430">GATE</text>
+        <text x="380" y="78" text-anchor="middle"
+          font-size="12" fill="#5d6a7a">実行可能性の基礎構造</text>
+
+        <!-- 接続線 -->
+        <line x1="140" y1="96" x2="140" y2="140" stroke="#dde4ee" stroke-width="1"/>
+        <line x1="380" y1="96" x2="380" y2="140" stroke="#dde4ee" stroke-width="1"/>
+        <line x1="260" y1="96" x2="260" y2="120" stroke="#dde4ee" stroke-width="1"
+          stroke-dasharray="4,3"/>
+        <text x="260" y="134" text-anchor="middle"
+          font-size="10" fill="#8a94a3">補完的に接続</text>
+
+        <!-- 下段: 展開 -->
+        <text x="260" y="158" text-anchor="middle"
+          font-size="11" fill="#8a94a3" letter-spacing="0.05em">展開</text>
+
+        <rect x="20" y="170" width="150" height="52" rx="6"
+          fill="none" stroke="#dde4ee" stroke-width="1"/>
+        <text x="95" y="193" text-anchor="middle"
+          font-size="12" font-weight="500" fill="#1c2430">Essays</text>
+        <text x="95" y="210" text-anchor="middle"
+          font-size="11" fill="#5d6a7a">翻訳的読み物</text>
+
+        <rect x="185" y="170" width="150" height="52" rx="6"
+          fill="none" stroke="#dde4ee" stroke-width="1"/>
+        <text x="260" y="193" text-anchor="middle"
+          font-size="12" font-weight="500" fill="#1c2430">Applications</text>
+        <text x="260" y="210" text-anchor="middle"
+          font-size="11" fill="#5d6a7a">実務応用</text>
+
+        <rect x="350" y="170" width="150" height="52" rx="6"
+          fill="none" stroke="#dde4ee" stroke-width="1"/>
+        <text x="425" y="193" text-anchor="middle"
+          font-size="12" font-weight="500" fill="#1c2430">Papers</text>
+        <text x="425" y="210" text-anchor="middle"
+          font-size="11" fill="#5d6a7a">論文・プレプリント</text>
+
+        <!-- 下段の接続線 -->
+        <line x1="95" y1="170" x2="140" y2="140" stroke="#dde4ee" stroke-width="1"/>
+        <line x1="260" y1="170" x2="260" y2="148" stroke="#dde4ee" stroke-width="1"/>
+        <line x1="425" y1="170" x2="380" y2="140" stroke="#dde4ee" stroke-width="1"/>
+
+        <!-- 代表成果物 -->
+        <text x="260" y="248" text-anchor="middle"
+          font-size="11" fill="#163a70">代表的成果物</text>
+        <text x="260" y="268" text-anchor="middle"
+          font-size="12" fill="#5d6a7a">観測を打ち手に変える事業開発</text>
+        <line x1="260" y1="222" x2="260" y2="236" stroke="#163a70" stroke-width="1"
+          stroke-dasharray="3,2"/>
+
+      </svg>
 
       <div class="program-grid">
         <div class="program-grid__col">
@@ -97,16 +162,20 @@
     <section class="section">
       <p class="section-label">二つの中核研究</p>
 
-      <div style="margin-bottom: 24px;">
-        <h2><a href="teta.html">TETA — 行動発現の閾値理論</a></h2>
-        <p>個別行動の発現条件を、閾値構造・相転移・改善勾配として捉える。</p>
-        <p>顧客の「動かなさ」や意思決定の停滞を、温度感ではなく構造条件として扱うための理論。</p>
+      <div style="margin-bottom: 8px;">
+        <a href="teta.html" class="block-link">
+          <h2>TETA — 行動発現の閾値理論</h2>
+          <p>個別行動の発現条件を、閾値構造・相転移・改善勾配として捉える。</p>
+          <p>顧客の「動かなさ」や意思決定の停滞を、温度感ではなく構造条件として扱うための理論。</p>
+        </a>
       </div>
 
       <div>
-        <h2><a href="gate.html">GATE — 実行可能性の基礎理論</a></h2>
-        <p>主体の前進条件、実行可能性、支援設計を扱う。</p>
-        <p>意志力・やる気・集中・気力を単一能力ではなく、多変数の実行可能性として再定義する。</p>
+        <a href="gate.html" class="block-link">
+          <h2>GATE — 実行可能性の基礎理論</h2>
+          <p>主体の前進条件、実行可能性、支援設計を扱う。</p>
+          <p>意志力・やる気・集中・気力を単一能力ではなく、多変数の実行可能性として再定義する。</p>
+        </a>
       </div>
     </section>
 
@@ -122,7 +191,7 @@
       <div>
         <h2><a href="applications.html">Applications / Practice</a></h2>
         <p>理論を事業開発、人材開発、支援設計へ接続した成果物。</p>
-        <div class="accent-block" style="margin-top: 10px; padding-top: 2px; padding-bottom: 2px;">
+        <div class="accent-block section-content" style="margin-top: 10px; padding-top: 2px; padding-bottom: 2px;">
           <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 0;">
             代表的成果物：<a href="bizdev-book.html" style="color: var(--text); font-weight: 500;">観測を打ち手に変える事業開発</a><br>
             — TETA と GATE の考え方を、事業開発実務における観測整理と打ち手設計へ接続した応用テキスト。
@@ -135,10 +204,10 @@
     <section class="section">
       <p class="section-label">現在の公開物</p>
 
-      <div style="font-size: 13px; line-height: 2.0;">
+      <div class="section-content" style="font-size: 13px; line-height: 2.0;">
         <div style="display: flex; gap: 12px;">
           <span style="font-weight: 500; color: var(--text); min-width: 48px;">Papers</span>
-          <span style="color: var(--text-secondary);">— <a href="teta.html">TETA Paper 1</a>、<a href="gate.html">GATE 論文</a></span>
+          <span style="color: var(--text-secondary);">— <a href="https://doi.org/10.5281/ZENODO.19351996" target="_blank" rel="noopener">TETA Paper 1</a>、<a href="gate-paper.html">GATE 論文</a></span>
         </div>
         <div style="display: flex; gap: 12px;">
           <span style="font-weight: 500; color: var(--text); min-width: 48px;">Guide</span>

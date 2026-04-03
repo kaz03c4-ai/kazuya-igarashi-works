@@ -29,7 +29,7 @@
         行動発現と実行可能性に関する理論研究、論文、読み物、<br>
         実務応用を整理・公開するサイトです。
       </p>
-      <div style="display: flex; gap: 20px; font-size: 13px; flex-wrap: wrap;">
+      <div class="section-content" style="display: flex; gap: 20px; font-size: 13px; flex-wrap: wrap;">
         <a href="overview.html">研究全体を見る</a>
         <a href="teta.html">公開論文を見る</a>
         <a href="applications.html">実務応用を見る</a>
@@ -40,14 +40,18 @@
     <section class="section">
       <p class="section-label">中核研究</p>
 
-      <div style="margin-bottom: 20px;">
-        <h2>TETA — 行動発現の閾値理論</h2>
-        <p>行動発現を閾値・相転移・改善勾配の観点から捉える研究群。<a href="teta.html">→</a></p>
+      <div style="margin-bottom: 8px;">
+        <a href="teta.html" class="block-link">
+          <h2>TETA — 行動発現の閾値理論</h2>
+          <p>行動発現を閾値・相転移・改善勾配の観点から捉える研究群。<span class="arrow">→</span></p>
+        </a>
       </div>
 
       <div>
-        <h2>GATE — 実行可能性の基礎理論</h2>
-        <p>主体側の実行可能性、支援設計、前進条件を扱う研究群。<a href="gate.html">→</a></p>
+        <a href="gate.html" class="block-link">
+          <h2>GATE — 実行可能性の基礎理論</h2>
+          <p>主体側の実行可能性、支援設計、前進条件を扱う研究群。<span class="arrow">→</span></p>
+        </a>
       </div>
     </section>
 
@@ -57,7 +61,7 @@
 
       <div style="margin-bottom: 16px;">
         <div class="pub-row">
-          <span class="pub-row__title"><a href="teta.html#paper1">TETA Paper 1</a></span>
+          <span class="pub-row__title"><a href="https://doi.org/10.5281/ZENODO.19351996" target="_blank" rel="noopener">TETA Paper 1</a></span>
           <span class="status">Preprint</span>
         </div>
         <p class="pub-row__desc">基礎理論編 — Core Theory and Structural Foundational Hypotheses</p>
@@ -65,7 +69,7 @@
 
       <div style="margin-bottom: 16px;">
         <div class="pub-row">
-          <span class="pub-row__title"><a href="gate.html#paper">GATE 論文</a></span>
+          <span class="pub-row__title"><a href="gate-paper.html">GATE 論文</a></span>
           <span class="status">Preprint</span>
         </div>
         <p class="pub-row__desc">実行可能性の基礎構造 — Multivariable Theory of Executability</p>
@@ -74,11 +78,11 @@
       <div class="accent-block" style="padding-top: 4px; padding-bottom: 4px;">
         <p style="font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px;">観測を打ち手に変える事業開発</p>
         <p style="margin-bottom: 6px;">事業開発の主要工程と打ち手設計を整理した実務向けテキスト。全34章。</p>
-        <p style="font-size: 12px; margin-bottom: 0;">
+        <div class="section-content" style="font-size: 12px;">
           <a href="bizdev-book.html">書籍ページへ →</a>
           <span style="color: var(--text-tertiary); margin: 0 6px;">·</span>
           <a href="book.html">読む</a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -86,7 +90,7 @@
     <section class="section">
       <p class="section-label">読み手別の入口</p>
 
-      <div style="font-size: 13px; line-height: 2.2;">
+      <div class="section-content" style="font-size: 13px; line-height: 2.2;">
         <div>
           <span style="font-weight: 500; color: var(--text);">初めての方</span>
           <span style="color: var(--text-secondary);"> — 全体像と問題設定を知りたい方 </span>
@@ -111,6 +115,14 @@
     <section class="section">
       <p class="section-label">更新</p>
 
+      <div style="display: flex; gap: 16px; font-size: 13px; align-items: baseline; margin-bottom: 6px;">
+        <span style="font-size: 12px; color: var(--text-tertiary); min-width: 60px; flex-shrink: 0;">2026-04</span>
+        <span style="color: var(--text-secondary);">GATE 論文プレプリント公開（Zenodo）</span>
+      </div>
+      <div style="display: flex; gap: 16px; font-size: 13px; align-items: baseline; margin-bottom: 6px;">
+        <span style="font-size: 12px; color: var(--text-tertiary); min-width: 60px; flex-shrink: 0;">2026-03</span>
+        <span style="color: var(--text-secondary);">TETA Paper 1 プレプリント公開（Zenodo）</span>
+      </div>
       <div style="display: flex; gap: 16px; font-size: 13px; align-items: baseline;">
         <span style="font-size: 12px; color: var(--text-tertiary); min-width: 60px; flex-shrink: 0;">2026-03</span>
         <span style="color: var(--text-secondary);">「観測を打ち手に変える事業開発」原典版 v1.1 公開</span>
