@@ -37,7 +37,7 @@ body {
 a {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(22, 58, 112, 0.2);
   transition: border-color 0.15s;
 }
 
@@ -45,11 +45,15 @@ a:hover {
   border-bottom-color: var(--accent);
 }
 
-/* ナビ内のリンクはボーダー不要 */
+/* ナビ・フッター内はアンダーライン不要 */
 .site-nav a,
 .page-nav a,
 .site-footer a {
   border-bottom: none;
+}
+.site-nav a:hover,
+.site-footer a:hover {
+  opacity: 0.7;
 }
 
 /* セクション内のリンク: 常にアンダーラインを薄く表示 */
@@ -75,15 +79,20 @@ a:hover {
   text-decoration: none;
   color: inherit;
   border-bottom: none;
-  padding: 12px 16px;
-  margin: -12px -16px;
+  padding: 14px 18px;
+  margin-left: -18px;
+  margin-right: -18px;
   border-radius: 8px;
-  transition: background-color 0.15s;
+  border: 1px solid transparent;
+  transition: background-color 0.15s, border-color 0.15s;
 }
 .block-link:hover {
-  background-color: var(--accent-soft);
+  background-color: #f0f4fb;
+  border-color: var(--line);
 }
-.block-link h2 {
+.block-link h2,
+.block-link h3,
+.block-link .paper-title {
   color: var(--text);
 }
 .block-link .arrow {
@@ -264,4 +273,99 @@ p {
   color: var(--text-secondary);
   margin-top: 2px;
   margin-bottom: 0;
+}
+
+/* ── 論文アイテム ── */
+
+.paper-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.paper-item:last-child {
+  border-bottom: none;
+}
+.paper-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.paper-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+.paper-status {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.paper-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 4px 0 8px;
+}
+.paper-links {
+  font-size: 13px;
+}
+.link-sep {
+  color: var(--text-tertiary);
+  margin: 0 6px;
+}
+
+/* ── フィーチャード項目 ── */
+
+.featured-item {
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  background: #fafbfe;
+  border-radius: 0 8px 8px 0;
+  margin: 8px 0;
+}
+.featured-item .paper-title,
+.featured-item h3 {
+  font-size: 16px;
+}
+
+/* ── ファーストビューのリンク ── */
+
+.hero-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.hero-links a {
+  font-size: 13px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  border-bottom: 1px solid var(--line);
+  color: var(--accent);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.hero-links a:hover {
+  background-color: #f0f4fb;
+  border-color: var(--accent);
+}
+
+/* ── 更新情報 ── */
+
+.update-item {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.update-date {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  min-width: 60px;
+  flex-shrink: 0;
+}
+.update-text {
+  color: var(--text-secondary);
 }
