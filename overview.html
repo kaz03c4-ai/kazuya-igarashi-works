@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview — TETA + GATE Research Hub</title>
+  <meta name="description" content="TETA と GATE を中心に、理論研究、プレプリント、翻訳的読み物、実務応用を構造的に整理するための公開基盤。" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .program-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    .program-grid__col {
+      padding: 0;
+    }
+    .program-grid__col + .program-grid__col {
+      padding-left: 16px;
+      border-left: 0.5px solid var(--line);
+    }
+    .program-grid__heading {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .program-grid__item {
+      margin-bottom: 8px;
+    }
+    .program-grid__item a {
+      font-weight: 500;
+      color: var(--text);
+    }
+    .program-grid__item span {
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a class="site-nav__name" href="index.html">TETA + GATE Research Hub</a>
+    <div class="site-nav__links">
+      <a href="index.html">Home</a>
+      <a href="overview.html" class="current">Overview</a>
+      <a href="teta.html">TETA</a>
+      <a href="gate.html">GATE</a>
+      <a href="applications.html">Applications</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Section 1: 冒頭 -->
+    <section class="section" style="border-top: none; padding-top: 40px;">
+      <h1>Overview</h1>
+      <p style="font-size: 14px;">
+        このサイトは、TETA と GATE を中心に、理論研究、プレプリント、<br>
+        翻訳的読み物、実務応用を構造的に整理するための公開基盤です。
+      </p>
+    </section>
+
+    <!-- Section 2: 研究プログラム全体像 -->
+    <section class="section">
+      <p class="section-label">研究プログラム全体像</p>
+
+      <div style="border: 0.5px solid var(--line); border-radius: 4px; padding: 16px; margin-bottom: 16px; font-size: 12px; color: var(--text-tertiary); text-align: center;">
+        （ここに関係図を配置）
+      </div>
+
+      <div class="program-grid">
+        <div class="program-grid__col">
+          <p class="program-grid__heading">理論</p>
+          <div class="program-grid__item">
+            <a href="teta.html">TETA</a> <span>— 行動発現</span>
+          </div>
+          <div class="program-grid__item">
+            <a href="gate.html">GATE</a> <span>— 実行可能性</span>
+          </div>
+        </div>
+        <div class="program-grid__col">
+          <p class="program-grid__heading">展開</p>
+          <div class="program-grid__item">
+            <span style="font-weight: 500; color: var(--text);">Essays</span> <span>— 翻訳的読み物</span>
+          </div>
+          <div class="program-grid__item">
+            <a href="applications.html">Applications</a> <span>— 実務応用</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 二つの中核研究 -->
+    <section class="section">
+      <p class="section-label">二つの中核研究</p>
+
+      <div style="margin-bottom: 24px;">
+        <h2><a href="teta.html">TETA — 行動発現の閾値理論</a></h2>
+        <p>個別行動の発現条件を、閾値構造・相転移・改善勾配として捉える。</p>
+        <p>顧客の「動かなさ」や意思決定の停滞を、温度感ではなく構造条件として扱うための理論。</p>
+      </div>
+
+      <div>
+        <h2><a href="gate.html">GATE — 実行可能性の基礎理論</a></h2>
+        <p>主体の前進条件、実行可能性、支援設計を扱う。</p>
+        <p>意志力・やる気・集中・気力を単一能力ではなく、多変数の実行可能性として再定義する。</p>
+      </div>
+    </section>
+
+    <!-- Section 4: 翻訳と応用 -->
+    <section class="section">
+      <p class="section-label">翻訳と応用</p>
+
+      <div style="margin-bottom: 20px;">
+        <h2>Essays / Readings</h2>
+        <p>理論研究の周辺にある翻訳的文章、研究的エッセイ。</p>
+      </div>
+
+      <div>
+        <h2><a href="applications.html">Applications / Practice</a></h2>
+        <p>理論を事業開発、人材開発、支援設計へ接続した成果物。</p>
+        <div class="accent-block" style="margin-top: 10px; padding-top: 2px; padding-bottom: 2px;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 0;">
+            代表的成果物：<a href="bizdev-book.html" style="color: var(--text); font-weight: 500;">観測を打ち手に変える事業開発</a><br>
+            — TETA と GATE の考え方を、事業開発実務における観測整理と打ち手設計へ接続した応用テキスト。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 現在の公開物 -->
+    <section class="section">
+      <p class="section-label">現在の公開物</p>
+
+      <div style="font-size: 13px; line-height: 2.0;">
+        <div style="display: flex; gap: 12px;">
+          <span style="font-weight: 500; color: var(--text); min-width: 48px;">Papers</span>
+          <span style="color: var(--text-secondary);">— <a href="teta.html">TETA Paper 1</a>、<a href="gate.html">GATE 論文</a></span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <span style="font-weight: 500; color: var(--text); min-width: 48px;">Guide</span>
+          <span style="color: var(--text-secondary);">— <a href="bizdev-book.html">観測を打ち手に変える事業開発</a></span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <span style="font-weight: 500; color: var(--text); min-width: 48px;">Demo</span>
+          <span style="color: var(--text-secondary);">— BizDev Studio（準備中）</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="page-nav">
+    <a href="index.html">← Home</a>
+    <a href="teta.html">TETA →</a>
+  </div>
+
+  <footer>
+    <div class="site-footer">
+      <div style="margin-bottom: 4px;">
+        <a href="overview.html">Overview</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="teta.html">Papers</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="applications.html">Applications</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="mailto:kaz.03c4@gmail.com">Contact</a>
+      </div>
+      <div>kaz.03c4@gmail.com</div>
+    </div>
+  </footer>
+
+</body>
+</html>

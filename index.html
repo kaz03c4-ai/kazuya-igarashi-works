@@ -1,343 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>観測を打ち手に変える事業開発 | 五十嵐和也</title>
-  <meta name="description" content="技術起点の事業開発における停滞を、観測整理と打ち手設計によって前進につなげるための実務書。" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Enhanced card for reading links ── */
-    .read-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 8px 0 0;
-    }
-    @media (max-width: 640px) { .read-grid { grid-template-columns: 1fr; } }
-
-    .read-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px 24px 24px;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.15s;
-      box-shadow: 0 10px 30px rgba(16, 36, 66, 0.05);
-    }
-    .read-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 12px 36px rgba(16, 36, 66, 0.1);
-      transform: translateY(-2px);
-    }
-    .read-card .badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 6px;
-      margin-bottom: 14px;
-      width: fit-content;
-    }
-    .read-card .badge.main {
-      background: var(--accent);
-      color: #fff;
-    }
-    .read-card .badge.appendix {
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .read-card .card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 10px;
-    }
-    .read-card .card-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .read-card .card-meta {
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* ── Structure section ── */
-    .structure-section {
-      grid-column: 1 / -1;
-    }
-    .part-group {
-      margin-bottom: 24px;
-    }
-    .part-group:last-child { margin-bottom: 0; }
-    .part-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .part-marker {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-    .part-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .part-line {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-    .outline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    @media (max-width: 640px) { .outline-grid { grid-template-columns: 1fr; } }
-    .outline-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: var(--accent-soft);
-      transition: background 0.15s;
-    }
-    .outline-item:hover {
-      background: #dce8f8;
-    }
-    .outline-num {
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 5px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-    }
-    .outline-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .outline-label {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-    }
-    .outline-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── Info sections ── */
-    .info-section h2 {
-      font-size: 1.05rem;
-    }
-    .info-section ul {
-      padding-left: 0;
-      list-style: none;
-    }
-    .info-section li {
-      padding: 3px 0;
-      padding-left: 1.2em;
-      text-indent: -1.2em;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .info-section li::before {
-      content: "–";
-      margin-right: 0.6em;
-      color: var(--line);
-    }
-    .info-section a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .info-section a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>TETA + GATE Research Hub</title>
+  <meta name="description" content="行動発現と実行可能性に関する理論研究、論文、読み物、実務応用を整理・公開するサイトです。" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <p class="eyebrow">Business Development Textbook</p>
-      <h1>観測を打ち手に変える事業開発</h1>
-      <p class="subtitle">現場で使う、事業開発の主要工程と打ち手設計</p>
-      <div class="meta-row">
-        <span>著者：五十嵐和也</span>
-        <span>版：第1版</span>
-        <span>公開日：2026-03-12</span>
-      </div>
+
+  <nav class="site-nav">
+    <a class="site-nav__name" href="index.html">TETA + GATE Research Hub</a>
+    <div class="site-nav__links">
+      <a href="index.html" class="current">Home</a>
+      <a href="overview.html">Overview</a>
+      <a href="teta.html">TETA</a>
+      <a href="gate.html">GATE</a>
+      <a href="applications.html">Applications</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="container" style="padding-top: 32px; padding-bottom: 56px;">
+  <main>
 
-    <!-- Overview -->
-    <section class="card" style="margin-bottom: 28px;">
-      <h2>概要</h2>
-      <p>本書は、技術起点の事業開発において現場で起こりやすい停滞を、観測整理と打ち手設計によって前進につなげるための実務書です。顧客探索、仮説検証、PoC、社内合意、案件比較といった主要工程を扱い、観測を次の一手へ変換する補完レイヤーを提供します。</p>
+    <!-- Section 1: ファーストビュー -->
+    <section class="section" style="border-top: none; padding-top: 40px; margin-bottom: 48px;">
+      <h1>TETA + GATE Research Hub</h1>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+        行動発現と実行可能性に関する理論研究、論文、読み物、<br>
+        実務応用を整理・公開するサイトです。
+      </p>
+      <div style="display: flex; gap: 20px; font-size: 13px; flex-wrap: wrap;">
+        <a href="overview.html">研究全体を見る</a>
+        <a href="teta.html">公開論文を見る</a>
+        <a href="applications.html">実務応用を見る</a>
+      </div>
     </section>
 
-    <!-- Reading links -->
-    <div class="read-grid" style="margin-bottom: 28px;">
-      <a class="read-card" href="book.html">
-        <span class="badge main">本文</span>
-        <div class="card-title">原典版　全34章</div>
-        <div class="card-desc">事業開発の停滞を観測整理・見立て・打ち手設計で捉え直す。顧客探索からテーマ創出、社内合意、案件比較まで、主要工程を一通り扱う。</div>
-        <div class="card-meta">全34章 ＋ ケース4題 →</div>
-      </a>
-      <a class="read-card" href="book_appendix.html">
-        <span class="badge appendix">付録</span>
-        <div class="card-title">テンプレート集＋<br>既存手法との関係整理</div>
-        <div class="card-desc">案件整理・ヒアリング整理・PoC設計・社内説明・案件比較の5種テンプレート雛形と、既存手法との差分を明示した補足8節。</div>
-        <div class="card-meta">テンプレート5種 ＋ 差分整理8節 →</div>
-      </a>
-    </div>
+    <!-- Section 2: 中核研究 -->
+    <section class="section">
+      <p class="section-label">中核研究</p>
 
-    <!-- Structure -->
-    <section class="card structure-section" style="margin-bottom: 28px;">
-      <h2>本文の構成</h2>
-
-      <div class="part-group">
-        <div class="part-header">
-          <span class="part-marker"></span>
-          <span class="part-title">基礎編</span>
-          <span class="part-line"></span>
-        </div>
-        <div class="outline-grid">
-          <div class="outline-item">
-            <span class="outline-num">1–4</span>
-            <div class="outline-text">
-              <span class="outline-label">問題提起と本書の立場</span>
-              <span class="outline-sub">停滞の類型化、補完レイヤーの必要性、前進の設計</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">5–7</span>
-            <div class="outline-text">
-              <span class="outline-label">観測整理・見立て・打ち手設計</span>
-              <span class="outline-sub">五区分、主因の仮置き、最小前進、改善勾配</span>
-            </div>
-          </div>
-        </div>
+      <div style="margin-bottom: 20px;">
+        <h2>TETA — 行動発現の閾値理論</h2>
+        <p>行動発現を閾値・相転移・改善勾配の観点から捉える研究群。<a href="teta.html">→</a></p>
       </div>
 
-      <div class="part-group">
-        <div class="part-header">
-          <span class="part-marker"></span>
-          <span class="part-title">工程別各論</span>
-          <span class="part-line"></span>
-        </div>
-        <div class="outline-grid">
-          <div class="outline-item">
-            <span class="outline-num">8–11</span>
-            <div class="outline-text">
-              <span class="outline-label">顧客探索</span>
-              <span class="outline-sub">目的設計、質問の型、発話の読解、次の一手への変換</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">12–15</span>
-            <div class="outline-text">
-              <span class="outline-label">仮説検証・提案・学習</span>
-              <span class="outline-sub">仮説四分類、前進条件への応答、優先順位、学習の残し方</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">16–19</span>
-            <div class="outline-text">
-              <span class="outline-label">PoC設計と停滞</span>
-              <span class="outline-sub">目的明確化、三層評価、PoC後停滞の6理由、分岐設計</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">20–23</span>
-            <div class="outline-text">
-              <span class="outline-label">社内合意・案件比較・実務運営</span>
-              <span class="outline-sub">二層モデル、相手別整理、支援配分、レビュー会設計</span>
-            </div>
-          </div>
-        </div>
+      <div>
+        <h2>GATE — 実行可能性の基礎理論</h2>
+        <p>主体側の実行可能性、支援設計、前進条件を扱う研究群。<a href="gate.html">→</a></p>
       </div>
-
-      <div class="part-group">
-        <div class="part-header">
-          <span class="part-marker"></span>
-          <span class="part-title">ケース・応用</span>
-          <span class="part-line"></span>
-        </div>
-        <div class="outline-grid">
-          <div class="outline-item">
-            <span class="outline-num">24–27</span>
-            <div class="outline-text">
-              <span class="outline-label">ケース（4題）</span>
-              <span class="outline-sub">インタビュー、アンケート、案件比較、新規テーマ創出</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">28–30</span>
-            <div class="outline-text">
-              <span class="outline-label">人の停滞と前進支援</span>
-              <span class="outline-sub">止まり方の5つの型、案件支援と人の支援の接続</span>
-            </div>
-          </div>
-          <div class="outline-item">
-            <span class="outline-num">31–34</span>
-            <div class="outline-text">
-              <span class="outline-label">導入・テンプレート・AI・限界</span>
-              <span class="outline-sub">現場導入の進め方、共通言語化、AIとの組み合わせ</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section>
 
-    <!-- Info -->
-    <div class="main-grid">
-      <section class="card info-section">
-        <h2>公開について</h2>
-        <ul>
-          <li>本ページでは、原典として固定した版を公開しています。</li>
-          <li>内容の更新は、必要に応じて版を分けて行います。</li>
-          <li>論文類はプレプリント公開後に別途案内します。</li>
-        </ul>
-      </section>
-      <section class="card info-section">
-        <h2>連絡先</h2>
-        <p>誤記や表示不具合、内容に関するご連絡は下記までお願いします。</p>
-        <p>kaz.03c4@gmail.com</p>
-      </section>
-    </div>
+    <!-- Section 3: 公開物 -->
+    <section class="section">
+      <p class="section-label">公開物</p>
+
+      <div style="margin-bottom: 16px;">
+        <div class="pub-row">
+          <span class="pub-row__title"><a href="teta.html#paper1">TETA Paper 1</a></span>
+          <span class="status">Preprint</span>
+        </div>
+        <p class="pub-row__desc">基礎理論編 — Core Theory and Structural Foundational Hypotheses</p>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <div class="pub-row">
+          <span class="pub-row__title"><a href="gate.html#paper">GATE 論文</a></span>
+          <span class="status">Preprint</span>
+        </div>
+        <p class="pub-row__desc">実行可能性の基礎構造 — Multivariable Theory of Executability</p>
+      </div>
+
+      <div class="accent-block" style="padding-top: 4px; padding-bottom: 4px;">
+        <p style="font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px;">観測を打ち手に変える事業開発</p>
+        <p style="margin-bottom: 6px;">事業開発の主要工程と打ち手設計を整理した実務向けテキスト。全34章。</p>
+        <p style="font-size: 12px; margin-bottom: 0;">
+          <a href="bizdev-book.html">書籍ページへ →</a>
+          <span style="color: var(--text-tertiary); margin: 0 6px;">·</span>
+          <a href="book.html">読む</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 4: 読み手別の入口 -->
+    <section class="section">
+      <p class="section-label">読み手別の入口</p>
+
+      <div style="font-size: 13px; line-height: 2.2;">
+        <div>
+          <span style="font-weight: 500; color: var(--text);">初めての方</span>
+          <span style="color: var(--text-secondary);"> — 全体像と問題設定を知りたい方 </span>
+          <a href="overview.html">→ Overview</a>
+        </div>
+        <div>
+          <span style="font-weight: 500; color: var(--text);">研究に興味がある方</span>
+          <span style="color: var(--text-secondary);"> — 理論構造や論文を直接読みたい方 </span>
+          <a href="teta.html">→ TETA</a>
+          <span style="color: var(--text-tertiary);"> / </span>
+          <a href="gate.html">GATE</a>
+        </div>
+        <div>
+          <span style="font-weight: 500; color: var(--text);">実務応用を見たい方</span>
+          <span style="color: var(--text-secondary);"> — 事業開発や支援設計への接続を見たい方 </span>
+          <a href="applications.html">→ Applications</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 更新情報 -->
+    <section class="section">
+      <p class="section-label">更新</p>
+
+      <div style="display: flex; gap: 16px; font-size: 13px; align-items: baseline;">
+        <span style="font-size: 12px; color: var(--text-tertiary); min-width: 60px; flex-shrink: 0;">2026-03</span>
+        <span style="color: var(--text-secondary);">「観測を打ち手に変える事業開発」原典版 v1.1 公開</span>
+      </div>
+    </section>
 
   </main>
 
-  
+  <footer>
+    <div class="site-footer">
+      <div style="margin-bottom: 4px;">
+        <a href="overview.html">Overview</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="teta.html">Papers</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="applications.html">Applications</a>
+        <span style="margin: 0 6px;">·</span>
+        <a href="mailto:kaz.03c4@gmail.com">Contact</a>
+      </div>
+      <div>kaz.03c4@gmail.com</div>
+    </div>
+  </footer>
+
+</body>
+</html>
