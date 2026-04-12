@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TETA 第1報：行動発現の閾値理論｜基礎理論・構造的基礎仮説</title>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #d35400;
+      --bg-color: #f4f7f9;
+      --box-bg: #ffffff;
+      --border-color: #dcdde1;
+    }
+    body {
+      font-family: 'Helvetica Neue', Arial,
+        'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.8;
+      color: #2f3640;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: var(--bg-color);
+    }
+    header {
+      text-align: center;
+      border-bottom: 4px solid var(--primary-color);
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+    }
+    h1 { color: var(--primary-color); font-size: 2.2em; }
+    h2 {
+      color: var(--primary-color);
+      border-left: 8px solid var(--primary-color);
+      padding-left: 15px;
+      margin-top: 2.5em;
+      font-size: 1.8em;
+      background: rgba(44, 62, 80, 0.05);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    h3 {
+      color: var(--secondary-color);
+      margin-top: 1.8em;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 5px;
+    }
+    h4 { color: var(--accent-color); margin-top: 1.5em; }
+    p { margin-bottom: 1.5em; text-align: justify; }
+    strong { color: var(--primary-color); }
+
+    .summary-box {
+      background-color: #e8f4fd;
+      border-left: 5px solid #3498db;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .hypothesis-box {
+      background-color: #f0f9f0;
+      border-left: 5px solid #27ae60;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .future-box {
+      background-color: #fdf6e3;
+      border-left: 5px solid #f39c12;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .falsifiable-box {
+      background-color: #fef5f0;
+      border-left: 5px solid #e74c3c;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .equation-box {
+      background: var(--box-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: var(--box-bg);
+    }
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px 15px;
+    }
+    th { background-color: var(--primary-color); color: white; }
+    tr:nth-child(even) { background-color: #f8f9fa; }
+
+    .case-study {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .toc {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc a { text-decoration: none; color: var(--secondary-color); }
+
+    .cite {
+      color: #2980b9;
+      font-size: 0.9em;
+    }
+    .references {
+      background: var(--box-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 25px 30px;
+      margin-top: 40px;
+    }
+    .references ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .references li {
+      margin-bottom: 0.8em;
+      font-size: 0.95em;
+      line-height: 1.6;
+      padding-left: 2em;
+      text-indent: -2em;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #7f8c8d;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+  
+    .concept-figure {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+    .concept-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .figure-caption {
+      font-size: 0.95em;
+      color: #555;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <p style="font-size:0.85em; color:#7f8c8d; letter-spacing:0.05em; margin-bottom:4px;">
+    TETA研究プログラムの初期コア論文群 ― 第1報
+  </p>
+  <h1>行動発現の閾値理論（TETA）</h1>
+  <p><strong>Threshold Emergence Theory of Action</strong></p>
+  <p>
+    多重潜在集合と状態依存的閾値による行動発現の構造的枠組み<br>
+    <em>— A Structural Framework for Action Emergence via Phase Transition —</em><br>
+    <em>基礎理論・構造的基礎仮説の提示</em>
+  </p>
+  <p style="margin-top:14px; margin-bottom:4px; font-size:0.98em; color:#2c3e50;"><strong>五十嵐 和也（Kazuya Igarashi）</strong></p>
+  <p style="margin-top:0; margin-bottom:0; font-size:0.92em; color:#2c3e50;">所属：独立研究者</p>
+  <p style="margin-top:10px; margin-bottom:0; padding:10px 12px; background:#f8f9fa; border-left:4px solid #95a5a6; font-size:0.9em; color:#34495e; text-align:left;"><strong>注記：</strong>本稿は、個別行動の発現条件を扱う独立した理論論文であり、著者の関連研究である実行可能性の基礎構造を扱う研究とは異なる理論層を扱う。</p>
+  <p style="font-size:0.85em; color:#7f8c8d; margin-top:12px;">
+    後続の中核論文候補：多重目的理論（Parallel Purpose Theory）　／　
+    後続の中核論文候補：実装・実証編
+  </p>
+</header>
+
+<!-- ===================================================== -->
+<!-- sec0: Academic Framing -->
+<!-- ===================================================== -->
+
+<section id="sec0">
+  <h2>Academic Framing（行動情報学・計算社会科学向け位置づけ）</h2>
+
+  <p>
+    本稿は、行動を連続確率として扱う従来の意思決定モデルに対し、
+    <strong>行動を「相転移として発現する構造現象」</strong>として再定義する
+    理論的枠組みを提示するものである。
+  </p>
+
+  <p>
+    TETA（Threshold Emergence Theory of Action）は、
+    予測精度の最大化ではなく、
+    <strong>非行動・失敗・停滞を含めた行動構造の分解可能性と仮説更新可能性</strong>
+    を理論の主目的とする。
+  </p>
+
+  <p>
+    本理論のコアコンセプトは、<strong>「説明可能な相転移（Explainable Phase Transition）」</strong>である。
+    「なぜユーザーは急に動いたのか——あるいはなぜ動かなかったのか」という問いに対し、
+    TETAは R・L・C・D・T・K という6つの構造変数への分解によって、
+    人間が直感的に理解できる因果的説明を生成する。
+    これはブラックボックス型予測モデルでは達成しにくい「解釈性（Interpretability）」であり、
+    XAI（説明可能AI）研究の文脈においても理論的基盤を提供しうる
+    <span class="cite">[Arrieta et al., 2020]</span>。
+  </p>
+
+  <p>
+    本理論の重要な設計方針として、TETAは<strong>活性強度関数 \( \Phi \) の具体的な関数形を一意に規定しない</strong>。
+    理論が規定するのは、4つの基礎仮説 FH1〜FH4（後述）のみであり、
+    実際の関数形の選択は実証データに委ねる。
+    これにより、TETAは特定の数理モデルへの依存を排し、
+    実データとの対話を通じて継続的に精緻化される
+    <strong>「仮説更新型フレームワーク」</strong>として機能する。
+  </p>
+
+  <p>
+    なお、本稿は行動の観測上の確率性の少なくとも一部が、
+    未観測状態変数および動的閾値の未計測性に由来するという<strong>認識論的立場</strong>を採用する。
+    これは行動の存在論的決定論を主張するものではなく、
+    従来誤差項として処理されてきた変動のうち、構造的に分解可能な部分を明示化するための作業仮説である。
+  </p>
+
+  <div class="summary-box">
+    <strong>本研究の貢献（行動情報学視点）</strong>
+    <ol>
+      <li>非行動を「欠損」ではなく <em>メタ安定状態</em> として定式化</li>
+      <li>確率モデルの誤差項を「観測不足」と再解釈する構造理論</li>
+      <li>介入を「最小コストで閾値を跨がせる制御問題」として定義</li>
+      <li>関数形を基礎仮説の充足条件として定義し、実証的選択に開放する設計</li>
+      <li>6変数分解による行動の因果的解釈性の実現</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec0b: Related Work -->
+<!-- ===================================================== -->
+
+<section id="sec0b">
+  <h2>Related Work（Behavioral Informatics / Computational Social Science）</h2>
+
+  <h3>確率的選択モデルとその限界</h3>
+  <p>
+    離散選択モデルや期待効用理論では、観測不能要因は誤差項として確率化される
+    <span class="cite">[McFadden, 1974; Train, 2009]</span>。
+    TETAはこの誤差を「本質的ランダム性」ではなく、
+    <strong>未観測状態変数と動的閾値との差分</strong>として再解釈する認識論的立場をとる。
+    ただし、これはすべての確率性が未観測変数に還元できるという存在論的主張ではなく、
+    構造的に分解可能な部分を明示化することに理論の実用的価値を置く立場である。
+  </p>
+
+  <h3>証拠蓄積モデル（DDM）との関係と差分</h3>
+  <p>
+    Drift Diffusion Model（DDM）は、意思決定を「証拠の蓄積が境界を超えた瞬間に行動が発現する」
+    プロセスとして定式化し、反応時間と選択確率を統一的に説明した
+    <span class="cite">[Ratcliff, 1978; Ratcliff &amp; McKoon, 2008]</span>。
+    なお、DDMの発展形として、時間経過に伴い決定境界が単調に低下する
+    Collapsing Bound モデルも提案されている
+    <span class="cite">[Hawkins et al., 2015]</span>。
+    TETAはDDMおよびその発展形が構造的に記述しにくい現象を扱うために、以下の差分を持つ。
+  </p>
+
+  <table>
+    <tr>
+      <th>構造要素</th>
+      <th>DDM（Collapsing Bound含む）</th>
+      <th>TETA</th>
+      <th>理論的含意</th>
+    </tr>
+    <tr>
+      <td>閾値の性質</td>
+      <td>固定、または時間経過に伴い単調に崩壊</td>
+      <td>状態変数依存・履歴依存的（ヒステリシスあり、非対称的変動）</td>
+      <td>習慣化・文脈依存・非対称的な閾値回復を記述可能</td>
+    </tr>
+    <tr>
+      <td>閾値変動の駆動因</td>
+      <td>時間圧（urgency signal）</td>
+      <td>体調・感情・過去履歴などの状態変数</td>
+      <td>時間以外の文脈的要因による閾値変動を表現</td>
+    </tr>
+    <tr>
+      <td>変数感度</td>
+      <td>連続的なドリフト率</td>
+      <td>局所閾値以下は厳密にゼロ（死帯：FH1）</td>
+      <td>「全く響かない」施策の説明</td>
+    </tr>
+    <tr>
+      <td>駆動因子</td>
+      <td>加算的</td>
+      <td>乗法的（FH3）</td>
+      <td>衝動性・緊急性の非線形増幅</td>
+    </tr>
+    <tr>
+      <td>絶対制約</td>
+      <td>なし</td>
+      <td>禁忌ゲート K（FH4）</td>
+      <td>倫理・法律制約の論理的記述</td>
+    </tr>
+    <tr>
+      <td>非行動の扱い</td>
+      <td>境界未達の確率として記述</td>
+      <td>メタ安定状態として定義</td>
+      <td>介入点の診断が可能</td>
+    </tr>
+  </table>
+
+  <p>
+    特にDDM（Collapsing Bound含む）との本質的な差分は、
+    <strong>FH1（死帯）・FH3（Dの乗法性）・FH4（禁忌ゲート）</strong>の3点、
+    および閾値変動が時間圧のみでなく状態変数に依存し非対称的に変動する点にある。
+  </p>
+
+  <h3>カタストロフィー理論との関係</h3>
+  <p>
+    行動の不連続な跳躍を数理的に扱った先駆として、
+    René Thom のカタストロフィー理論
+    <span class="cite">[Thom, 1972]</span>
+    および Zeeman による行動科学への応用
+    <span class="cite">[Zeeman, 1977]</span>
+    がある。Zeeman は攻撃行動と逃走行動の不連続な切替を
+    Cusp Catastrophe として定式化し、
+    2つの制御変数（怒りと恐怖）の組み合わせが行動の急激な跳躍を引き起こすことを示した。
+  </p>
+  <p>
+    TETAはこの系譜に連なるものとして、行動の不連続性を扱う点ではカタストロフィー理論と共通の問題意識を持つ。
+    ただし、カタストロフィー理論が制御変数の幾何学的構造（カスプ曲面等）から不連続性を導出するのに対し、
+    TETAは<strong>変数ごとの局所閾値（死帯）・乗法的駆動・禁忌ゲートという診断可能な分解構造</strong>を持ち、
+    「どの変数がボトルネックか」を特定し介入設計に接続する点に独自性がある。
+    すなわち、カタストロフィー理論が「不連続性の存在とその幾何学的条件」を明らかにしたのに対し、
+    TETAは「不連続性の内部構造を分解し、介入可能な変数を同定する」ことを目的としている。
+  </p>
+
+  <h3>非補償型意思決定・習慣形成・ヒステリシス</h3>
+  <p>
+    Elimination-by-Aspects（EBA） <span class="cite">[Tversky, 1972]</span> や
+    習慣形成モデル <span class="cite">[Ouellette &amp; Wood, 1998]</span> が扱う
+    「基準未満はゼロ」「履歴依存性」は、
+    TETAにおいて多層閾値と動的閾値（T）の
+    ヒステリシスとして部分的に関連する。
+  </p>
+  <p>
+    ただし、EBAは主として<strong>選択肢間の属性比較における除外規則</strong>を扱うのに対し、
+    TETAの死帯（FH1）は<strong>個体内状態変数の局所感度の不活性化</strong>を仮定する。
+    両者は分析レベルが異なるため、同一理論として接続することは適切でないが、
+    「閾値未満の寄与が実効的に消失する」という限定された構造的類似性を共有している。
+  </p>
+
+  <h3>社会学的閾値モデル（Granovetter, 1978）との差分</h3>
+  <p>
+    Granovetter の集合行動閾値モデル <span class="cite">[Granovetter, 1978]</span> は、
+    個人が行動するのを「周囲の行動者数が自己の閾値を超えたとき」と定式化し、
+    暴動・流行・イノベーション普及といった集合的相転移を説明した。
+    TETAはこのモデルと「閾値」という語を共有するが、分析単位と閾値の起源が根本的に異なる。
+    Granovetter の閾値は<strong>外部の社会的カウント（他者行動数）</strong>に依存する外生変数であるのに対し、
+    TETAの全体閾値 \( T \) は<strong>個体内部の状態変数（体調・感情・過去履歴）</strong>に依存する内生変数である。
+    両理論は相補的な関係にある。
+  </p>
+
+  <h3>意見力学・Isingモデル応用との差分</h3>
+  <p>
+    物理学のIsingモデルを社会現象に応用した意見力学モデル群
+    <span class="cite">[Castellano, Fortunato &amp; Loreto, 2009]</span> は、
+    個人をスピンとして定義し、隣接個体との相互作用により意見が反転（相転移）する過程を記述する。
+    これらのモデルは<strong>ネットワーク構造と場（Field）の影響</strong>を分析対象とするのに対し、
+    TETAは単一個体の内的変数分解に特化する。
+    「相転移」という語を共有しつつも、TETAはネットワーク文脈を捨象し、
+    個体内部の構造的ボトルネックの同定と介入設計に焦点を絞る。
+  </p>
+
+  <h3>Decision Field Theory（DFT）との差分</h3>
+  <p>
+    Busemeyer &amp; Townsend の Decision Field Theory（DFT）
+    <span class="cite">[Busemeyer &amp; Townsend, 1993]</span> は、
+    DDMを多選択肢に拡張し、選好が確率的に蓄積されて境界を超えると選択が確定するモデルである。
+    DFTはDDMと同様に連続的な確率蓄積モデルの枠組みを維持しており、
+    FH1（死帯）・FH3（Dの乗法性）・FH4（禁忌ゲート）に相当する構造を持たない。
+    TETAとDFTは、「選択肢間の競合プロセス」（DFTの強み）と
+    「個体内部の相転移構造の分解」（TETAの強み）として相補的に位置づけられる。
+  </p>
+
+  <h3>Actionable / Interpretable AI との関係</h3>
+  <p>
+    近年のAI研究では、モデル内部の説明可能性（Explainability）そのものを追求するだけでなく、
+    <strong>人間の意思決定文脈において解釈可能であり、かつ行動に接続可能であること</strong>を重視する議論が提起されている。
+    Linkov らは、サイバーセキュリティや軍事的意思決定の文脈において
+    Explainable AI を過度に目標化することの限界を指摘し、代わりに
+    <strong>Actionable and Interpretable AI（AI²）</strong> を提案した
+    <span class="cite">[Linkov et al., 2020]</span>。
+    そこでは、AIの出力をユーザーが任務文脈の中で意味づけし、条件変化や確信度を踏まえて判断できることが、
+    信頼形成にとって重要であると論じられている。
+  </p>
+  <p>
+    TETAは、この問題意識と部分的に方向性を共有する。
+    すなわち、本理論もまた、単なる状態記述や事後説明ではなく、
+    <strong>観測された状態を次の打ち手へ接続するための構造化</strong>を重視する。
+    ただし、TETAの主対象はAIシステム一般の信頼設計ではなく、
+    <strong>個体内部の行動発現構造を分解し、相転移の阻害要因を診断可能にする理論的枠組み</strong>にある。
+    そのため、本研究の新規性は、解釈可能性や行動可能性という一般概念そのものではなく、
+    それらに接続しうる基礎理論として、
+    行動発現を R・L・C・D・T・K という変数群と多層閾値構造により分解した点にある。
+  </p>
+  <p>
+    さらに Linkov らの後続研究では、この方向性は
+    <strong>Interpretable, Actionable, and Resilient AI</strong> へと拡張され、
+    高リスク環境や条件変化の下での頑健性も重視されている
+    <span class="cite">[Linkov et al., 2023]</span>。
+    この観点から見ると、TETAは主として行動発現の構造分解と介入設計の理論を担うものであり、
+    将来的には、観測不足下での確信度表現や条件変化に対する再評価ループを含む実装層と接続することで、
+    より実践的な意思決定支援枠組みへ発展しうる。
+    したがってTETAは、Actionable / Interpretable AI 系の議論と競合するものではなく、
+    むしろその下位で機能する<strong>構造診断理論</strong>として位置づけられる。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec0c: 既存理論との対応表 -->
+<!-- ===================================================== -->
+
+<section id="sec0c">
+  <h2>既存理論との対応表（統合理解用）</h2>
+
+  <table>
+    <tr>
+      <th>理論</th>
+      <th>標準的理解</th>
+      <th>TETAとの関係</th>
+      <th>理論的含意</th>
+    </tr>
+    <tr>
+      <td>ロジットモデル</td>
+      <td>確率的選択</td>
+      <td>閾値超過による相転移として再定義</td>
+      <td>非行動を構造的に説明可能</td>
+    </tr>
+    <tr>
+      <td>DDM（Collapsing Bound含む）</td>
+      <td>証拠蓄積・時間圧による境界変動</td>
+      <td>FH1・FH3・FH4＋状態変数依存の非対称閾値</td>
+      <td>介入理由と構造的制約を説明可能</td>
+    </tr>
+    <tr>
+      <td>カタストロフィー理論</td>
+      <td>制御変数の幾何学的構造から不連続跳躍を導出</td>
+      <td>不連続性を共有しつつ、内部構造の分解と介入設計に発展</td>
+      <td>先行する不連続行動理論の系譜上に位置づけ</td>
+    </tr>
+    <tr>
+      <td>習慣形成</td>
+      <td>反復で自動化</td>
+      <td>Tのヒステリシスとして記述</td>
+      <td>初回介入の決定的役割</td>
+    </tr>
+    <tr>
+      <td>プロスペクト理論 <span class="cite">[Kahneman &amp; Tversky, 1979]</span></td>
+      <td>損失回避の係数差</td>
+      <td>ω係数の個体差として部分的に対応</td>
+      <td>個体感度をデータから推定</td>
+    </tr>
+    <tr>
+      <td>EBA（Tversky）</td>
+      <td>属性基準未満の選択肢を除外</td>
+      <td>分析レベルが異なるが、「閾値未満=不活性」の限定的構造類似</td>
+      <td>選択肢間比較 vs 個体内状態</td>
+    </tr>
+    <tr>
+      <td>Granovetter閾値モデル</td>
+      <td>外部社会カウントで相転移</td>
+      <td>閾値が内生変数（T）</td>
+      <td>個体内部構造の分解が可能</td>
+    </tr>
+    <tr>
+      <td>DFT（Busemeyer）</td>
+      <td>多選択肢の確率蓄積</td>
+      <td>FH1・FH3・FH4なし</td>
+      <td>相補的（競合プロセスvs内部構造）</td>
+    </tr>
+    <tr>
+      <td>Actionable / Interpretable AI（Linkov）</td>
+      <td>AI出力の解釈可能性・行動接続性・頑健性</td>
+      <td>TETAは下位の構造診断理論として機能</td>
+      <td>行動発現の変数分解が解釈性・介入性の基盤を提供</td>
+    </tr>
+  </table>
+
+  <h3>既存モデルとの補完関係：対立ではなく分業</h3>
+  <p>
+    TETAは既存モデルの代替ではなく、<strong>分析目的に応じた分業関係</strong>を主張する。
+    ロジットモデルは集団レベルの選択確率の予測（マクロな予測）に優れる一方、
+    TETAは<strong>特定個体における相転移の阻害要因の同定と介入の設計</strong>（ミクロな診断）に特化する。
+    両者は「集団を予測する道具」と「個体を動かす道具」として相補的に機能し、
+    実務においては組み合わせて使うことが効果的であると考えられる。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec1: 序論 -->
+<!-- ===================================================== -->
+
+<section id="sec1">
+  <h2>1. 序論</h2>
+
+  <p>
+    人はしばしば、十分な情報や明白な便益があっても行動しない。
+    とりわけ購買場面では、関心が存在しても購入が起きない、
+    あるいは長い保留ののちに急に転換が起きる、といった現象が広く観察される。
+    これらは「条件は揃っているのに動かない保留状態」や、
+    微小な刺激が臨界点を超えた瞬間の「急激な決断」として現れ、
+    非線形かつ不連続な特性を持つ。
+  </p>
+
+  <p>
+    購買はこのような「非行動」「保留」「急な相転移」を
+    比較的明瞭に観察できる代表的な領域であるため、
+    本稿では理論導入の中心的な例示としてこれを用いる。
+    もっとも、本稿の目的は購買に限定されたモデルを与えることではなく、
+    より一般的な<strong>行動発現の構造的枠組み</strong>を定式化することにある。
+    したがって、購買はあくまで導入的ケースであり、本理論の主張は教育・組織行動・健康行動を含む
+    より広い行動発現一般に向けられている。
+  </p>
+
+  <p>
+    現代の意思決定理論、特に期待効用理論やロジットモデルは、
+    行動を連続的な確率変動の結果として定義してきた。
+    しかし、上述のような不連続な現象を扱うには構造的な限界がある。
+    本稿が提案する<strong>行動発現の閾値理論（TETA）</strong>は、
+    行動を「生成」されるものではなく、
+    潜在的な行動集合から「顕在化（Emergence）」する現象、
+    すなわち<strong>「相転移」</strong>として再定義する。
+    本理論は、予測精度そのものよりも、
+    行動構造の分解可能性と仮説更新可能性に価値を置く
+    <strong>説明可能な枠組み（Explainable Framework）</strong>としての座標軸を提示することを目的とする。
+  </p>
+
+  <div class="summary-box">
+    <strong>本稿の理論的立場と射程</strong>
+    <p>
+      本稿は、人間の意思決定における行動発現の<strong>構造的枠組みを提示すること</strong>を主目的とする。
+      ここで示す基礎仮説 FH1〜FH4 は、個体の意思決定過程に内在する構造的制約を抽象化したものであり、
+      特定の解析的関数形を唯一に規定するものではない。
+    </p>
+    <p>
+      現在のセンシング技術および行動ログの粒度では、R・L・C・D・Tといった内的変数を
+      高精度に観測・推定することは依然として困難である。
+      しかし、ウェアラブルデバイス・生体信号計測・視線トラッキング・計算資源の拡大といった
+      技術進展により、これらの内的状態をより直接的に扱うことが可能になると予想される。
+    </p>
+    <p style="margin-bottom:0;">
+      本稿は「完成された数理モデル」を提示するものではなく、
+      行動発現を支配する構造的仮説と、それに基づく検証戦略の方向性を提示するものである。
+      実装の詳細、関数形の最終的選択、および実証結果については、
+      今後の実証研究とセンシング技術の発展に委ねられるべき課題として後続報に送る。
+    </p>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec2: 既存理論との構造的差分 -->
+<!-- ===================================================== -->
+
+<section id="sec2">
+  <h2>2. 既存理論との構造的差分：連続性から不連続な相転移へ</h2>
+  <p>
+    現代の消費者行動論および意思決定論の主流は、
+    フォン・ノイマンらに端を発する「期待効用理論（EUT）」
+    <span class="cite">[von Neumann &amp; Morgenstern, 1944]</span> と、
+    マクファデンが確立した「離散選択モデル（特に多項ロジットモデル）」の
+    二つの枠組みによって広く定着してきた。
+    しかし、これらの理論は「行動の本質」に関して、
+    ある構造的な前提を置いている。
+    それが<strong>「連続性の仮定」</strong>と<strong>「誤差の確率的処理」</strong>である。
+  </p>
+
+  <h3>2.1 期待効用理論の構造的制約</h3>
+  <p>
+    期待効用理論は、人間を「効用を最大化する選択肢を確率的に選ぶ存在」と定義する。
+    ここでの構造的制約は、変数の変化が効用の変化に、
+    効用の変化が行動確率の変化に、常に<strong>連続的（Continuous）</strong>に寄与すると仮定している点にある。
+  </p>
+  <ul>
+    <li><strong>「あと一歩」が記述しにくい：</strong> 従来のモデルでは、効用が99であっても100であっても、選択確率はなだらかなシグモイド曲線を描いて変化する。</li>
+    <li><strong>現実の不連続性：</strong> しかし、現実の行動は、ある瞬間に急激に発生しうる。例えば、ある顧客が長期間保留していた購買を、特定の文脈変化によって突如として決断するといった「不連続な跳躍」は、既存モデルでは扱いにくい。</li>
+  </ul>
+
+  <h3>2.2 ロジットモデルにおける「ノイズ」の再解釈</h3>
+  <p>
+    マクファデンのロジットモデルは、効用 \( U \) を「観測可能な成分 \( V \)」と「観測不能な誤差項 \( \epsilon \)」の和（\( U = V + \epsilon \)）として定義した。
+    このモデルの功績は、観測者の知識の限界を「確率（ノイズ）」としてモデルに組み込んだことにあるが、
+    同時にそれは行動の構造的解釈の余地を限定する側面も持つ。
+  </p>
+  <p>TETAは、この誤差項 \( \epsilon \) について異なる解釈を提案する。</p>
+  <div class="equation-box">
+    \[ \epsilon \equiv \sum \text{Unobserved State Variables} (R_{unobs}, L_{unobs}, \dots) - \theta(t) \]
+  </div>
+  <p>
+    すなわち、誤差の少なくとも一部は、内部変数（R/L/C/D）や動的閾値（T）の
+    「観測不足」として構造化できる可能性がある。
+    本稿が採用する<strong>「認識論的確率決定論（Epistemic Probabilistic Determinism）」</strong>は、
+    あくまで認識論的立場であり、存在論的決定論を主張するものではない。
+    その目的は、従来誤差項として処理されてきた変動のうち、
+    構造的に分解可能な部分を明示化することにある。
+    現実の完全観測は原理的に困難であるが、
+    この立場は理論の構造的完全性を担保するための規範的設定として採用する。
+  </p>
+
+  <h3>2.3 メタ安定状態と沈黙のポテンシャル</h3>
+  <p>
+    既存理論が扱いにくいのが、
+    <strong>「メタ安定状態（Meta-stable state）」</strong>、
+    すなわち「条件は十分に揃っているが、発火していない状態」の識別である。
+  </p>
+  <ul>
+    <li><strong>既存モデルの解釈：</strong> カート放棄や保留状態を「効用が低い」あるいは「確率的なゆらぎ」として扱う。</li>
+    <li><strong>TETAの解釈：</strong> 活性強度 \( P \) が閾値 \( \theta \) の直下（\( P \approx \theta - \delta \)）に漸近しているが突破していない状態と定義する。</li>
+  </ul>
+  <p>
+    この状態にある個体は、報酬（R）を強化するよりも、
+    全体閾値（T）をわずかに下げる、あるいは一時的な駆動（D）を付与するだけで、
+    相転移（行動発現）を引き起こしうる。
+    この「閾値直下のポテンシャル」を可視化できるか否かが、
+    予測精度以上に「介入の有効性」を左右すると考えられる。
+  </p>
+
+  <h3>2.4 行動発現の非線形性と局所閾値（Local Threshold）</h3>
+  <p>TETAの重要な提案は、各変数に設定された<strong>「局所閾値 \( \theta_x \)」</strong>の概念である。</p>
+  <div class="equation-box">
+    \[ x^* = \begin{cases} g(x) & (x \ge \theta_x) \\ 0 & (x < \theta_x) \end{cases} \]
+  </div>
+  <p>
+    既存の重み付け加法モデルでは、微小なメリット（R）も、微小なコスト（C）も、
+    すべて合算されて最終的なスコアに寄与する。
+    しかし、人間の心理において「認識の閾値」に達しない刺激は、
+    系全体に対して<strong>実効的にゼロ</strong>として機能する可能性がある。
+    この不連続なスイッチング構造が、
+    施策が「全く響かない」か「効く」かの二極化を起こす構造的根拠として仮説化される。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec3: 数理フレームワーク -->
+<!-- ===================================================== -->
+
+<section id="sec3">
+  <h2>3. 数理的フレームワーク：基礎仮説・関数族・5つのレバー</h2>
+
+  <h3>3.0 理論構造の概念図（Structural Overview）</h3>
+  <p>以下の概念図（図1）は、TETAの理論的構造を数式なしに把握するためのビジュアル・ランゲージである。
+  潜在変数から活性強度の生成、全体閾値との比較、そして行動発現の判定に至る
+  構造的フローと、FH4（禁忌ゲート）の支配性を示す。</p>
+
+  <div style="overflow-x:auto; margin: 25px 0;">
+  <svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg"
+       role="img" aria-label="図1：TETA理論構造の概念図 — 潜在変数から活性強度生成、相転移判定、禁忌ゲートまでの構造的フロー"
+       style="width:100%; max-width:780px; font-family:'Helvetica Neue',Arial,sans-serif; display:block; margin:0 auto;">
+
+    <!-- 背景 -->
+    <rect width="780" height="360" fill="#f4f7f9" rx="12"/>
+
+    <!-- カラム背景 -->
+    <rect x="15"  y="30" width="155" height="295" fill="#eaf4fb" rx="8" stroke="#aed6f1" stroke-width="1.5"/>
+    <rect x="185" y="30" width="215" height="295" fill="#fdfefe" rx="8" stroke="#d5d8dc" stroke-width="1.5"/>
+    <rect x="415" y="30" width="185" height="295" fill="#eafaf1" rx="8" stroke="#a9dfbf" stroke-width="1.5"/>
+    <rect x="615" y="30" width="150" height="295" fill="#fdedec" rx="8" stroke="#f1948a" stroke-width="1.5"/>
+
+    <!-- カラムタイトル -->
+    <text x="92"  y="52" text-anchor="middle" font-size="11" fill="#2980b9"  font-weight="bold">潜在変数</text>
+    <text x="292" y="52" text-anchor="middle" font-size="11" fill="#566573"  font-weight="bold">活性強度の生成</text>
+    <text x="507" y="52" text-anchor="middle" font-size="11" fill="#27ae60"  font-weight="bold">相転移判定</text>
+    <text x="690" y="52" text-anchor="middle" font-size="11" fill="#c0392b"  font-weight="bold">絶対制約（FH4）</text>
+
+    <!-- 潜在変数ボックス -->
+    <rect x="25"  y="70"  width="135" height="34" rx="6" fill="#d6eaf8" stroke="#2980b9" stroke-width="1.2"/>
+    <text x="92"  y="84"  text-anchor="middle" font-size="11" fill="#1a5276" font-weight="bold">R（報酬認識）</text>
+    <text x="92"  y="97"  text-anchor="middle" font-size="9.5" fill="#1a5276">局所閾値 θ_R 超過で有効化</text>
+
+    <rect x="25"  y="115" width="135" height="34" rx="6" fill="#d6eaf8" stroke="#2980b9" stroke-width="1.2"/>
+    <text x="92"  y="129" text-anchor="middle" font-size="11" fill="#1a5276" font-weight="bold">L（損失予期）</text>
+    <text x="92"  y="142" text-anchor="middle" font-size="9.5" fill="#1a5276">ポテンシャルを減算</text>
+
+    <rect x="25"  y="160" width="135" height="34" rx="6" fill="#d6eaf8" stroke="#2980b9" stroke-width="1.2"/>
+    <text x="92"  y="174" text-anchor="middle" font-size="11" fill="#1a5276" font-weight="bold">C（摩擦・負荷）</text>
+    <text x="92"  y="187" text-anchor="middle" font-size="9.5" fill="#1a5276">臨界超過でKを誘発</text>
+
+    <rect x="25"  y="215" width="135" height="34" rx="6" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+    <text x="92"  y="229" text-anchor="middle" font-size="11" fill="#7d6608" font-weight="bold">D（駆動因子）</text>
+    <text x="92"  y="242" text-anchor="middle" font-size="9.5" fill="#7d6608">乗法的増幅（FH3）</text>
+
+    <rect x="25"  y="260" width="135" height="34" rx="6" fill="#f5eef8" stroke="#8e44ad" stroke-width="1.5"/>
+    <text x="92"  y="274" text-anchor="middle" font-size="11" fill="#6c3483" font-weight="bold">T（動的閾値）</text>
+    <text x="92"  y="287" text-anchor="middle" font-size="9.5" fill="#6c3483">ヒステリシスで低減</text>
+
+    <!-- 活性強度の生成ボックス -->
+    <rect x="195" y="68"  width="195" height="60" rx="7" fill="#f0f3f4" stroke="#717d7e" stroke-width="1.5"/>
+    <text x="292" y="90"  text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">ポテンシャルコア Φ</text>
+    <text x="292" y="107" text-anchor="middle" font-size="10" fill="#566573">FH1：局所閾値未満 → 寄与ゼロ</text>
+    <text x="292" y="120" text-anchor="middle" font-size="9.5" fill="#808b96">（死帯：線形モデルとの差分）</text>
+
+    <rect x="195" y="148" width="195" height="48" rx="7" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+    <text x="292" y="168" text-anchor="middle" font-size="11" fill="#7d6608" font-weight="bold">× D乗法増幅</text>
+    <text x="292" y="186" text-anchor="middle" font-size="9.5" fill="#7d6608">FH3：乗法的　FH2：飽和性保証</text>
+
+    <rect x="195" y="216" width="195" height="42" rx="7" fill="#eaf2ff" stroke="#2980b9" stroke-width="2"/>
+    <text x="292" y="234" text-anchor="middle" font-size="12" fill="#1a5276" font-weight="bold">活性強度 P</text>
+    <text x="292" y="249" text-anchor="middle" font-size="9.5" fill="#1a5276">P = Φ × f(D)　（符号つき・有界）</text>
+
+    <!-- 相転移判定 -->
+    <rect x="425" y="165" width="165" height="40" rx="7" fill="#fdfefe" stroke="#566573" stroke-width="1.5"/>
+    <text x="507" y="182" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">P  vs  θ(t)</text>
+    <text x="507" y="197" text-anchor="middle" font-size="9.5" fill="#566573">動的全体閾値との比較</text>
+
+    <rect x="425" y="225" width="165" height="38" rx="7" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/>
+    <text x="507" y="242" text-anchor="middle" font-size="11" fill="#145a32" font-weight="bold">P &gt; θ(t) → 相転移 a=1</text>
+    <text x="507" y="257" text-anchor="middle" font-size="9.5" fill="#145a32">行動が顕在化する</text>
+
+    <rect x="425" y="278" width="165" height="36" rx="7" fill="#fef9e7" stroke="#f39c12" stroke-width="1.5"/>
+    <text x="507" y="294" text-anchor="middle" font-size="11" fill="#7d6608" font-weight="bold">P ≲ θ(t) → メタ安定</text>
+    <text x="507" y="309" text-anchor="middle" font-size="9.5" fill="#7d6608">介入機会（阻害要因を特定）</text>
+
+    <!-- K遮断 -->
+    <rect x="625" y="140" width="128" height="90" rx="8" fill="#fadbd8" stroke="#c0392b" stroke-width="2"/>
+    <text x="689" y="168" text-anchor="middle" font-size="12" fill="#922b21" font-weight="bold">K = 1</text>
+    <text x="689" y="186" text-anchor="middle" font-size="10" fill="#922b21">強制遮断</text>
+    <text x="689" y="202" text-anchor="middle" font-size="10" fill="#922b21">a = 0（無条件）</text>
+    <text x="689" y="218" text-anchor="middle" font-size="9" fill="#922b21">全変数を無効化</text>
+
+    <!-- 矢印 -->
+    <defs>
+      <marker id="ab" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2980b9"/></marker>
+      <marker id="ao" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f39c12"/></marker>
+      <marker id="ap" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#8e44ad"/></marker>
+      <marker id="ag" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#566573"/></marker>
+      <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#c0392b"/></marker>
+    </defs>
+
+    <line x1="160" y1="87"  x2="193" y2="96"  stroke="#2980b9" stroke-width="1.5" marker-end="url(#ab)"/>
+    <line x1="160" y1="132" x2="193" y2="108" stroke="#2980b9" stroke-width="1.5" marker-end="url(#ab)"/>
+    <line x1="160" y1="177" x2="193" y2="120" stroke="#2980b9" stroke-width="1.5" marker-end="url(#ab)"/>
+    <line x1="292" y1="128" x2="292" y2="146" stroke="#566573" stroke-width="1.5" marker-end="url(#ag)"/>
+    <line x1="160" y1="232" x2="193" y2="185" stroke="#f39c12" stroke-width="1.5" marker-end="url(#ao)"/>
+    <line x1="292" y1="196" x2="292" y2="214" stroke="#566573" stroke-width="1.5" marker-end="url(#ag)"/>
+    <line x1="160" y1="277" x2="423" y2="195" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ap)"/>
+    <line x1="390" y1="237" x2="423" y2="185" stroke="#2980b9" stroke-width="1.5" marker-end="url(#ab)"/>
+    <line x1="507" y1="205" x2="507" y2="223" stroke="#27ae60" stroke-width="1.8" marker-end="url(#ag)"/>
+    <line x1="507" y1="205" x2="507" y2="276" stroke="#f39c12" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ao)"/>
+    <line x1="160" y1="170" x2="623" y2="185" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+
+    <!-- 凡例 -->
+    <line x1="195" y1="340" x2="225" y2="340" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="230" y="344" font-size="9.5" fill="#2c3e50">R/L/C/Tの寄与</text>
+    <line x1="335" y1="340" x2="365" y2="340" stroke="#f39c12" stroke-width="1.5"/>
+    <text x="370" y="344" font-size="9.5" fill="#2c3e50">D乗法的増幅</text>
+    <line x1="460" y1="340" x2="490" y2="340" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="495" y="344" font-size="9.5" fill="#2c3e50">動的閾値θ(t)</text>
+    <line x1="570" y1="340" x2="600" y2="340" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="605" y="344" font-size="9.5" fill="#2c3e50">K強制遮断（FH4）</text>
+  </svg>
+  <div class="figure-caption">
+    <strong>図1.</strong>
+    TETA理論構造の概念図：潜在変数（R・L・C・D・T）から活性強度 P の生成、
+    動的全体閾値 θ(t) との比較による相転移判定、および禁忌ゲート K（FH4）による強制遮断までの構造的フローを示す。
+  </div>
+  </div>
+
+  <h3>3.1 基礎仮説（Foundational Hypotheses）</h3>
+  <p>
+    TETAは活性強度関数 \( \Phi \) の具体的な関数形を一意に規定しない。
+    代わりに、<strong>4つの基礎仮説（FH1〜FH4）</strong>を定義する。
+    これらの仮説を満たす関数族の中から、実証データが最適な関数形を選択する。
+    FH1〜FH4 は、現段階では実証データによる検証を待つ仮説的性格を持つが、
+    理論が要請する構造的制約として提示するものである。
+  </p>
+
+  <div class="hypothesis-box">
+    <strong>FH1：死帯の存在（Dead Zone）</strong><br>
+    各変数 \( x \) が局所閾値 \( \theta_x \) を下回る間、\( \Phi \) への寄与は厳密にゼロである。
+    すなわち、\( x < \theta_x \Rightarrow x^* = 0 \)。
+    これは線形モデルとの構造的な差分であり、「全く響かない施策」が存在しうる根拠をなす。<br>
+    <small style="color:#666;">
+    <strong>境界条件注記：</strong>局所閾値 \( \theta_x \) は個体・文脈・時間スケールによって異なる確率変数であり、
+    観測ノイズの存在下では経験的に推定される。完全な測定精度は要求せず、
+    分布の中心推定量として扱うことで実用的な識別が可能となる。
+    </small>
+  </div>
+
+  <div class="hypothesis-box">
+    <strong>FH2：飽和性（Saturation）</strong><br>
+    活性強度 \( P \) には上限が存在する。報酬 \( R \) や駆動 \( D \) がいかに増大しても、
+    \( P \) は有限の上限値に収束する。これは心理的飽和の現実を反映する。<br>
+    <small style="color:#666;">
+    <strong>境界条件注記：</strong>理論本体は、活性強度 \( P \) が符号を持つ有界量であることのみを要請する。
+    参照実装（後述）において \( P \in [-2, 2] \) として管理しているが、
+    この具体的な数値範囲は参照実装上の無次元正規化の一例であり、理論的必然ではない。
+    代替関数族の選択に際しても「有界性（Boundedness）」は一般条件として維持されなければならない。
+    </small>
+  </div>
+
+  <div class="hypothesis-box">
+    <strong>FH3：Dの乗法性（Multiplicativity of Drive）</strong><br>
+    駆動因子 \( D \) は、ポテンシャルコア \( \Phi \) に対して加算的ではなく乗法的に作用する。
+    \( D \) の増大は、微小な \( R \) であっても全体閾値 \( T \) を突破させる「衝動性」を生成する。
+    乗法的構造により、\( P \) の飽和性（FH2）との整合が保たれる。<br>
+    <small style="color:#666;">
+    <strong>境界条件注記：</strong>乗法性はDが観測可能な場合（タイマー・在庫残数等の外部シグナル）に
+    A/Bテストにより直接検証できる。Dが潜在的な生理的覚醒状態として機能する場合は、
+    生体センシングの進化により将来的な観測推定型への移行が見込まれる。
+    </small>
+  </div>
+
+  <div class="hypothesis-box">
+    <strong>FH4：Kの支配性（Taboo Dominance）</strong><br>
+    禁忌ゲート \( K = 1 \) のとき、\( \Phi \) の値や \( D \) の大きさに関わらず、
+    出力 \( a_i = 0 \) となる。他のすべての変数を無効化する絶対的論理ゲートである。
+    これはDDMには存在しない、TETAの独自構造である。<br>
+    <small style="color:#666;">
+    <strong>境界条件注記：</strong>Kは連続変数ではなく2値論理変数として定義される。
+    経験的識別は、特定の条件下（予算上限・アレルギー・法的禁止等）での行動停止事象を
+    ルールベースで分類することで実現できる。FH1との区別は「閾値未満によるゼロ（FH1）」対
+    「条件成立による強制遮断（FH4）」という発火機序の違いによって定義される。
+    </small>
+  </div>
+
+  <h3>3.2 理論レイヤーと参照実装レイヤーの分離</h3>
+  <p>
+    本稿では、<strong>理論が規定する構造的制約</strong>と、
+    <strong>それを数値的に再現する参照実装</strong>を明確に分離する。
+    FH1〜FH4 は理論レイヤーに属し、いかなる関数形を選択する場合にも満たされるべき要請である。
+    後述する tanh ベースの式は参照実装レイヤーに属し、
+    FH1〜FH4 を満たす一つの候補として例示するものであり、理論の唯一解ではない。
+  </p>
+
+  <h3>3.3 行動発現の決定条件</h3>
+  <p>FH1〜FH4を前提として、行動 \( a_i \) の顕在化は以下の多層閾値条件によって決定される。</p>
+  <div class="equation-box">
+    \[ a_i(t) = 1 \quad \text{if} \quad \underbrace{\Phi(R^*, L^*, C^*)}_{\text{FH1を充足}} \times \underbrace{f(D)}_{\text{FH3：乗法的増幅}} > \theta_i(t) \quad \text{and} \quad \underbrace{K(t) = 0}_{\text{FH4：支配性}} \]
+  </div>
+  <p>
+    ここで \( f(D) \) は Dの乗法的増幅を表す関数であり、
+    FH2（飽和性）を満たす任意の有界関数が候補となる。
+  </p>
+
+  <h3>3.4 参照実装としての関数形</h3>
+  <p>
+    FH1〜FH4を満たす関数の<strong>参照実装</strong>として、本稿では以下の式を例示する。
+    これは理論の唯一解ではなく、FH1〜FH4充足の確認と仮説生成のための出発点として位置づける。
+  </p>
+  <div class="equation-box">
+    \[ \Phi = \tanh(\omega_R R^* - \omega_L L^* - \omega_C C^*) \]
+  </div>
+  <p>
+    ここで FH1（死帯）の保証は、\( \Phi \) の外側で \( \max(0,\cdot) \) を付加することではなく、
+    各入力変数を局所閾値処理した \( R^*, L^*, C^* \) を用いることによって前処理的に担保される。
+    したがって、\( \Phi \) は「死帯を通過した後の有効入力」に対する有界な統合関数として解釈される。
+    \( \omega_R, \omega_L, \omega_C \) は感度係数であり、<strong>個体・文脈ごとの変数感度の差を表す</strong>。
+    例えば、\( \omega_L \) が大きく推定される個体は「損失回避型」、\( \omega_R \) が大きい個体は「報酬感受型」として分類される。
+    係数の推定方法および最終的な関数形の選択は実証研究に委ねる。
+  </p>
+  <p>
+    駆動因子の乗法的作用は、参照実装では以下のように表される。
+  </p>
+  <div class="equation-box">
+    \[ P_i(t) = \Phi(R^*, L^*, C^*) \times (1 + \tanh(D(t))) \]
+  </div>
+  <p>
+    参照実装では \( \tanh(D) \in (-1, 1) \) により \( P \) の範囲が \( [-2, 2] \)（Φの最大値を1とした場合）
+    に収まるが、この具体的な数値範囲は参照実装上の無次元正規化の一例であり、理論的必然ではない。
+    理論本体が要請するのは、\( P \) が符号を持つ有界量であること（FH2）のみである。
+  </p>
+  <p>
+    代替関数族が満たすべき<strong>一般条件</strong>は以下の3点に集約される：
+    （i）局所ゼロ性——局所閾値未満で厳密にゼロを返すこと（FH1）、
+    （ii）有界性——出力が有限の上限値に収束すること（FH2）、
+    （iii）乗法的増幅性——Dが加算的ではなく乗法的に作用する構造を持つこと（FH3）。
+    ReLU系・Sigmoid・Gompertz関数などの代替候補もこれらを満たしうるため、
+    実証的比較の対象となる。
+  </p>
+
+
+  <div class="summary-box">
+    <strong>参照実装における FH1 の明示</strong><br><br>
+    TETAは活性強度関数 \( \Phi \) の具体的関数形を一意に規定しないが、
+    参照実装においても FH1（局所閾値未満では寄与ゼロ）は
+    <strong>入力変数を有効化する前処理</strong>として明示的に保持される必要がある。
+    そのため、各変数 \( x \in \{R,L,C\} \) の有効値を、まず以下の閾値処理によって定義する。
+  </div>
+  <div class="equation-box">
+    \[
+    x^{\dagger} =
+    \begin{cases}
+    h_x(x-\theta_x) & (x \ge \theta_x) \\
+    0 & (x < \theta_x)
+    \end{cases}
+    \]
+  </div>
+  <p>
+    ここで \( h_x(\cdot) \) は単調増加かつ有界な写像であり、例えば
+    \( h_x(z)=\tanh(\lambda_x z) \)（\( z \ge 0 \)）のように定義できる。
+    このとき、参照実装のポテンシャルコアは次のように書ける。
+  </p>
+  <div class="equation-box">
+    \[
+    \Phi = \tanh\!\left(
+    \omega_R R^{\dagger}
+    - \omega_L L^{\dagger}
+    - \omega_C C^{\dagger}
+    \right)
+    \]
+  </div>
+  <p>
+    すなわち、FH1 は \( \Phi \) の外側に付加された説明原理ではなく、
+    <strong>各入力変数を有効化する前処理そのもの</strong>として実装される。
+    この表現により、\( \tanh \) のような滑らかな関数を用いる場合でも、
+    FH1 が要求する「閾値未満での寄与ゼロ」と矛盾しない。
+    滑らかさは閾値超過後の応答形状にのみ関わる。
+  </p>
+
+  <h3>3.5 5つのレバーと禁忌ゲート</h3>
+  <p>内的状態を制御する<strong>「5つのレバー」</strong>と制約条件は以下の通りである。</p>
+  <ul>
+    <li><strong>R (Reward / 瞬間的期待報酬):</strong> 行動直前に個体が認識する瞬間的な期待報酬。局所閾値 \( \theta_R \) を超えて初めてポテンシャルに寄与する（FH1）。</li>
+    <li><strong>L (Loss / 不確実な損失予期):</strong> 将来の後悔・リスク・社会的評価の低下といった不確実な損失の予期。負のフィードバックとして作用する。</li>
+    <li><strong>C (Cost / 確定的コスト):</strong> 価格・手続き負荷・物理的移動距離など、確定的に発生する既知のコスト。臨界点 \( \theta_C \) を超えると禁忌ゲート \( K \) を誘発する。</li>
+    <li><strong>D (Drive / 駆動因子):</strong> 欠乏感や緊急性。全体を<strong>乗法的</strong>に増幅させる因子（FH3）。</li>
+    <li><strong>T (Threshold / 動的全体閾値):</strong> 体調や環境で変動する心理的閾値。一度突破するとヒステリシス（履歴依存性）により低減する。</li>
+    <li><strong>K (Taboo Gate / 禁忌ゲート):</strong> 倫理や法律など、1になった瞬間に他の全変数を無効化する絶対的制約（FH4）。</li>
+  </ul>
+
+  <h3>3.6 識別の原理と限界</h3>
+  <p>
+    本理論では、R/L/C/D/T/K の各変数に加え、感度係数 ω および局所閾値 θ<sub>x</sub> が存在する。
+    これらすべてを単一時点・単一行動の観測から同時に推定することは、
+    自由度が観測値を大幅に上回る<strong>過剰パラメータ問題</strong>を生じさせるため、一般に困難である。
+  </p>
+  <p>
+    本稿は、この制約を明示的に認める。
+    第1報では完全識別を主張せず、<strong>識別のために必要な観測設計の原理</strong>を提示するにとどめる。
+  </p>
+  <p>
+    識別原理の核心は、変数を<strong>「観測推定型」</strong>（行動ログから推定可能なもの：C, T, R*, K）と
+    <strong>「介入制御型」</strong>（実験的操作により因果推定するもの：L, D）の
+    2類型に分類し、それぞれ異なる識別戦略を適用することにある
+    <span class="cite">[Pearl, 2009; Imbens &amp; Rubin, 2015]</span>。
+    この2類型の組み合わせにより、「追加観測によって識別可能性が改善する」という方向性を理論が与える。
+  </p>
+  <p>
+    ω の具体値、θ<sub>x</sub> の分布形、個体差モデル、逆問題の一意解法、
+    収束率や必要サンプル数の決定は、後続の実証研究における課題として位置づける。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec4: 構造的変数と相関力学 -->
+<!-- ===================================================== -->
+
+<section id="sec4">
+  <h2>4. 構造的変数：5つのレバーと相関力学</h2>
+  <p>
+    TETAにおいて、行動の発現は単一の変数の増減ではなく、
+    複数の内的パラメータが織りなすポテンシャルの干渉の結果である。
+    本章では、5つの介入レバー（\( R, L, C, D, T \)）および絶対制約（\( K \)）の
+    相互作用を、購買を中心例示として記述する。
+  </p>
+
+  <h3>4.1 5つのレバーの定義</h3>
+  <h4>\( R \) (Reward)：瞬間的な期待報酬と局所閾値 \( \theta_R \)</h4>
+  <p>
+    TETAにおけるRは、期待効用理論の「累積的効用」とは異なり、
+    <strong>行動直前の瞬間における期待報酬</strong>として定義される。
+    同一の製品・サービスであっても、文脈（時間帯・感情状態・比較対象）によってRの値は変動する。
+    重要なのは「提示された価値の絶対量」ではなく、
+    「その瞬間にその個体がRとして認識したか」という発火状態である。
+  </p>
+  <ul>
+    <li><strong>性質：</strong> 局所閾値 \( \theta_R \) を超えない限り、どんなに高機能な製品もポテンシャルに寄与しない（FH1）。</li>
+    <li><strong>介入：</strong> 「スペックの羅列」から「文脈に適合したベネフィットの提示」への転換は、\( \theta_R \) を突破するためのプロセスである。</li>
+  </ul>
+
+  <h4>\( L \) (Loss)：不確実な損失予期（CとLの峻別）</h4>
+  <p>
+    Lは、行動に伴う不確実な損失の主観的予期である。
+    Cが確定的に発生する既知のコストであるのに対し、
+    Lは実現可能性が未確定の不安である。
+    両者はポテンシャルへの作用機序が異なるため、混同は介入設計の誤りを招く。
+  </p>
+  <ul>
+    <li><strong>性質：</strong> \( L \) は全体ポテンシャルに対して強力な負のフィードバックとして機能する。</li>
+    <li><strong>感度の個体差：</strong> \( \omega_L \) 係数として推定され、損失回避型クラスタの識別に用いられうる。</li>
+  </ul>
+
+  <h4>\( C \) (Cost)：確定的コストと禁忌化の境界</h4>
+  <p>
+    価格・手続き負荷・物理的移動距離・認知的負荷など、確定的に発生することが既知のコスト。
+    Lが主観的確率に依存するのに対し、Cは客観的・事前確定的である。
+    L過多には「不安の除去（保証・実績提示）」が有効であり、C過多には「手続きの簡略化・価格変更」が有効という処方の違いを生む。
+  </p>
+  <ul>
+    <li><strong>性質：</strong> \( C \) が臨界点（\( \theta_C \)）を超えると、禁忌ゲート \( K \) を強制的に 1（遮断）へと移行させる性質を持つ。</li>
+  </ul>
+
+  <h4>\( D \) (Drive)：乗法的増幅因子</h4>
+  <p>
+    「空腹」「緊急性」「欠乏感」「覚醒状態」など、生理的・心理的な覚醒を指す。
+    従来の加法モデルと異なり、TETAでは \( D \) を乗数（Multiplier）として定義する（FH3）。
+    微小な \( R \) であっても \( D \) が増大すれば全体閾値 \( T \) を突破させる「衝動性」を記述可能にする。
+  </p>
+
+  <h4>\( T \) (Threshold)：動的全体閾値（心理的閾値）</h4>
+  <p>
+    個体が行動を抑止している心理的な閾値である。
+    固定値ではなく、体調、時間帯、周囲の環境、過去の成功・失敗体験によって変動する。
+    一度行動が顕在化すると、この閾値は一時的に低減し、
+    次回以降の行動発現が容易になる<strong>ヒステリシス（履歴依存性）</strong>を持つ。
+  </p>
+
+  <h4>\( K \) (Taboo Gate)：絶対的禁忌ゲート（FH4）</h4>
+  <p>
+    倫理、法律、アレルギー、物理的制約など、計算抜きで行動を停止させる論理ゲート。
+    \( K=1 \) のとき、他のすべての変数がどれほど高まろうとも、出力 \( a_i \) は 0 となる。
+  </p>
+
+  <h3>4.2 ケーススタディによる相関力学の検証</h3>
+  <div class="case-study">
+    <h4>ケースA：深夜のECサイトにおける衝動買い（衝動的相転移）</h4>
+    <ol>
+      <li><strong>内的状態：</strong> 深夜の疲労により全体閾値 \( T \) が低下。</li>
+      <li><strong>介入：</strong> 「残り30分」という限定性により、駆動 \( D \) が上昇。</li>
+      <li><strong>力学：</strong> 報酬 \( R \) が微小であっても、\( D \) の乗法作用（FH3）により、活性強度 \( P \) が増大。</li>
+      <li><strong>結果：</strong> 低下した閾値 \( T \) を越え、購入行動が顕在化する。</li>
+    </ol>
+  </div>
+
+  <div class="case-study">
+    <h4>ケースB：高額なBtoBシステムの導入（慎重な論理的発現）</h4>
+    <ol>
+      <li><strong>内的状態：</strong> 全体閾値 \( T \) が高く、組織的な禁忌ゲート \( K \)（予算、セキュリティ）が複数存在する。</li>
+      <li><strong>力学：</strong> この構造では \( D \) を強めても、\( P \) は \( T \) に届かない。また、\( D \) を高めようとすると、不信感により \( L \) が増大し、ポテンシャルが相殺される。</li>
+      <li><strong>介入：</strong> まず、コスト \( C \) を下げて禁忌ゲート \( K \) を開き、次に \( L \) を排除することで、確実に \( T \) を突破させる戦略が求められる。</li>
+    </ol>
+  </div>
+
+  <div class="summary-box">
+    <strong>第4章の要約：診断フローの優先順位</strong>
+    <p>TETAの構造分析から導かれる診断の優先順位は以下の通りである。</p>
+    <ol>
+      <li><strong>ゲート確認：</strong> \( K=1 \)か？（物理的・倫理的遮断）</li>
+      <li><strong>摩擦除去：</strong> \( C \) が \( \theta_C \) を超えていないか？</li>
+      <li><strong>リスク中和：</strong> \( L \) が \( R \) のポテンシャルを相殺していないか？</li>
+      <li><strong>報酬発火：</strong> \( R \) が局所閾値 \( \theta_R \) に達しているか？</li>
+      <li><strong>臨界突破：</strong> \( D \) を付与するか、\( T \) を下げるか。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec5: 倫理的境界線 -->
+<!-- ===================================================== -->
+
+<section id="sec5">
+  <h2>5. 倫理的境界線の理論的導出</h2>
+  <p>
+    TETAの枠組みは、搾取的介入と支援的介入の区別を
+    <strong>理論内部の変数から導出できる</strong>点で、
+    倫理的議論に構造的な基盤を提供しうる。
+    規範的な外部ルールの輸入ではなく、モデル内の動態として倫理的境界線を定義する。
+  </p>
+
+  <div class="hypothesis-box">
+    <strong>ダークパターンの理論的定義</strong><br><br>
+    <strong>搾取的介入（Exploitation）：</strong>
+    \( D \) を人為的に増大させ、低い \( R \)（実質的価値）のままで閾値を突破させる介入。
+    \( D \) は一時的な覚醒状態であるため、事後に \( D \) が減衰すると
+    後悔——すなわちモデル内の \( L \) の長期的増大——が発生する。
+    短期的相転移が長期的ポテンシャル低下を招く構造として記述される。<br><br>
+    <strong>支援的介入（Empowerment）：</strong>
+    \( C \)（確定コスト）を最小化し \( L \)（不確実な不安）を除去することで、
+    個体が本来望んでいた \( R \) へのアクセスをスムーズにする介入。
+    \( D \) の人為的操作を行わないため、事後の後悔が構造的に発生しない。<br><br>
+    <strong>判定基準：</strong>「介入後の長期的 \( L \) がどう変化するか」。
+    短期的相転移の誘発が長期的な \( L \) 増大を招くならば、それは搾取的介入と定義される。
+  </div>
+
+  <p>
+    倫理的実装指針の詳細——介入ログの保存・介入根拠の開示・オプトアウト権の保障——については、
+    <strong>後続の中核論文候補の一つである実装・実証編</strong>において体系化する。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec6: 反証可能な命題 -->
+<!-- ===================================================== -->
+
+<section id="sec6">
+  <h2>6. 反証可能な命題（Empirically Falsifiable Implications）</h2>
+
+  <p>
+    理論の科学的有用性は、それが「負けうる予測」を持つかどうかに依存する。
+    本節では、TETAの基礎仮説から直接導かれる反証可能な命題を明示する。
+    これらの命題が経験的に否定された場合、対応する基礎仮説の修正または棄却が求められる。
+  </p>
+
+  <div class="falsifiable-box">
+    <strong>命題 F1：死帯の存在（FH1由来）</strong><br><br>
+    <strong>予測：</strong>
+    ある刺激変数（例：報酬 R）の値が局所閾値 \( \theta_R \) 未満である限り、
+    その変数の増加は行動発現率を改善しない。
+    すなわち、閾値未満の領域では刺激強度と行動率の間に有意な正の関係が観測されない。<br><br>
+    <strong>反証条件：</strong>
+    局所閾値の推定値以下の範囲において、刺激の増加が行動率の有意な単調増加を示すことが
+    繰り返し観測された場合、FH1は棄却される。<br><br>
+    <strong>検証デザインの概略：</strong>
+    購買場面において、報酬 \( R \) の提示強度を段階的に変化させ
+    （例：同一商品の便益訴求の明確さ・即時性・自己関連性を系統的に操作し、
+    「欲しい理由」がどの程度立ち上がるかを制御する）、
+    各段階での購入率を計測する。行動率が特定の閾値まで不変でその後急増するパターンが観測されれば
+    FH1を支持し、閾値未満でも線形的な増加が観測されれば棄却される。
+  </div>
+
+
+  <div class="concept-figure">
+    <strong>図2：FH1 による死帯の出現</strong>
+    <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="図2：FH1による死帯の出現 — 局所閾値未満では刺激増加が行動発現率に寄与しないことを示す模式図">
+      <rect x="0" y="0" width="900" height="420" fill="#ffffff"/>
+      <line x1="90" y1="340" x2="840" y2="340" stroke="#2c3e50" stroke-width="3"/>
+      <line x1="90" y1="340" x2="90" y2="60" stroke="#2c3e50" stroke-width="3"/>
+      <text x="845" y="348" font-size="20" fill="#2c3e50">刺激強度 x</text>
+      <text x="35" y="55" font-size="20" fill="#2c3e50" transform="rotate(-90 35 55)">行動発現率 Pr(a=1)</text>
+
+      <line x1="310" y1="340" x2="310" y2="80" stroke="#d35400" stroke-width="2.5" stroke-dasharray="10 8"/>
+      <text x="287" y="72" font-size="20" fill="#d35400">θ_x</text>
+
+      <path d="M110 315 C 220 300, 320 270, 430 220 S 650 120, 810 90" fill="none" stroke="#7f8c8d" stroke-width="5"/>
+      <text x="560" y="155" font-size="19" fill="#7f8c8d">連続モデルの予測</text>
+
+      <path d="M110 320 L310 320 C330 320, 345 312, 360 294 C390 255, 450 205, 540 160 C620 122, 710 100, 810 88" fill="none" stroke="#c0392b" stroke-width="6"/>
+      <text x="500" y="235" font-size="20" fill="#c0392b">TETA-FH1 の予測</text>
+
+      <text x="155" y="300" font-size="18" fill="#c0392b">死帯（dead zone）</text>
+      <text x="132" y="362" font-size="16" fill="#2c3e50">低</text>
+      <text x="788" y="362" font-size="16" fill="#2c3e50">高</text>
+      <text x="60" y="342" font-size="16" fill="#2c3e50">0</text>
+      <text x="60" y="88" font-size="16" fill="#2c3e50">高</text>
+    </svg>
+    <div class="figure-caption">
+      <strong>図2.</strong>
+      FH1（死帯）の模式図：局所閾値 \( \theta_x \) 未満では刺激 \( x \) の増加が行動発現率に実質的な変化をもたらさず、
+      閾値超過後にはじめて応答が立ち上がる。灰色線は連続モデル、赤線は TETA-FH1 の予測を表す。
+    </div>
+  </div>
+
+  <p>
+    図2は、局所閾値 \( \theta_x \) をもたない連続モデルと、FH1 を持つ TETA 的構造とで、
+    刺激 \( x \) に対する行動発現率の予測がどのように異なるかを示した概念図である。
+    連続モデルでは、\( x \) の微小な増加が常に行動率の増加に寄与する。
+    これに対し TETA では、\( x < \theta_x \) の領域では刺激増加が実効的に寄与せず、
+    行動率は有意な上昇を示さない。
+    この「死帯」は FH1 から直接導かれる観測可能な帰結であり、
+    F1 の反証可能性を図示した最小の synthetic proof-of-concept である。
+  </p>
+
+
+  <div class="falsifiable-box">
+    <strong>命題 F2：禁忌ゲートの支配性（FH4由来）</strong><br><br>
+    <strong>予測：</strong>
+    禁忌ゲート \( K = 1 \) が成立している条件下では、
+    駆動因子 \( D \) をどれだけ増大させても、行動発現率は上昇しない。
+    すなわち、K成立条件下では D と行動率の間に有意な正の関係が観測されない。<br><br>
+    <strong>反証条件：</strong>
+    K=1 と判定される条件（例：予算上限超過、アレルギー対象品、法的・組織的に禁止された選択肢）において、
+    D の増大（緊急性の付与等）が行動率を有意に改善する場合、FH4は棄却される。<br><br>
+    ここで K=1 の操作的定義は、「コストが高い」という主観的負担ではなく、当該個体または制度において
+    その行動が実質的に選択不能であると事前に判定できる条件を指す。<br><br>
+    <strong>検証デザインの概略：</strong>
+    予算上限を明確に超える商品群に加え、アレルギー・法的禁止・組織ルール違反といった
+    選択不能条件が事前に明示できるケースに対し、緊急性シグナル（残り時間表示等）の有無を
+    ランダムに割り当て、行動率の差を比較する。
+    K成立条件下でもDにより行動率が有意に増える場合はFH4を棄却し、
+    差が観測されなければFH4を支持する。
+  </div>
+
+  <div class="summary-box">
+    <strong>FH1・FH3・FH4 から直接導かれる反証可能含意</strong>
+    <ul>
+      <li><strong>FH1 が正しければ、</strong>局所閾値未満の刺激増分は平均行動率に有意に寄与しない。</li>
+      <li><strong>FH3 が正しければ、</strong>
+        D の効果は R/L/C の単純加算では再現できず、交互作用として観測される。
+        すなわち同一の R 増分でも、D が高い条件でのみ閾値突破が急増するなら、
+        加算モデルではなく乗法モデルが支持される。</li>
+      <li><strong>FH4 が正しければ、</strong>K 成立条件下では他変数を強めても <code>a=0</code> が維持される。</li>
+    </ul>
+  </div>
+
+  <p>
+    上記の命題は、TETAが「後付けで何でも説明できる理論」ではないことを示すための
+    最小限の反証可能性を提供する。
+    とりわけ FH3 については、D の操作的定義と観測手段が前提となるが、
+    予測差は「単純加算ではなく交互作用として現れるか」という形で経験的に拘束される。
+    各命題の詳細な実験プロトコル・サンプルサイズ設計・統計的検定手法については、
+    後続の中核論文候補の一つである実装・実証編において体系的に展開する。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- sec7: 結論 -->
+<!-- ===================================================== -->
+
+<section id="sec7">
+  <h2>7. 結論</h2>
+
+  <h3>7.1 本稿の貢献</h3>
+  <p>
+    行動発現閾値理論（TETA）は、
+    人間行動という名の複雑系と対話するための<strong>構造的な座標系</strong>として提案される。
+    本稿において、TETAは以下の理論的貢献を試みた。
+  </p>
+  <p>
+    第一に、行動を確率変数ではなく<strong>相転移現象</strong>として再定義し、
+    「動かない」という状態をメタ安定状態として構造的に記述した。
+    これにより、既存モデルが「ノイズ」として処理してきた非行動・保留・停滞が、
+    分析と介入の対象として定義される。
+  </p>
+  <p>
+    第二に、<strong>4つの基礎仮説（FH1〜FH4：死帯・飽和性・乗法性・禁忌支配性）</strong>を核として
+    行動発現の構造を規定し、具体的な関数形の選択を実証データに委ねる設計をとった。
+    この設計により、TETAは特定のモデルへの固定化を避け、
+    継続的な精緻化が可能な開放的フレームワークとなる。
+  </p>
+  <p>
+    第三に、倫理的境界線を理論の外部から規範として輸入するのではなく、
+    モデル内部の変数（長期的Lの変化）から導出する構造を提示した。
+  </p>
+  <p>
+    第四に、FH1（死帯）およびFH4（禁忌ゲートの支配性）から導かれる
+    反証可能な命題を明示し、本理論が経験的に否定されうる構造を持つことを示した。
+  </p>
+
+  <h3>7.2 残された課題と今後の研究方向</h3>
+  <p>
+    本理論には重要な未解決課題が残る。
+    最も根本的なものは、内的変数（R/L/C/D/T）の推定方法の確立である。
+    本稿では識別の原理を提示したが、
+    ω係数の推定手続き、局所閾値の個体差分布、
+    逆問題の一意解法、収束率や必要サンプル数の決定は、
+    今後の実証研究の課題として残る。
+  </p>
+  <p>
+    また、複数の関数族候補（tanh・Sigmoid・Gompertz等）の
+    実データによる比較検証も優先的な課題である。
+    TETAの推定精度は行動ログの取得技術の進化と連動しており、
+    視線追跡・生体センシング・脳波計測といった細粒度のシグナルが
+    標準的に利用可能になれば、識別可能性は大幅に改善されると期待される。
+  </p>
+
+  <h3>7.3 今後の研究プログラム：実装構想の概要</h3>
+  <p>
+    TETAの理論的枠組みを実務的に展開するため、
+    以下の概念を後続報において体系化する予定である。
+    各概念の定義と構想の概要は Appendix A に記載する。
+  </p>
+  <ul>
+    <li><strong>STDM-AI</strong>（状態遷移型意思決定AI）：5層アーキテクチャによる状態推定エンジン</li>
+    <li><strong>DPTPM</strong>（動的相転移購買モデル）：TETAを購買ドメインに最適化した診断フレームワーク</li>
+    <li><strong>CIQ</strong>（条件反転質問）：定性インタビューを構造化し内的変数を推定するプロトコル</li>
+    <li><strong>改善勾配</strong>（Improvement Gradient）：「どの変数に投資すべきか」を定量的に示す指標</li>
+    <li><strong>EAE</strong>（説明可能な行動工学）：介入の倫理性を担保する3原則</li>
+  </ul>
+  <p>
+    これらの構想は、AIエージェントとの協働による仮説検証ループ——
+    変数マッピング・パラメータ推定・仮説検証の反復的実行——を可能にすることを目指している。
+    実装の詳細は後続の実装・実証研究に委ねるが、
+    本理論の真価は、介入が失敗した際に「どの変数の推定が誤っていたのか」を問えることにあると考える。
+  </p>
+
+  <h3>7.4 行動科学・AIの共通言語として</h3>
+  <p>
+    行動を「操作」するのではなく「構造」として理解し、
+    その理解を人間とAIが共有するための共通言語——TETAが果たしうる役割は、
+    この言語の提供にあると考える。
+    意思決定科学・行動情報学・AIの三領域が対話するための座標系として、
+    本理論が継続的な批判と更新を受けながら精緻化されることを期待する。
+  </p>
+
+  <h3>7.5 初期コア論文群のロードマップ</h3>
+  <div class="summary-box">
+    <strong>TETA研究プログラムの初期コア論文群の構成</strong>
+    <table style="margin-top:15px;">
+      <tr>
+        <th>報</th>
+        <th>タイトル</th>
+        <th>主たる貢献</th>
+      </tr>
+      <tr>
+        <td><strong>第1報（本稿）</strong></td>
+        <td>基礎理論編</td>
+        <td>基礎仮説FH1〜FH4・6変数の定義・識別原理・倫理的境界線の理論的導出・反証可能命題</td>
+      </tr>
+      <tr>
+        <td><strong>理論拡張編</strong></td>
+        <td>多重目的理論（Parallel Purpose Theory）</td>
+        <td>一行動・多目的の並列評価構造・Purpose Switching・非合理性の再解釈</td>
+      </tr>
+      <tr>
+        <td><strong>実装・実証編</strong></td>
+        <td>実装・実証研究</td>
+        <td>CIQによるインタビュー定量化・STDM-AI実装プロトコル・マルチドメイン検証・EAE倫理指針</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="summary-box">
+    <strong>理論の骨格：TETAが規定するもの・しないもの</strong>
+    <table>
+      <tr>
+        <th>TETAが規定するもの</th>
+        <th>TETAが規定しないもの（実証に委ねるもの）</th>
+      </tr>
+      <tr>
+        <td>4つの基礎仮説（FH1〜FH4：死帯・飽和・乗法・禁忌）</td>
+        <td>Φの具体的な関数形</td>
+      </tr>
+      <tr>
+        <td>R/L/C/D/T/Kという変数の定義と役割</td>
+        <td>ω係数の値と推定手続き</td>
+      </tr>
+      <tr>
+        <td>介入の倫理的判定基準（長期的Lの変化）</td>
+        <td>局所閾値θ<sub>x</sub>の個体差分布</td>
+      </tr>
+      <tr>
+        <td>識別原理（観測推定型／介入制御型の分類）</td>
+        <td>逆問題の具体的解法・収束保証</td>
+      </tr>
+      <tr>
+        <td>反証可能な命題（F1, F2）</td>
+        <td>詳細な実験プロトコル・サンプルサイズ設計</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- Appendix A -->
+<!-- ===================================================== -->
+
+<section id="appendix">
+  <h2>Appendix A：実装構想の概要</h2>
+  <p>
+    本付録では、TETAの理論的枠組みを実務的に展開するために構想している
+    5つの概念の定義と概要を記載する。
+    各概念の詳細な仕様・実装プロトコル・検証結果は後続の実装・実証研究に委ねるが、
+    理論的方向性と概念の独自性を示すために、ここに定義を明記する。
+  </p>
+
+  <h3>A.1 STDM-AI（State Transition Decision-Making AI：状態遷移型意思決定AI）</h3>
+  <p>
+    <strong>定義：</strong>
+    TETAの理論構造に基づき、「今、この個体の相転移を阻害しているのはどの変数か」を
+    特定するための構造的診断エンジン。
+    観測層（行動ログ取得）・特徴抽出層・状態推定層（R/L/C/D/T の逆問題推定）・
+    モード分類層・介入制御層の5層アーキテクチャで構成される。
+  </p>
+
+  <h3>A.2 DPTPM（Dynamic Phase Transition Purchase Model：動的相転移購買モデル）</h3>
+  <p>
+    <strong>定義：</strong>
+    TETAをマーケティング・事業開発ドメインに最適化した応用枠組み。
+    顧客の「動かなさ」を意欲欠如ではなく構造的ボトルネックとして診断し、
+    L敏感型（損失回避クラスタ）・C過敏型（摩擦回避クラスタ）・D依存型（衝動クラスタ）
+    といった閾値構造クラスタへの分類を行う。
+  </p>
+
+  <h3>A.3 CIQ（Counterfactual Inversion Questions：条件反転質問）</h3>
+  <p>
+    <strong>定義：</strong>
+    「もし〇〇が△△なら行動しますか」という条件反転型の質問を用いて、
+    定性インタビューを構造化し、回答パターンからR/L/C/T/Dの相対的な寄与を推定するプロトコル。
+    従来のYes/No調査やリッカート尺度では捉えにくい、
+    「どの変数が変われば行動が変わるか」を同定することを目的とする。
+    この点で CIQ は、潜在的な反実仮想条件を順次操作しながら行動変化の境界を探索するという意味で、
+    causal inference における counterfactual 的発想と近接している。
+    なお、コンジョイント分析が主として属性間のトレードオフ推定を目的とするのに対し、
+    CIQは行動の相転移を阻害しているボトルネック変数の同定を主目的とする点で異なる。
+  </p>
+
+  <h3>A.4 改善勾配（Improvement Gradient）</h3>
+  <p>
+    <strong>定義：</strong>
+    活性強度 \( P \) の各変数に対する偏微分（感度）を計算し、
+    「どの変数を1単位改善すると、閾値突破にどれだけ近づくか」を定量的に示す指標。
+    介入の優先順位を、直感ではなく構造的な勾配情報に基づいて決定することを可能にする。
+  </p>
+
+  <h3>A.5 EAE（Explainable Action Engineering：説明可能な行動工学）</h3>
+  <p>
+    <strong>定義：</strong>
+    TETAに基づく介入の倫理性を担保するための3原則。
+    （1）介入根拠の開示（Transparency）：どの変数にどのような介入を行ったかを記録・説明可能にする、
+    （2）オプトアウト権の保障（Autonomy）：個体が介入を拒否できる設計を保証する、
+    （3）長期的L増大の監視（Non-exploitation）：介入後の後悔・解約・ネガティブ感情を早期検知する。
+  </p>
+</section>
+
+<!-- ===================================================== -->
+<!-- References -->
+<!-- ===================================================== -->
+
+<section class="references" id="references">
+  <h2>参考文献</h2>
+  <p style="font-size:0.9em; color:#7f8c8d; margin-bottom:1em;">
+    ※ 本稿は理論枠組みの提示を主目的とするため、引用は代表的文献に限定している。
+  </p>
+  <ul>
+    <li>Arrieta, A. B., et al. (2020). Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. <em>Information Fusion</em>, 58, 82–115.</li>
+    <li>Busemeyer, J. R., &amp; Townsend, J. T. (1993). Decision field theory: A dynamic-cognitive approach to decision making in an uncertain environment. <em>Psychological Review</em>, 100(3), 432–459.</li>
+    <li>Castellano, C., Fortunato, S., &amp; Loreto, V. (2009). Statistical physics of social dynamics. <em>Reviews of Modern Physics</em>, 81(2), 591–646.</li>
+    <li>Granovetter, M. (1978). Threshold models of collective behavior. <em>American Journal of Sociology</em>, 83(6), 1420–1443.</li>
+    <li>Hawkins, G. E., Forstmann, B. U., Wagenmakers, E.-J., Ratcliff, R., &amp; Brown, S. D. (2015). Revisiting the evidence for collapsing boundaries and urgency signals in perceptual decision-making. <em>Journal of Neuroscience</em>, 35(6), 2476–2484.</li>
+    <li>Imbens, G. W., &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.</li>
+    <li>Kahneman, D., &amp; Tversky, A. (1979). Prospect theory: An analysis of decision under risk. <em>Econometrica</em>, 47(2), 263–291.</li>
+    <li>Linkov, I., Galaitsi, S., Trump, B. D., Keisler, J. M., &amp; Kott, A. (2020). Cybertrust: From Explainable to Actionable and Interpretable Artificial Intelligence. <em>Computer</em>, 53(9), 91–96.</li>
+    <li>Linkov, I., Stoddard, K., Strelzoff, A., Galaitsi, S. E., Keisler, J. M., Trump, B. D., Kott, A., Bielik, P., &amp; Tsankov, P. (2023). Toward Mission-Critical AI: Interpretable, Actionable, and Resilient AI. In <em>2023 15th International Conference on Cyber Conflict: Meeting Reality (CyCon)</em>, 181–197. DOI: <a href="https://doi.org/10.23919/CyCon58705.2023.10181349" target="_blank">10.23919/CyCon58705.2023.10181349</a>.</li>
+    <li>McFadden, D. (1974). Conditional logit analysis of qualitative choice behavior. In P. Zarembka (Ed.), <em>Frontiers in Econometrics</em> (pp. 105–142). Academic Press.</li>
+    <li>Ouellette, J. A., &amp; Wood, W. (1998). Habit and intention in everyday life. <em>Psychological Bulletin</em>, 124(1), 54–74.</li>
+    <li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em> (2nd ed.). Cambridge University Press.</li>
+    <li>Ratcliff, R. (1978). A theory of memory retrieval. <em>Psychological Review</em>, 85(2), 59–108.</li>
+    <li>Ratcliff, R., &amp; McKoon, G. (2008). The diffusion decision model: Theory and data for two-choice decision tasks. <em>Neural Computation</em>, 20(4), 873–922.</li>
+    <li>Thom, R. (1972). <em>Stabilité structurelle et morphogénèse</em>. W. A. Benjamin.</li>
+    <li>Train, K. E. (2009). <em>Discrete Choice Methods with Simulation</em> (2nd ed.). Cambridge University Press.</li>
+    <li>Tversky, A. (1972). Elimination by aspects: A theory of choice. <em>Psychological Review</em>, 79(4), 281–299.</li>
+    <li>von Neumann, J., &amp; Morgenstern, O. (1944). <em>Theory of Games and Economic Behavior</em>. Princeton University Press.</li>
+    <li>Zeeman, E. C. (1977). Catastrophe theory. <em>Scientific American</em>, 234(4), 65–83.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2026 行動発現の閾値理論（TETA）プロジェクト</p>
+</footer>
+
+</body>
+</html>
