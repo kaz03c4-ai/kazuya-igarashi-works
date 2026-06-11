@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="顧客探索における「分かった気」を、顧客理解の完了ではなく検証すべき仮説として扱うための補論。ケース6題と認知科学の背景を含む。">
+<title>付録C｜顧客理解における「分かった気」を疑う｜観測を打ち手に変える事業開発</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#3d3d3d;
+    --gray:#6b6b6b;
+    --line:#e2e2e2;
+    --line-soft:#eeeeee;
+    --paper:#ffffff;
+    --paper-tint:#f7f8fa;
+    --blue:#0062C2;
+    --blue-tint:#eef4fb;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Meiryo","メイリオ","Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN W3",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.85;
+    font-size:16px;
+    font-feature-settings:"palt" 1;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .topline{height:3px;background:var(--blue);}
+
+  /* header */
+  header{padding:40px 0 28px;border-bottom:1px solid var(--line);}
+  .back{display:inline-block;margin-bottom:28px;color:var(--blue);text-decoration:none;font-size:.9rem;}
+  .back:hover{text-decoration:underline;}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gray);margin:0 0 14px;font-weight:600;
+  }
+  h1{font-size:1.95rem;line-height:1.32;margin:0 0 10px;letter-spacing:.01em;font-weight:700;}
+  .subtitle{font-size:1.02rem;color:var(--ink-soft);margin:0 0 22px;font-weight:400;}
+  .meta{font-size:.85rem;color:var(--gray);margin:0;}
+
+  /* lead */
+  .lead{padding:30px 0 8px;}
+  .lead p{margin:0 0 1em;color:var(--ink-soft);}
+
+  /* key takeaways box */
+  .keybox{border:1px solid var(--blue);background:var(--blue-tint);border-radius:6px;padding:18px 24px;margin:22px 0 8px;}
+  .keybox .h{font-size:.8rem;letter-spacing:.1em;font-weight:700;color:var(--blue);margin:0 0 10px;text-transform:uppercase;}
+  .keybox ol{margin:0;padding-left:1.3em;}
+  .keybox ol li{margin:.45em 0;color:var(--ink);}
+
+  /* toc */
+  nav.toc{
+    background:var(--paper-tint);border:1px solid var(--line);
+    border-radius:6px;padding:24px 26px;margin:18px 0 8px;
+  }
+  nav.toc h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin:0 0 14px;font-weight:600;}
+  nav.toc ol{margin:0;padding:0;list-style:none;}
+  nav.toc > ol > li{margin:0 0 12px;}
+  nav.toc .part{font-weight:600;color:var(--ink);font-size:.95rem;display:block;margin-bottom:4px;}
+  nav.toc ul{margin:2px 0 0;padding:0 0 0 2px;list-style:none;}
+  nav.toc ul li{margin:3px 0;font-size:.9rem;}
+  nav.toc a{color:var(--ink-soft);text-decoration:none;}
+  nav.toc a:hover{color:var(--blue);text-decoration:underline;}
+
+  /* sections */
+  section{padding:14px 0;}
+  .part-head{
+    margin:46px 0 6px;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .part-head .part-label{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700;margin:0 0 6px;}
+  .part-head h2{font-size:1.5rem;margin:0;line-height:1.35;}
+  h3{font-size:1.18rem;margin:34px 0 10px;line-height:1.4;font-weight:700;}
+  h3 .num{color:var(--blue);font-weight:700;margin-right:.5em;}
+  h4{font-size:1.02rem;margin:22px 0 8px;font-weight:700;color:var(--ink);}
+  p{margin:0 0 1.1em;}
+  strong{font-weight:700;}
+  .soft{color:var(--ink-soft);}
+
+  /* pull quote / principle */
+  blockquote{
+    margin:20px 0;padding:16px 22px;border-left:3px solid var(--blue);
+    background:var(--blue-tint);border-radius:0 4px 4px 0;
+    color:var(--ink);font-size:1.02rem;
+  }
+  blockquote p{margin:0;}
+
+  /* callout */
+  .callout{border-left:3px solid var(--blue);background:var(--paper-tint);padding:13px 18px;margin:16px 0 1.2em;border-radius:0 4px 4px 0;font-size:.96rem;}
+
+  /* lists */
+  ul.tight,ol.tight{margin:0 0 1.1em;padding-left:1.3em;}
+  ul.tight li,ol.tight li{margin:.4em 0;}
+
+  /* check box list */
+  .checklist{margin:14px 0 1.2em;padding:18px 22px;border:1px solid var(--line);border-radius:6px;background:var(--paper);}
+  .checklist li{list-style:none;position:relative;padding-left:1.7em;margin:.55em 0;}
+  .checklist li::before{
+    content:"";position:absolute;left:0;top:.55em;width:.85em;height:.85em;
+    border:1.5px solid var(--blue);border-radius:3px;
+  }
+  .checklist ul{margin:0;padding:0;}
+
+  /* tables */
+  .tablewrap{overflow-x:auto;margin:16px 0 1.4em;}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;}
+  caption{caption-side:top;text-align:left;font-size:.82rem;color:var(--gray);margin-bottom:8px;}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+  thead th{background:var(--paper-tint);font-weight:700;color:var(--ink);}
+  tbody th{background:var(--paper-tint);font-weight:600;white-space:nowrap;}
+
+  /* case cards */
+  .case{
+    border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:0 6px 6px 0;padding:22px 24px;margin:22px 0;background:var(--paper);
+  }
+  .case .tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700;margin:0 0 4px;}
+  .case h3{margin:0 0 14px;font-size:1.12rem;}
+  .case h3 .num{margin-right:.4em;}
+  .case .field{margin:0 0 12px;}
+  .case .field:last-child{margin-bottom:0;}
+  .case .label{
+    display:block;font-size:.78rem;font-weight:700;color:var(--gray);
+    letter-spacing:.04em;margin:0 0 2px;
+  }
+  .case .field p{margin:0;}
+  .case .lesson{background:var(--paper-tint);border-radius:4px;padding:12px 16px;margin-top:14px;}
+  .case .lesson .label{color:var(--blue);}
+
+  /* good / bad */
+  .ex{display:grid;grid-template-columns:1fr;gap:14px;margin:16px 0 1.2em;}
+  .ex .box{border:1px solid var(--line);border-radius:6px;padding:16px 18px;}
+  .ex .box .h{font-size:.82rem;font-weight:700;letter-spacing:.04em;margin:0 0 8px;}
+  .ex .bad .h{color:#9a3b3b;}
+  .ex .good .h{color:var(--blue);}
+  .ex .box p{margin:0;font-size:.95rem;}
+
+  /* flow */
+  .flow{background:var(--paper-tint);border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:16px 0 1.2em;font-size:.92rem;line-height:1.7;color:var(--ink-soft);}
+
+  /* references */
+  .refs{margin:10px 0 1.2em;padding:0;list-style:none;font-size:.9rem;overflow-wrap:anywhere;}
+  .refs li{padding:10px 0;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);}
+  .refs li:last-child{border-bottom:none;}
+  .refs .a{color:var(--ink);font-weight:600;}
+
+  /* footer */
+  footer{margin-top:54px;padding:30px 0 60px;border-top:1px solid var(--line);color:var(--gray);font-size:.85rem;}
+  footer p{margin:.25em 0;}
+
+  a{color:var(--blue);}
+  a:focus-visible,.back:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:2px;}
+
+  @media (min-width:620px){
+    .ex{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    body{font-size:15px;}
+    h1{font-size:1.6rem;}
+    .wrap{padding:0 18px;}
+    tbody th{white-space:normal;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+
+<div class="wrap">
+
+<header>
+  <a class="back" href="bizdev-book.html">← 本編に戻る</a>
+  <p class="eyebrow">Business Development Textbook ｜ Appendix C</p>
+  <h1>付録C｜顧客理解における「分かった気」を疑う</h1>
+  <p class="subtitle">デザイン思考・顧客インタビューにおける共感の使い方</p>
+  <p class="meta">著者：五十嵐和也 ｜ 2026年6月 第1版</p>
+</header>
+
+<main>
+
+<div class="lead">
+  <p>本付録は、本書第8〜11章（顧客探索）、とくに第10章「顧客の声をどう読むか」の補論である。第11章の「観測→切り分け→見立て→打ち手→再観測」という流れに対して、その前段にある<strong>“観測したつもり”を疑うための認知補助</strong>として位置づけられる。</p>
+  <p>顧客インタビュー中に生じる「分かった気」を、顧客理解の完了ではなく、検証すべき仮説の出発点として扱うための見方を扱う。本付録は三部構成である。第1部で考え方の骨格を示し、第2部でケース6題によって具体化し、第3部でこの見方が依拠する認知科学の研究との関係を整理する。</p>
+  <p>入口を一文にすれば、こうなる——<strong>デザイン思考の Empathize は、顧客理解の完了ではなく、検証すべき課題仮説を生成する段階である。</strong>本付録は、この一点を認知の構造から裏づける。</p>
+</div>
+
+<div class="keybox">
+  <p class="h">この付録で覚えること</p>
+  <ol>
+    <li>顧客に共感して生じる「分かった気」は、理解の完了ではない。</li>
+    <li>「分かった気」には、顧客手がかり・情動共鳴・自己投影が混ざる。</li>
+    <li>事業開発では、それを観測事実・解釈・未検証論点に分け、次の確認質問に変換する。</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="目次">
+  <h2>目次</h2>
+  <ol>
+    <li>
+      <span class="part">第1部　本論：「分かった気」の構造</span>
+      <ul>
+        <li><a href="#s1">1. 手応えと正しさは別物</a></li>
+        <li><a href="#s2">2. 「分かった気」の三つの出どころ</a></li>
+        <li><a href="#s3">3. なぜ「気をつける」だけでは足りないか</a></li>
+        <li><a href="#s4">4. 誤りの非対称性</a></li>
+        <li><a href="#s5">5. 「共感した」「分かった気がした」「検証できた」</a></li>
+        <li><a href="#s6">6. 見るべき五つの層</a></li>
+        <li><a href="#s7">7. 投影の兆候チェック</a></li>
+        <li><a href="#s8">8. 「分かった気」を仮説に変換する</a></li>
+        <li><a href="#s9">9. 早合点を仮説に変える確認質問</a></li>
+        <li><a href="#s10">10. 本書の流れ／デザイン思考との接続</a></li>
+        <li><a href="#s11">11. インタビュー後メモのテンプレート</a></li>
+      </ul>
+    </li>
+    <li>
+      <span class="part">第2部　ケース集（6題）</span>
+      <ul>
+        <li><a href="#c1">C-1 熱量を機会と取り違える</a></li>
+        <li><a href="#c2">C-2 似ているがゆえの投影</a></li>
+        <li><a href="#c3">C-3 自社案の影を課題と見る</a></li>
+        <li><a href="#c4">C-4 前向きな発話の誤読</a></li>
+        <li><a href="#c5">C-5 現場の困りと決裁の優先度のズレ</a></li>
+        <li><a href="#c6">C-6 検証が効いた例</a></li>
+      </ul>
+    </li>
+    <li>
+      <span class="part">第3部　既存研究との接続</span>
+      <ul>
+        <li><a href="#r1">R-1 共感は単一の現象ではない</a></li>
+        <li><a href="#r2">R-2 共感と正確性の関係は条件依存</a></li>
+        <li><a href="#r3">R-3 「分かった気」はメタ認知的感覚</a></li>
+        <li><a href="#r4">R-4 出どころは内省だけでは識別できない</a></li>
+        <li><a href="#r5">R-5 投影と類似性の罠</a></li>
+        <li><a href="#r6">R-6 認知と情動は別系統</a></li>
+        <li><a href="#r7">R-7 想像するより、取得する</a></li>
+        <li><a href="#practice">付記 近接する実務手法との関係</a></li>
+        <li><a href="#refs">主要参考文献</a></li>
+      </ul>
+    </li>
+  </ol>
+</nav>
+
+<!-- ===================== PART 1 ===================== -->
+<div class="part-head">
+  <p class="part-label">Part 1</p>
+  <h2>本論：「分かった気」の構造</h2>
+</div>
+
+<section id="s1">
+  <h3><span class="num">1.</span>手応えと正しさは別物</h3>
+  <p>顧客の話を聞いていると、担当者はしばしば強い手応えを感じる。問題は、その手応えの強さを、そのまま理解の正確性と取り違えやすい点にある。まずここを押さえておきたい。インタビューで感じる「手応え」と、実際に相手を正しく読めた度合いは、別の量である。</p>
+  <ul class="tight">
+    <li><strong>手応え（確信の強さ）</strong>：どれだけ強く「分かった」と感じるか</li>
+    <li><strong>正しさ（診断性）</strong>：実際に顧客固有の状態をどれだけ正確に追えているか</li>
+  </ul>
+  <p>この二つは一致しない。手応えの強さは、相手の感情の激しさ、相手が自分とどれだけ似ているか、相手の話が自分の既存仮説や自社製品にどれだけきれいに合うか——といった、<strong>当たっているかどうかとは無関係な要因</strong>からも生まれるからである。</p>
+  <blockquote><p>強く確信したことは、正しさの証拠にならない。確信は、検証すべき仮説が生まれた合図にすぎない。</p></blockquote>
+</section>
+
+<section id="s2">
+  <h3><span class="num">2.</span>「分かった気」の三つの出どころ</h3>
+  <p>顧客理解における「分かった気」は、主に三つの出どころから生じる。ここでいう「出どころ」とは、本人が意識的に識別できる原因ではなく、「分かった気」の強さに寄与している近接的な手がかり群を指す。三つは互いに排他的ではなく、ふつう混ざって生じる。</p>
+
+  <h4>2.1　顧客手がかり由来</h4>
+  <p>顧客の発言、表情、業務フロー、過去の具体例、既存の対処、関係者、制約などから理解する経路。三つの中では最も診断性が高い。顧客固有の状況に基づいているからである。ただし発話だけでは足りない。発言の背後にある<strong>過去行動・意思決定構造・費用・リスク・制約</strong>まで見て初めて、事業判断に使える理解になる。</p>
+
+  <h4>2.2　情動共鳴由来</h4>
+  <p>顧客の不満・困り感・期待・熱量につられて、「これは大きな課題だ」と感じる経路。切実さを捉える入口としては役立つが、<strong>熱量が高いことと、事業機会として強いことは別である</strong>。強い愚痴でも支払い意思がないことがある。現場は困っていても組織の優先度は低いことがある。担当者は前向きでも決裁者は関心を持たないことがある。</p>
+
+  <h4>2.3　自己投影由来 ——「似ているほど危ない」</h4>
+  <p>「自分なら困る」「この業界なら当然こうだろう」「自社の技術なら解決できるはずだ」といった、事業開発側の経験・期待・技術仮説を顧客に当てはめる経路。初期仮説づくりには有効だが、最も危険でもある。自己投影は強い「分かった気」を生みやすい。自分の経験はアクセスしやすく、処理が流暢だからである。とくに自社がすでにソリューションを持つ場合、発言から自社案に合う部分だけを拾い、「やはりニーズがある」と読みやすい。この状態では、顧客を理解しているのではなく、<strong>自社仮説に合う証拠を探しているだけ</strong>になる。</p>
+  <p>ここに見落とされがちな罠がある。<strong>自己投影は、自分が顧客と似ているときほど危ない。</strong>同じ業界の出身、同じ職種の経験——そういうとき、投影は「部分的に当たる」。当たるからこそ、それが顧客固有の理解なのか自分の投影なのか、本人には見分けがつかなくなる。ドメイン知識は武器であると同時に、<strong>最も気づきにくい確証バイアスの源</strong>になる。「自分はこの領域が分かっている」という自負が強い人ほど、この罠にかかりやすい。</p>
+</section>
+
+<section id="s3">
+  <h3><span class="num">3.</span>なぜ「気をつける」だけでは足りないか</h3>
+  <p>三つの出どころを知っているなら、インタビュー中に「今のは投影だな」と自分で仕分ければよいのではないか——そう思える。だが、これがうまくいかない。</p>
+  <p>「分かった気」は、複数の手がかりが一つに統合された<strong>出力</strong>としてしか経験されない。材料の内訳は意識に上らない。だから、後からもっともらしい理由は説明できても、その説明が実際の生成過程を正しく反映しているとは限らない。人は、自分の「分かった気」が<strong>どの手がかりにどれだけ支えられているか</strong>を、内省だけでは信頼できる形で識別できない。</p>
+  <p>つまり、出どころは<strong>頭の中で仕分けるものではなく、外の観測で確かめるもの</strong>である。これが、以降の確認質問・五層の切り分け・過去行動の確認が必要になる理由である。自己点検も「気持ちの内訳を当てる」のではなく、「投影の兆候という外形」を記録に照合して確かめる（第7節）。</p>
+</section>
+
+<section id="s4">
+  <h3><span class="num">4.</span>誤りの非対称性 ——どこで偽陽性を厚く疑うか</h3>
+  <p>顧客探索では、二種類の誤りのコストが非対称になりやすい。</p>
+  <ul class="tight">
+    <li><strong>偽陽性</strong>（ニーズがないのに「ある」と読む）：とくに開発投資やPoCに進む局面で高くつく。開発・提案・社内調整・撤退まで巻き込むからである。</li>
+    <li><strong>偽陰性</strong>（ニーズがあるのに「ない」と読む）：機会損失になる。とくに探索初期や、自社が技術優位を持つが顧客の言語化が未成熟な領域では、「まだ顧客が言っていないからニーズがない」と読むことが大きな損失になりうる。</li>
+  </ul>
+  <p>そして、情動共鳴と自己投影は、<strong>構造的に偽陽性を量産する</strong>。熱量に引っ張られ、自社案に合う証拠を拾うからである。</p>
+  <p>したがって本付録の主張は、「常に偽陽性だけを警戒せよ」ではない。<strong>投資判断に進む前には、まず偽陽性を厚く疑え</strong>、というものである。「本当にニーズがあるか」より、「ニーズがあるという自分の読みは、どの観測で否定されうるか」を先に問う。</p>
+</section>
+
+<section id="s5">
+  <h3><span class="num">5.</span>「共感した」「分かった気がした」「検証できた」を分ける</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>状態</th><th>内容</th><th>注意点</th></tr></thead>
+    <tbody>
+      <tr><th>共感した</th><td>顧客の困り感や感情に触れた</td><td>感情の強さは事業性を保証しない</td></tr>
+      <tr><th>分かった気がした</th><td>課題やニーズを把握した感覚がある</td><td>自己投影や確証バイアスが混ざる</td></tr>
+      <tr><th>検証できた</th><td>過去行動・制約・経済性・判断条件で確認した</td><td>事業判断に使える</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>目指すべきは、強く共感することでも、「顧客の気持ちが分かった」と感じることでもない。<strong>その理解がどの観測に支えられているかを明確にし、次の一手に使える形にすること</strong>である。</p>
+</section>
+
+<section id="s6">
+  <h3><span class="num">6.</span>顧客理解で見るべき五つの層</h3>
+  <p>インタビューでは、感情だけでなく少なくとも次の五層を分けて見る。下にいくほど、事業判断に直結する。</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>層</th><th>見るべきもの</th><th>例</th><th>事業上の意味</th></tr></thead>
+    <tbody>
+      <tr><th>感情</th><td>不満・不安・苛立ち・期待・諦め</td><td>「毎回イライラする」</td><td>入口。重要度の確定には使えない</td></tr>
+      <tr><th>課題</th><td>何が遅い・面倒・怖い・難しいのか</td><td>「確認作業に時間がかかる」</td><td>解くべき対象の輪郭</td></tr>
+      <tr><th>行動</th><td>実際にどう対処しているか</td><td>「Excelで二重管理している」</td><td>言葉より信頼できる証拠</td></tr>
+      <tr><th>制約</th><td>なぜ変えられないのか</td><td>「現場だけでは決裁できない」</td><td>導入可否を決める</td></tr>
+      <tr><th>経済性</th><td>時間・費用・リスクとしてどれだけ重いか</td><td>「月20時間、2名で対応」</td><td>支払い意思の根拠</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>ビジネス上の強い課題とは、<strong>感情が強い課題ではなく、行動・制約・経済性に接続している課題</strong>である。感情の層で止まると、第2部C-1のような失注になる。</p>
+  <p>なお、五層の中で「行動」を発話より重い証拠として扱うのには理由がある。顧客自身もまた、自分の行動の理由を語るとき、事後のもっともらしい説明を混ぜるからである。発話は本人の解釈を一度経由するが、行動はそれを経由しない（第3部R-4）。</p>
+
+  <h4>五層と本編の五区分の関係</h4>
+  <p>本編は、観測を<strong>価値・懸念・実行条件・判断条件・制約</strong>の五区分に切り分けて、見立てと打ち手につなげる。本節の五層は、この五区分と並ぶもう一つの分類ではなく、その<strong>手前</strong>に置かれる。五層は「インタビューで<strong>どこを見るか</strong>」という観測の面であり、五区分は「観測した内容を<strong>どの仮説へ切り分けるか</strong>」という整理の宛先である。したがって、同じ一つの発話が、層としては一つでも、区分としては複数に切り分けられてよい。</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>層（観測の面）</th><th>主な切り分け先（本編の五区分）</th></tr></thead>
+    <tbody>
+      <tr><th>感情</th><td>価値・懸念の仮説の<strong>入口</strong>。単独ではどの区分も確定しない</td></tr>
+      <tr><th>課題</th><td>価値（解決すると何が良くなるか）、懸念</td></tr>
+      <tr><th>行動</th><td>価値の証拠、実行条件（現在の運用・代替手段）</td></tr>
+      <tr><th>制約</th><td>制約、判断条件（誰が・なぜ変えられないのか）</td></tr>
+      <tr><th>経済性</th><td>価値の大きさ、判断条件（投資判断の根拠）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>例を挙げる。「確認作業に時間がかかる」は、層としては課題だが、区分では価値（削減の価値）と実行条件（現在の業務フロー）の両方に切り分けられる。「現場だけでは決裁できない」は、層としては制約だが、区分では判断条件（誰が決めるか）と制約（当面動かせない前提）に振り分けられる。名前の重なる「制約」も、層では「変えられない理由の<strong>観測</strong>」を、区分では「打ち手設計で動かせない<strong>前提</strong>」を指す。<strong>層で見落としなく観測し、区分で仮説として切り分ける</strong>——第10節のフローで、層の確認が区分への切り分けの前に置かれるのは、この関係による。</p>
+</section>
+
+<section id="s7">
+  <h3><span class="num">7.</span>投影の兆候チェック ——記憶ではなく記録に照合する</h3>
+  <p>第3節のとおり、出どころは内省だけでは信頼できる形に識別できない。そして「振り返って自問する」だけでは、同じ問題が形を変えて戻ってくる。記憶もまた、都合よく再構成されるからである。そこで本節のチェックは、印象への自問ではなく、<strong>記録——録音・議事メモ・やり取りの履歴——に照合できる外形</strong>に係留する。インタビュー直後に、記録を開いて次を確かめる。</p>
+  <div class="checklist">
+    <ul>
+      <li><strong>不利な発言が残っているか</strong>：メモ・録音に、自社案にとって不利な発言・例外・反例が一つでも記録されているか。都合のよい発言しか残っていなければ、裏づけ拾いの兆候。</li>
+      <li><strong>発話の比率と主導権</strong>：録音で、自分の説明時間が顧客の発話時間を上回っていないか。次の一歩（日程・宿題）を提案したのは、毎回自分側ではないか。どちらも前のめりの兆候。</li>
+      <li><strong>発話に対応しない記述</strong>：メモの各記述に、対応する顧客の発話があるか。引用の裏づけがない記述——「この業界なら当然」で埋めた箇所——が多ければ、空白埋めの兆候。</li>
+      <li><strong>留保への応答</strong>：顧客の「ただ」「でも」「うちの場合は」に対して、深掘りの質問で返したか、説明をかぶせたか。録音で確認できる。かぶせていれば、反対情報を受け取れていない兆候。</li>
+      <li><strong>製品名なしで課題を書けるか</strong>：顧客の課題を、自社の製品名・機能名を使わずに一文で書けるか。書けなければ、見ているのは課題ではなく、自社案の使いどころである。</li>
+      <li><strong>反証を一つ指名できるか</strong>：この理解を否定する観測を、一つ具体的に挙げられるか。挙げられなければ、それはまだ理解ではなく、確信である。</li>
+    </ul>
+  </div>
+  <p>最後の二つは「書けるか・挙げられるか」という産出テストであり、結果がそのまま記録に残る。内省を完全に排することはできないが、照合先を記録に置くほど、自己弁護の入り込む余地は狭くなる。</p>
+</section>
+
+<section id="s8">
+  <h3><span class="num">8.</span>「分かった気」を仮説に変換する</h3>
+  <p>インタビュー中に「これは課題だ」と感じたら、そのまま結論にせず、観測事実・解釈・未検証論点に分けて仮説へ変換する。</p>
+  <div class="ex">
+    <div class="box bad">
+      <p class="h">悪い整理</p>
+      <p>顧客は自動化ニーズが強い。</p>
+    </div>
+    <div class="box good">
+      <p class="h">よい整理</p>
+      <p><strong>観測事実</strong>：月末処理で3時間。Excelで二重入力。ミスが月1回程度。<br>
+      <strong>解釈</strong>：入力作業の削減ニーズがある可能性。<br>
+      <strong>未検証</strong>：予算、決裁者、既存ツールとの比較、導入優先度。</p>
+    </div>
+  </div>
+  <p>観測事実・解釈・未検証論点を分けることで、「分かった気」を事業開発で扱える仮説に変換できる。仕上げのメモ形式は第11節に置く。</p>
+</section>
+
+<section id="s9">
+  <h3><span class="num">9.</span>早合点を仮説に変える確認質問</h3>
+  <p>確認質問は、顧客を疑うためではなく、<strong>自分の理解を疑うため</strong>にある。それぞれの問いは、頭の中の早合点を、外で確かめられる観測へ変換する。</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>早合点</th><th>確認質問</th><th>何を確かめるか</th></tr></thead>
+    <tbody>
+      <tr><th>困っていそう</th><td><strong>直近でそれが起きたのはいつですか？</strong></td><td>実在性・鮮度</td></tr>
+      <tr><th>重要そう</th><td>放置すると何が起きますか？</td><td>損失の大きさ</td></tr>
+      <tr><th>頻繁そう</th><td>月に何回、誰が対応していますか？</td><td>頻度</td></tr>
+      <tr><th>解決済みかも</th><td><strong>今はどう対処していますか？</strong></td><td>既存の代替手段</td></tr>
+      <tr><th>払ってくれそう</th><td>その対処に今どれくらい時間・費用・人手を使っていますか？</td><td>支払い意思の根拠</td></tr>
+      <tr><th>自社案が刺さりそう</th><td><strong>今回の提案がなかった場合、この問題には今後どう対応しますか？ その対応で、まだ残る困りごとはありますか？</strong></td><td>自社案を外した課題・代替手段・残る不満</td></tr>
+      <tr><th>導入できそう</th><td>誰が判断し、誰が運用し、何が障害になりますか？</td><td>制約・決裁構造</td></tr>
+      <tr><th>市場がありそう</th><td>同じ構造の顧客は他にどれくらいいそうですか？</td><td>横展開可能性</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">とりわけ太字の3問——<strong>「直近でそれが起きたのはいつですか？」「今はどう対処していますか？」「今回の提案がなかった場合、この問題には今後どう対応しますか？ その対応で、まだ残る困りごとはありますか？」</strong>——は、単独でも顧客インタビューの質を大きく上げる。</div>
+  <p>「自社案が刺さりそう」への問いがとくに重要である。自社の解決策を一度外し、顧客が今後どう対応するつもりなのか、その対応でも何が残るのかを確かめる。残る困りごとがなければ、見ていたのは顧客の課題ではなく、自社案の影である。</p>
+</section>
+
+<section id="s10">
+  <h3><span class="num">10.</span>本書の流れ／デザイン思考との接続</h3>
+  <p>本書は事業開発を「観測を打ち手に変える」活動として捉える。本付録は、そのうち<strong>顧客探索における観測の質</strong>を高めるためのものである。基本の流れは次のように拡張できる。</p>
+  <div class="flow">
+    顧客の発話・反応<br>
+    ↓<br>
+    「分かった気」が生じる<br>
+    ↓<br>
+    観測事実・解釈・未検証論点に分ける（第8節）<br>
+    ↓<br>
+    五つの層で観測の抜けを確かめる（第6節）<br>
+    ↓<br>
+    本編の五区分——価値・懸念・実行条件・判断条件・制約——に切り分ける<br>
+    ↓<br>
+    主因候補を仮置きする<br>
+    ↓<br>
+    次に確認すべき問いと打ち手を決める<br>
+    ↓<br>
+    再観測する
+  </div>
+  <p>デザイン思考の Empathize → Define → Ideate → Prototype → Test を事業開発の観点で読むと、Empathize は顧客理解の<strong>完了</strong>ではなく、<strong>検証すべき課題仮説を生成する段階</strong>になる。「顧客に共感したから正しい」のではなく、「顧客に共感したから、検証すべき仮説が見えた」と捉える。なお Test の核心は「相手の視点を想像する」ことではなく、「相手から実際に情報を得る」ことにある。想像だけでは、自己投影や流暢さによって強い「分かった気」が再生産されるだけだからである（第3部R-7）。</p>
+  <blockquote><p>よい顧客理解とは、強く分かったと感じることではない。分かったと感じた<strong>後</strong>に、その理解を修正可能な形で持ち続けることである。</p></blockquote>
+</section>
+
+<section id="s11">
+  <h3><span class="num">11.</span>インタビュー後メモのテンプレート</h3>
+  <p>第8節の「観測事実・解釈・未検証論点」の切り分けを、インタビュー後メモの形にすると、そのまま次の打ち手につながる。本書付録Aのヒアリング整理シート（T-2）とも接続しやすい。狙いは記録をきれいにまとめることではなく、「分かった気」を次の観測と打ち手に変換することである。</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>項目</th><th>記入内容</th></tr></thead>
+    <tbody>
+      <tr><th>生の発話</th><td>顧客が実際に言ったこと</td></tr>
+      <tr><th>観測事実</th><td>行動・頻度・対処・関係者・制約</td></tr>
+      <tr><th>自分の解釈</th><td>そこから何を読み取ったか</td></tr>
+      <tr><th>生じた「分かった気」</th><td>何を分かったと感じたか</td></tr>
+      <tr><th>出どころ候補</th><td>顧客手がかり／情動共鳴／自己投影のどれが強そうか。ただし断定せず、第7節の兆候チェックで補助的に見る。</td></tr>
+      <tr><th>未検証論点</th><td>まだ確かめていないこと</td></tr>
+      <tr><th>次の確認質問</th><td>次回聞くべきこと（第9節から）</td></tr>
+      <tr><th>次の打ち手</th><td>提示・検証・社内確認など</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== PART 2 ===================== -->
+<div class="part-head">
+  <p class="part-label">Part 2</p>
+  <h2>ケース集（6題）</h2>
+</div>
+
+<section>
+  <p class="soft">以下の6題は、いずれも技術起点のBtoB事業開発で起こりやすい「分かった気」の取り違えと、その修正を示す。各ケースは、第1部の三つの出どころ（顧客手がかり／情動共鳴／自己投影）と五つの層（感情／課題／行動／制約／経済性）のどこでズレが起きたかに対応している。人物・数値は典型例として構成したものである。</p>
+
+  <div class="case" id="c1">
+    <p class="tag">Case 1 ｜ 情動共鳴 × 感情の層</p>
+    <h3><span class="num">C-1</span>熱量を機会と取り違える</h3>
+    <div class="field"><span class="label">状況</span><p>製造現場の管理者へのヒアリング。話の途中で相手が机を叩くようにして「この確認作業、毎回ほんとに面倒なんですよ」と語気を強めた。</p></div>
+    <div class="field"><span class="label">生じた「分かった気」</span><p>課題は深い、自社のセンサーが刺さる、市場もある——チームは強く確信し、三か月かけて試作し提案に行った。</p></div>
+    <div class="field"><span class="label">何が起きていたか</span><p>顧客の感情の強さ（情動共鳴）を、事業機会の強さと取り違えた。手応えは本物だったが、それは相手を正しく読めたことの証拠ではなかった。</p></div>
+    <div class="field"><span class="label">見落とし</span><p>頻度と経済性。決裁者の反応は静かだった。「面倒なのは分かるけど、年に数回の話だし、今のやり方で困っていない」。<strong>感情課題としては強かったが、予算化される業務課題ではなかった。</strong></p></div>
+    <div class="field"><span class="label">検証と修正</span><p>「月に何回、誰が対応していますか」「その対処に時間・費用をどれだけ使っていますか」を最初に聞いていれば、感情の層から行動・経済性の層へ降りられた。熱量は入口の観測として記録し、重要度は別の観測で確定する。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>感情が強い課題と、予算化される課題は別物。熱量は仮説の入口であって、結論ではない。</p></div>
+  </div>
+
+  <div class="case" id="c2">
+    <p class="tag">Case 2 ｜ 自己投影 × 類似性の罠</p>
+    <h3><span class="num">C-2</span>似ているがゆえの投影</h3>
+    <div class="field"><span class="label">状況</span><p>担当者は前職で顧客と同じ業界・同じ職種にいた。ヒアリング中、顧客が業務の悩みを語り始めた瞬間に「分かります、自分も現場でこれに苦しんだ」と深く頷いた。</p></div>
+    <div class="field"><span class="label">生じた「分かった気」</span><p>説明されるまでもなく状況が手に取るように分かる感覚。確信は三つの出どころの中で最も強かった。</p></div>
+    <div class="field"><span class="label">何が起きていたか</span><p>典型的な投影だが、本人は気づけない。なぜなら自分の過去経験が部分的に当たっているからである。当たるからこそ、顧客固有の理解と自己投影の区別がつかなくなる。</p></div>
+    <div class="field"><span class="label">見落とし</span><p>この顧客の工程は前職と違っていた。担当者が「当然こうだろう」と埋めた空白（承認フロー、既存システム、現場体制）が、実際には課題の核心だった。</p></div>
+    <div class="field"><span class="label">検証と修正</span><p>「自分ならこう」を一度脇に置き、「直近で実際にそれが起きたのはいつ、どういう経緯でしたか」と<strong>この顧客の具体的な過去の出来事</strong>を聞く。自分の記憶ではなく相手の事例で確かめる。ドメイン知識は仮説を速く立てる武器だが、検証を省く言い訳にしない。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>自分が顧客に似ているほど、投影は当たって見え、最も気づきにくい確証バイアスになる。熟達者ほど検証を厚くする。</p></div>
+  </div>
+
+  <div class="case" id="c3">
+    <p class="tag">Case 3 ｜ 自己投影 × 確証バイアス</p>
+    <h3><span class="num">C-3</span>自社案の影を課題と見る</h3>
+    <div class="field"><span class="label">状況</span><p>自社はAI外観検査システムを持つ。検査工程のヒアリングで顧客が「検査結果のばらつきが気になっている」と漏らした。</p></div>
+    <div class="field"><span class="label">生じた「分かった気」</span><p>「AI検査ニーズがある」。チームは発言の中から自社案に合う部分だけを拾い、ニーズの確認だと解釈した。</p></div>
+    <div class="field"><span class="label">何が起きていたか</span><p>顧客を理解したのではなく、自社仮説に合う証拠を探していた。ばらつきの話は自社案の「影」に見えていただけだった。</p></div>
+    <div class="field"><span class="label">見落とし</span><p>ばらつきの真因は検査アルゴリズムではなく、上流の照明と治具のばらつきにあった。AIを入れても解決しない問題だった。</p></div>
+    <div class="field"><span class="label">検証と修正</span><p>「今回の提案がなかった場合、この問題には今後どう対応しますか。現在の対応で、まだ残る困りごとはありますか」と聞く。自社案を一度外し、それでも残る困りごとを確認する。残らなければ、見ていたのは顧客の課題ではなく自社案の影である。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>自社が解を持っているときほど、確証バイアスは強い。提案前に必ず自社案を外して課題を語らせる。</p></div>
+  </div>
+
+  <div class="case" id="c4">
+    <p class="tag">Case 4 ｜ 顧客手がかりの誤読 × 行動の層</p>
+    <h3><span class="num">C-4</span>前向きな発話の誤読</h3>
+    <div class="field"><span class="label">状況</span><p>提案の場で、相手が笑顔で「面白いですね、ぜひ前向きに検討します」と言った。</p></div>
+    <div class="field"><span class="label">生じた「分かった気」</span><p>好感触、受注は近い——担当者はそう読み、社内にも「手応えあり」と報告した。</p></div>
+    <div class="field"><span class="label">何が起きていたか</span><p>前向きな発話を額面どおり受け取った。「面白い」は価値の確認なのか、社交辞令なのか、判断保留の婉曲表現なのか——複数の読みがあるのに、一つに確定してしまった。</p></div>
+    <div class="field"><span class="label">見落とし</span><p>その後、相手から具体的な動きが何も起きなかった。社内共有も、次回日程の提案も、関係者の追加もない。<strong>行動が、言葉とは逆のことを語っていた。</strong></p></div>
+    <div class="field"><span class="label">検証と修正</span><p>言葉ではなく行動で確かめる。「次に進めるとしたら、社内では誰がどう判断する流れになりますか」「直近で似た案件をどう検討されましたか」。具体的な次の一歩が出てこないこと自体が、重要な観測である。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>前向きな発話を過大評価しない。発話より行動が信頼できる証拠であり、何も起きないことも観測である。<strong>次の行動が伴わない前向き発話は、未検証の社交辞令として扱う。</strong></p></div>
+  </div>
+
+  <div class="case" id="c5">
+    <p class="tag">Case 5 ｜ 制約・判断構造の見落とし</p>
+    <h3><span class="num">C-5</span>現場の困りと決裁の優先度のズレ</h3>
+    <div class="field"><span class="label">状況</span><p>現場担当者は明確に困っており、デモにも強い関心を示した。困り感も、利用イメージも、十分に観測できた。</p></div>
+    <div class="field"><span class="label">生じた「分かった気」</span><p>ニーズは確実、あとは提案するだけ——現場の手応えだけで導入が見えた気がした。</p></div>
+    <div class="field"><span class="label">何が起きていたか</span><p>顧客手がかり由来の理解としては正しかったが、見ていた相手が「利用者」であって「決裁者」ではなかった。判断構造の層を観測していなかった。</p></div>
+    <div class="field"><span class="label">見落とし</span><p>決裁者にとっては別の投資が優先で、この領域は今期の関心外だった。現場がいくら困っていても、組織として予算がつかない。案件は承認段階で止まった。</p></div>
+    <div class="field"><span class="label">検証と修正</span><p>早い段階で「誰が判断し、誰が運用し、何が障害になりますか」を聞き、決裁者の判断条件を観測する。BtoBでは少なくとも四つを分けて確かめる——<strong>誰が困っているか／誰が得をするか／誰が払うか／誰がリスクを負うか</strong>。これらは同一人物とは限らない。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>利用者の課題が本物でも、決裁者の優先度が伴わなければ前進しない。誰の判断を動かすのかを最初に見極める。</p></div>
+  </div>
+
+  <div class="case" id="c6">
+    <p class="tag">Case 6 ｜ 検証が効いた例</p>
+    <h3><span class="num">C-6</span>検証が効いた例 ——弱い手応えを活かす</h3>
+    <div class="field"><span class="label">状況</span><p>飲食チェーンの清掃工程のヒアリング。担当者は今回、あえて「分かった気」を結論にしない運用を徹底した。</p></div>
+    <div class="field"><span class="label">手応え</span><p>強い熱量はなく、最初の手応えはむしろ弱かった。だが担当者はそれを欠点ではなく、観測を急がない理由として扱った。</p></div>
+    <div class="field"><span class="label">行った検証</span><p>(1) 自社のセンサー案を一度外し、「今回の提案がなかった場合、この問題には今後どう対応しますか。現在の対応で、まだ残る困りごとはありますか」と聞いた。(2) 「直近でその問題が起きたのはいつ、どう対処したか」と過去行動を聞いた。(3) 利用者だけでなく、店舗運営の決裁者にも判断条件を確認した。</p></div>
+    <div class="field"><span class="label">分かったこと</span><p>当初想定した「清掃の手間」自体は優先課題ではなかった。しかし過去行動を追う中で、<strong>清掃品質のばらつきが衛生監査の指摘につながる</strong>という、決裁者にとって重い別の論点が見えた。機会は、最初の読みとは別の場所にあった。</p></div>
+    <div class="field"><span class="label">結果</span><p>提案の軸を「手間の削減」から「監査リスクの低減」に切り替えた。決裁者の判断条件に直結したため、検討が前に進んだ。</p></div>
+    <div class="lesson"><span class="label">教訓</span><p>検証は、誤りを潰すだけでなく、最初は見えなかった本当の機会を浮かび上がらせる。弱い手応えこそ、観測を丁寧にする好機になる。</p></div>
+  </div>
+</section>
+
+<!-- ===================== PART 3 ===================== -->
+<div class="part-head">
+  <p class="part-label">Part 3</p>
+  <h2>既存研究との接続</h2>
+</div>
+
+<section>
+  <div class="callout"><strong>実務上は第1部・第2部だけで使える。</strong>第3部は、なぜこの見方が妥当なのかを確認したい読者向けの理論的背景であり、読み飛ばしても支障はない。</div>
+  <p class="soft">本付録の見方は、新しい主張というより、心理学・認知科学が積み上げてきた知見を事業開発の文脈に翻訳したものである。本書付録Bが既存の事業開発手法との関係を整理したのと同じ要領で、ここでは各論点が依拠する研究を示す。詳細は各原典を参照されたい。</p>
+
+  <h3 id="r1"><span class="num">R-1</span>共感は単一の現象ではない</h3>
+  <p>「共感」と呼ばれるものには、複数の異なる現象が含まれる。Batson は、他者の内的状態を知ること、相手と同じように感じること、自分を相手の状況に投じること、相手の思考を想像することなどを、関連するが区別される現象として整理した。Davis の対人反応性指標（IRI）も、共感を単一尺度ではなく、視点取得・空想・共感的関心・個人的苦痛という多次元で測定する。<strong>本付録が「共感」を一括りにせず、「分かった気」の出どころを分ける出発点はここにある。</strong>本付録は共感の新しい分類を提案するものではない。三つの出どころという区分も、これらの研究で示されてきた成分を「分かった気」の生成源として実務向けに束ね直した整理である。力点は分類の新しさではなく、その混同を実務でどう扱うか——記録に係留した兆候チェックと、検証への変換——にある。</p>
+
+  <h3 id="r2"><span class="num">R-2</span>共感と正確性の関係は条件依存</h3>
+  <p>相手の心を当てる正確さ（empathic accuracy）の研究は、情動的な共感が必ずしも正確な理解につながらないことを示してきた。Ickes が確立した測定手法や、Zaki らの研究によれば、知覚者の情動的共感が正確性を予測するかどうかは、相手がどれだけ感情を表出しているかなどの条件に依存する。<strong>第1部で「情動共鳴の診断性は条件依存」とした根拠であり、熱量を理解の証拠と扱わない理由である。</strong></p>
+
+  <h3 id="r3"><span class="num">R-3</span>「分かった気」はメタ認知的感覚である</h3>
+  <p>主観的な確信は、対象を直接読み出した結果ではなく、手がかりから計算される感覚である。Koriat の研究は、「知っている感じ」のようなメタ認知的感覚が、処理の流暢性や親近性といったアクセス可能な手がかりに基づく推論であり、それらの手がかりが<strong>非診断的</strong>なときには錯覚を生むことを示した。<strong>「手応えと正しさは別物」「強く確信したことは正しさの証拠にならない」という第1節の中核は、この知見に対応している。</strong>自己投影が強い「分かった気」を生むのは、自分の経験が流暢に処理されるからである。</p>
+
+  <h3 id="r4"><span class="num">R-4</span>出どころは内省だけでは識別できない</h3>
+  <p>人は、自分の判断の実際の原因に十分な内省的アクセスを持たない。Nisbett と Wilson は、人が自分の心的過程の原因をしばしば事後にもっともらしく構成するにすぎないことを示した。さらに Johnson らの source monitoring（源泉モニタリング）の枠組みは、記憶や心的内容には出所のタグが内在せず、出所はその性質から事後に帰属されるため、系統的に誤りうると論じる。重要なのは出所が完全に不可知だということではなく、<strong>自己説明だけでは校正できない</strong>という点である。<strong>第3節「なぜ気をつけるだけでは足りないか」と、第7節で出どころを内省ではなく外形（兆候）で見る理由は、ここにある。</strong>とくに投影は、自己が生成した内容を相手由来の情報と取り違える誤帰属として理解できる。</p>
+  <p>なお、この内省の限界は、聞き手の側だけでなく<strong>顧客の側にも対称的に</strong>働く。顧客が自分の行動の理由を語るときも、事後のもっともらしい説明が混ざる。第6節で、発話よりも行動を重い証拠として扱うのは、このためである。</p>
+
+  <h3 id="r5"><span class="num">R-5</span>投影と類似性の罠</h3>
+  <p>自己と相手の類似性は、見かけの正確性を水増しする。Cronbach は古くから、相手の状態を「自分ならこう」と推し量る assumed similarity が、自分と相手が実際に似ているときには当たってしまい、正確性の見かけを膨らませることを指摘した。また Epley らは、他者推定が自己を錨にした調整（egocentric anchoring-and-adjustment）として生じ、調整が不十分になりやすいことを示し、Goldman は他者理解が自己のシミュレーションを用いる過程だと論じた。<strong>「似ているほど投影は当たって見え、最も危ない」（第2.3節、ケースC-2）の理論的背景である。</strong></p>
+
+  <h3 id="r6"><span class="num">R-6</span>認知と情動は別系統である</h3>
+  <p>相手を推定する認知的な経路と、相手の感情に共鳴する情動的な経路は、別のシステムである。Shamay-Tsoory らの脳損傷研究は、認知的共感と情動的共感が神経的に二重解離する——片方だけが選択的に損なわれうる——ことを示した。<strong>本付録が「顧客手がかり由来の推定」と「情動共鳴由来」を、程度の差ではなく別の出どころとして扱う根拠である。</strong></p>
+
+  <h3 id="r7"><span class="num">R-7</span>想像するより、取得する</h3>
+  <p>相手の視点は、頭の中で想像するより、実際に尋ねて得るほうが正確になる。Eyal、Steffel、Epley は、相手の視点を<strong>取ろうとする</strong>（perspective taking）ことが正確性を上げず、時に下げる一方、相手から<strong>実際に情報を得る</strong>（perspective getting）ことが正確性を高めると示した。<strong>第9節の確認質問や第10節の検証ステップが、「想像」ではなく「取得」を求める根拠である。</strong>内的な想像だけでは、自己投影や流暢さによって強い「分かった気」が再生産されるだけになる。</p>
+
+  <h3 id="practice"><span class="num">付記</span>近接する実務手法との関係</h3>
+  <p>本編付録Bが既存の事業開発手法との関係を明示したのと同じ趣旨で、インタビュー実務の近接手法との関係も整理しておく。第9節の質問群は、『The Mom Test』（Rob Fitzpatrick）に代表される「過去の具体行動を聞く・現在の対処を聞く・賛辞を割り引く」という作法や、JTBD（Jobs to Be Done）系の「顧客が片づけようとしている用事から聞く」というインタビュー実務と、方向を同じくする。重なりは偶然ではない。いずれも、発話の額面ではなく、行動と文脈に証拠を求めるからである。</p>
+  <p>本付録の差分は、その<strong>上流</strong>にある。既存の実務手法は「何を聞くか」の処方を与えるが、なぜ「気をつける」という内的警戒だけでは機能しないのかまでは説明しない。本付録はその理由を機構として与え（「分かった気」は統合済みの出力であり、内省だけでは校正できない——第3節、R-3、R-4）、そのうえで運用を三つの装置に変換する。三状態の区分（共感した／分かった気がした／検証できた：第5節）、記録に係留した兆候チェック（第7節）、早合点から確認質問への変換（第9節）である。本付録は既存手法の代替ではなく、既存手法が<strong>なぜ効くのか</strong>を説明し、それでも残る穴——強い手応えそのものへの過信——を埋める位置にある。</p>
+
+  <h3 id="refs">主要参考文献</h3>
+  <p class="soft">以下は本付録の背景となる代表的文献である。</p>
+  <ul class="refs">
+    <li><span class="a">Batson, C. D.</span> (2009). These things called empathy: Eight related but distinct phenomena. In J. Decety &amp; W. Ickes (Eds.), <em>The Social Neuroscience of Empathy</em>. MIT Press.</li>
+    <li><span class="a">Cronbach, L. J.</span> (1955). Processes affecting scores on "understanding of others" and "assumed similarity." <em>Psychological Bulletin</em>, 52(3), 177–193. <a href="https://doi.org/10.1037/h0044919">https://doi.org/10.1037/h0044919</a></li>
+    <li><span class="a">Davis, M. H.</span> (1983). Measuring individual differences in empathy: Evidence for a multidimensional approach. <em>Journal of Personality and Social Psychology</em>, 44(1), 113–126. <a href="https://doi.org/10.1037/0022-3514.44.1.113">https://doi.org/10.1037/0022-3514.44.1.113</a></li>
+    <li><span class="a">Epley, N., Keysar, B., Van Boven, L., &amp; Gilovich, T.</span> (2004). Perspective taking as egocentric anchoring and adjustment. <em>Journal of Personality and Social Psychology</em>, 87(3), 327–339. <a href="https://doi.org/10.1037/0022-3514.87.3.327">https://doi.org/10.1037/0022-3514.87.3.327</a></li>
+    <li><span class="a">Eyal, T., Steffel, M., &amp; Epley, N.</span> (2018). Perspective mistaking: Accurately understanding the mind of another requires getting perspective, not taking perspective. <em>Journal of Personality and Social Psychology</em>, 114(4), 547–571. <a href="https://doi.org/10.1037/pspa0000115">https://doi.org/10.1037/pspa0000115</a></li>
+    <li><span class="a">Eyal, T., Steffel, M., &amp; Epley, N.</span> (2018). Perspective-taking doesn't help you understand what others want. <em>Harvard Business Review</em>.（上記JPSP論文の実務向け解説）</li>
+    <li><span class="a">Goldman, A. I.</span> (2006). <em>Simulating Minds: The Philosophy, Psychology, and Neuroscience of Mindreading</em>. Oxford University Press.</li>
+    <li><span class="a">Johnson, M. K., Hashtroudi, S., &amp; Lindsay, D. S.</span> (1993). Source monitoring. <em>Psychological Bulletin</em>, 114(1), 3–28. <a href="https://doi.org/10.1037/0033-2909.114.1.3">https://doi.org/10.1037/0033-2909.114.1.3</a></li>
+    <li><span class="a">Koriat, A.</span> (1993). How do we know that we know? The accessibility model of the feeling of knowing. <em>Psychological Review</em>, 100(4), 609–639. <a href="https://doi.org/10.1037/0033-295X.100.4.609">https://doi.org/10.1037/0033-295X.100.4.609</a></li>
+    <li><span class="a">Nisbett, R. E., &amp; Wilson, T. D.</span> (1977). Telling more than we can know: Verbal reports on mental processes. <em>Psychological Review</em>, 84(3), 231–259. <a href="https://doi.org/10.1037/0033-295X.84.3.231">https://doi.org/10.1037/0033-295X.84.3.231</a></li>
+    <li><span class="a">Shamay-Tsoory, S. G., Aharon-Peretz, J., &amp; Perry, D.</span> (2009). Two systems for empathy: A double dissociation between emotional and cognitive empathy in inferior frontal gyrus versus ventromedial prefrontal lesions. <em>Brain</em>, 132(3), 617–627. <a href="https://doi.org/10.1093/brain/awn279">https://doi.org/10.1093/brain/awn279</a></li>
+    <li><span class="a">Zaki, J., Bolger, N., &amp; Ochsner, K.</span> (2008). It takes two: The interpersonal nature of empathic accuracy. <em>Psychological Science</em>, 19(4), 399–404. <a href="https://doi.org/10.1111/j.1467-9280.2008.02099.x">https://doi.org/10.1111/j.1467-9280.2008.02099.x</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>観測を打ち手に変える事業開発　原典版　付録C</p>
+  <p>著者：五十嵐和也 ｜ 2026年6月 第1版</p>
+  <p>© 2026 Kazuya Igarashi</p>
+</footer>
+</div>
+</body>
+</html>
